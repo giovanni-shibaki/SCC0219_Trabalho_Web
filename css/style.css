@@ -1,28 +1,62 @@
-.card-image {
-    width: 10%;
+body{
+    background-color: #7D95BA;
+    margin: 0;
 }
 
-/* .card {
+.container
+{
+    display: inline-flex;
+}
+
+.header
+{
+    height: 11%;
+    width: 100%;
+    background-color: #192653;
+}
+
+.top-header
+{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    height: 55%;
+}
+
+.bottom-header
+{
+    background-color: #375FAA;
+    height: 45%;
+    width: 100%;
+}
+
+.search-bar input
+{
 
 }
-.card-description {
+
+.header-logo img
+{
+    margin-left: 3rem;
+    height: 100%;
+    width: auto;
+}
+
+.card
+{
 
 }
-.card-type {
+
+.card-image
+{
 
 }
-.card-name {
+
+.card-description
+{
 
 }
-.card-stars {
+
+.card-type
+{
 
 }
-.card-price {
-
-}
-.card-original-price {
-
-}
-.card-add-cart {
-
-} */
