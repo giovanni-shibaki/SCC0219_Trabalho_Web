@@ -3,10 +3,22 @@
     src: url(../fonts/Quicksand-Light.ttf);
 }
 
-@font-face {
-    font-family: quicksandBold;
-    src: url(../fonts/Quicksand-Bold.ttf);
-    font-weight: bold;
+@font-face 
+{
+    font-family: quicksand;
+    src: url("../fonts/Quicksand-Regular.ttf");
+}
+
+@font-face 
+{
+    font-family: quicksand-light;
+    src: url("../fonts/Quicksand-Light.ttf");
+}
+
+@font-face
+{
+    font-family: quicksand-bold;
+    src: url("../fonts/Quicksand-Bold.ttf");
 }
 
 body{
@@ -171,3 +183,135 @@ body{
 {
 
 }
+
+:root
+{
+    --dark-dark-blue: #192653;
+    --dark-blue: #254A7F;
+    --blue: #375FAA;
+    --light-blue: #7D95BA;
+    --light-light-blue: #E3F2FF;
+    --yellow: #FFCB05;
+    --white: #FFFFFF;
+    --gray: #939992;
+    --red: #C5330B;
+}
+
+body
+{
+    background-color: var(--light-blue);
+    margin: 0;
+    font-family: quicksand;
+}
+
+.top-header
+{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    height: 55%;
+}
+
+.bottom-header
+{
+    background-color: var(--blue);
+    height: 45%;
+    width: 100%;
+}
+
+.search-bar input
+{
+
+}
+
+.card
+{
+    background-color: var(--white);
+    width: 8%;
+    padding: 0.5% 0.5% 0.5% 0.5%;
+}
+
+.card-image
+{
+    padding-left: 0%;
+    width: 100%;
+}
+
+.card-description
+{
+
+}
+
+.card-type
+{
+    font-size: 90%;
+    color: var(--gray);
+    margin-bottom: 0%;
+}
+
+.card-name 
+{
+    font-size: 160%;
+    margin-top: 5%;
+    margin-bottom: 0%;
+}
+
+.card-stars 
+{
+    margin-top: 6%;
+    margin-bottom: 0%;
+}
+
+.card-seller 
+{
+    font-size: 80%;
+    color: var(--gray);
+    margin-top: 2%;
+    margin-bottom: 0%;
+}
+
+.card-buy
+{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0%;
+}
+
+@media screen and (max-width: 1200px)
+{
+    .card-buy
+    {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }    
+}
+
+.card-price 
+{
+    font-size: 130%;
+    color: var(--red);
+    font-family: quicksand-bold;
+}
+
+.card-original-price 
+{
+    font-size: 110%;
+    text-decoration: line-through;
+    color: var(--gray);
+    font-family: quicksand-light;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.card-add-cart 
+{
+    background-color: var(--light-light-blue);
+    color: var(--red);
+    font-size: 120%;
+    width: 50%;
+    min-width: 60px;
+    height: 2em;
+    border-style: none;
+}
+
