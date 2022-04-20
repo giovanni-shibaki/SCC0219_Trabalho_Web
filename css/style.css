@@ -77,7 +77,7 @@ body
 .card
 {
     background-color: var(--white);
-    width: 8%;
+    width: 10%;
     padding: 0.5% 0.5% 0.5% 0.5%;
 }
 
@@ -166,3 +166,29 @@ body
     border-style: none;
 }
 
+.category
+{
+    background-color: var(--yellow);
+    width: 8%;
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.category-image
+{
+    width: 80%;
+}
+
+.category-name
+{
+    font-size: 120%;
+    margin-top: 10%;
+    margin-bottom: 0%;
+}
+
+.category-quantity
+{
+    margin-top: 10%;
+    margin-bottom: 0%;
+}
