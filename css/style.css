@@ -1,14 +1,6 @@
-:root
-{
-    --dark-dark-blue: #192653;
-    --dark-blue: #254A7F;
-    --blue: #375FAA;
-    --light-blue: #7D95BA;
-    --light-light-blue: #E3F2FF;
-    --yellow: #FFCB05;
-    --white: #FFFFFF;
-    --gray: #939992;
-    --red: #C5330B;
+@font-face {
+    font-family: quicksand;
+    src: url(../fonts/Quicksand-Light.ttf);
 }
 
 @font-face 
@@ -29,8 +21,21 @@
     src: url("../fonts/Quicksand-Bold.ttf");
 }
 
-body
+:root
 {
+    --dark-dark-blue: #192653;
+    --dark-blue: #254A7F;
+    --blue: #375FAA;
+    --light-blue: #7D95BA;
+    --light-light-blue: #E3F2FF;
+    --yellow: #FFCB05;
+    --white: #FFFFFF;
+    --gray: #939992;
+    --red: #C5330B;
+    --green: #2DBC44;
+}
+
+body{
     background-color: var(--light-blue);
     margin: 0;
     font-family: quicksand;
@@ -41,30 +46,80 @@ body
     display: inline-flex;
 }
 
+/* Header CSS */
+
 .header
 {
-    height: 11%;
+    height: 13%;
     width: 100%;
-    background-color: var(--dark-dark-blue);
+    background-color: #192653;
 }
 
 .top-header
 {
     padding-top: 1%;
     padding-bottom: 1%;
-    height: 55%;
+    height: 50%;
+    width: 100%;
 }
 
 .bottom-header
 {
-    background-color: var(--blue);
-    height: 45%;
+    background-color: #375FAA;
+    height: 50%;
     width: 100%;
 }
 
 .search-bar input
 {
+    height: 100%;
+    width: 80%;
+    max-width: 80%;
+}
 
+.search-bar button
+{
+    height: 100%;
+    max-height: 100%;
+    width: 10%;
+    max-width: 10%;
+    background-color: var(--dark-blue);
+    border: none;
+    cursor: pointer;
+}
+
+.header-logo
+{
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+
+.search-bar
+{
+    float: left;
+    width: 30%;
+    max-width: 30%;
+    height: 100%;
+}
+
+.header-user
+{
+    float: right;
+    width: 25%;
+    height: 100%;
+    color: #FFCB05;
+    font-family: quicksand;
+    font-size: 140%;
+    display: flex;
+    align-items: center;
+}
+
+.header-user img
+{
+    border-radius: 50%;
+    height: 100%;
+    width: auto;
 }
 
 .header-logo img
@@ -74,6 +129,75 @@ body
     width: auto;
 }
 
+.header-categories
+{
+    float: left;
+    height: 100%;
+    width: 30%;
+    max-width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.header-categories button
+{
+    border: none;
+    background-color: #192653;
+    color: white;
+    cursor: pointer;
+    width: 55%;
+    max-width: 55%;
+    height: 80%;
+    max-height: 80%;
+    margin-left: 15%;
+    text-overflow: ellipsis;
+}
+
+.cart
+{
+    font-family: quicksand;
+    display: flex;
+    align-items: center;
+    color: #FFCB05;
+    max-height: 100%;
+    float: left;
+    width: 25%;
+    max-width: 25%;
+    height: 100%;
+}
+
+.cart i
+{
+    padding-left: 50%;
+}
+
+.header-options
+{
+    float: left;
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.header-options button
+{
+    border: none;
+    color: #FFCB05;
+    background-color: #375FAA;
+    font-family: quicksand;
+    cursor: pointer;
+    width: 15%;
+    max-width: 55%;
+    height: 80%;
+    max-height: 80%;
+    margin-left: 15%;
+    text-overflow: ellipsis;
+}
+
+/* End Header CSS */
+
+/* Card CSS */
 .card
 {
     background-color: var(--white);
@@ -192,3 +316,215 @@ body
     margin-top: 10%;
     margin-bottom: 0%;
 }
+/* End Card CSS */
+
+/* Slides CSS */
+
+.slides
+{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    background-image: url(../img/pikachu_background.jpg);
+}
+
+.mySlides
+{
+    display: none;
+    height: 95%;
+    text-align: center;
+}
+
+.mySlides img
+{
+    height: 100%;
+}
+
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+
+/* End Slides CSS */
+
+/* Sign In Up CSS */
+
+.sign-in-out
+{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.sign-in
+{
+    font-family: quicksand-bold;
+    font-size: xx-large;
+    background-color: var(--light-light-blue);
+    float: left;
+    width: 46%;
+    margin-left: 3%;
+    padding: 1% 2% 1% 2%;
+}
+
+.sign-up
+{
+    font-family: quicksand-bold;
+    font-size: xx-large;
+    background-color: var(--light-light-blue);
+    float: right;
+    width: 46%;
+    margin-right: 3%;
+    padding: 1% 2% 1% 2%;
+}
+
+.sign-in img
+{
+    max-width: 100%;
+    height: 130%;
+    margin-left: 35%;
+}
+
+.sign-in .form-sign-in
+{
+    font-size: large;
+}
+
+.sign-in .input-container 
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sign-in .icon 
+{
+    padding: 2.5%;
+    background: var(--dark-blue);
+    color: white;
+    min-width: 7%;
+    text-align: center;
+}
+
+.sign-in .input-field 
+{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+  
+.sign-in .input-field:focus 
+{
+    border: 2px solid var(--dark-blue);
+}
+
+.sign-in .btn 
+{
+    background-color: var(--dark-dark-blue);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    float: right;
+}
+
+.btn:hover 
+{
+    opacity: 1;
+}
+
+.sign-up .form-sign-up
+{
+    font-size: large;
+}
+
+.sign-up .input-container 
+{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.sign-up .icon 
+{
+    padding: 2.5%;
+    background: var(--green);
+    color: white;
+    min-width: 7%;
+    text-align: center;
+}
+
+.sign-up .input-field 
+{
+    width: 100%;
+    padding: 10px;
+    outline: none;
+}
+  
+.sign-up .input-field:focus 
+{
+    border: 2px solid var(--green);
+}
+
+.sign-up .btn 
+{
+    background-color: var(--green);
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    float: right;
+}
+
+.sign-up h1
+{
+    font-family: quicksand-bold;
+    font-size: xx-large;
+}
+
+/* End Sign In Up CSS */
+
+/* Payment CSS */
+.payment
+{
+    font-family: quicksand-bold;
+    font-size: xx-large;
+    background-color: var(--light-light-blue);
+    float: left;
+    width: 93.5%;
+    height: 100%;
+    margin: 3%;
+}
+
+.payment .btn-cart
+{
+    background-color: var(--yellow);
+    color: white;
+    padding: 1% 2%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    float: left;
+    margin-left: 35%;
+}
+
+.payment .btn-finish
+{
+    background-color: var(--green);
+    color: white;
+    padding: 1% 2%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+    float: right;
+}
+/* End Payment CSS */
