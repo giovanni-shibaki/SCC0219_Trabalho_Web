@@ -35,14 +35,17 @@
 }
 
 body{
-    background-color: #7D95BA;
+    background-color: var(--light-blue);
     margin: 0;
+    font-family: quicksand;
 }
 
 .container
 {
     display: inline-flex;
 }
+
+/* Header CSS */
 
 .header
 {
@@ -70,12 +73,15 @@ body{
 {
     height: 100%;
     width: 80%;
+    max-width: 80%;
 }
 
 .search-bar button
 {
     height: 100%;
+    max-height: 100%;
     width: 10%;
+    max-width: 10%;
     background-color: var(--dark-blue);
     border: none;
     cursor: pointer;
@@ -92,6 +98,7 @@ body{
 {
     float: left;
     width: 30%;
+    max-width: 30%;
     height: 100%;
 }
 
@@ -126,6 +133,7 @@ body{
     float: left;
     height: 100%;
     width: 30%;
+    max-width: 30%;
     display: flex;
     align-items: center;
 }
@@ -186,47 +194,9 @@ body{
     text-overflow: ellipsis;
 }
 
-.card
-{
+/* End Header CSS */
 
-}
-
-.card-image
-{
-
-}
-
-.card-description
-{
-
-}
-
-.card-type
-{
-
-}
-
-body
-{
-    background-color: var(--light-blue);
-    margin: 0;
-    font-family: quicksand;
-}
-
-.top-header
-{
-    padding-top: 1%;
-    padding-bottom: 1%;
-    height: 55%;
-}
-
-.bottom-header
-{
-    background-color: var(--blue);
-    height: 45%;
-    width: 100%;
-}
-
+/* Card CSS */
 .card
 {
     background-color: var(--white);
@@ -319,3 +289,31 @@ body
     border-style: none;
 }
 
+/* End Card CSS */
+
+/* Slides CSS */
+
+.slides
+{
+    width: 100%;
+    height: 50%;
+    text-align: center;
+    background-image: url(../img/pikachu_background.jpg);
+}
+
+.mySlides
+{
+    display: none;
+    height: 95%;
+    text-align: center;
+}
+
+.mySlides img
+{
+    height: 100%;
+}
+
+.w3-left, .w3-right, .w3-badge {cursor:pointer}
+.w3-badge {height:13px;width:13px;padding:0}
+
+/* End Slides CSS */
