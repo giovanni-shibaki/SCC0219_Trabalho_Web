@@ -21,6 +21,19 @@
     src: url("../fonts/Quicksand-Bold.ttf");
 }
 
+:root
+{
+    --dark-dark-blue: #192653;
+    --dark-blue: #254A7F;
+    --blue: #375FAA;
+    --light-blue: #7D95BA;
+    --light-light-blue: #E3F2FF;
+    --yellow: #FFCB05;
+    --white: #FFFFFF;
+    --gray: #939992;
+    --red: #C5330B;
+}
+
 body{
     background-color: #7D95BA;
     margin: 0;
@@ -56,7 +69,16 @@ body{
 .search-bar input
 {
     height: 100%;
-    width: 100%;
+    width: 80%;
+}
+
+.search-bar button
+{
+    height: 100%;
+    width: 10%;
+    background-color: var(--dark-blue);
+    border: none;
+    cursor: pointer;
 }
 
 .header-logo
@@ -184,19 +206,6 @@ body{
 
 }
 
-:root
-{
-    --dark-dark-blue: #192653;
-    --dark-blue: #254A7F;
-    --blue: #375FAA;
-    --light-blue: #7D95BA;
-    --light-light-blue: #E3F2FF;
-    --yellow: #FFCB05;
-    --white: #FFFFFF;
-    --gray: #939992;
-    --red: #C5330B;
-}
-
 body
 {
     background-color: var(--light-blue);
@@ -216,11 +225,6 @@ body
     background-color: var(--blue);
     height: 45%;
     width: 100%;
-}
-
-.search-bar input
-{
-
 }
 
 .card
