@@ -2,6 +2,8 @@
 
 Trabalho em grupo da disciplina de Introdução ao Desenvolvimento Web - 1º semestre, 2022.
 
+![Logo](./img/logo.png)
+
 ## Membros:
 
 - Giovanni Shibaki Camargo (11796444)
