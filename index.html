@@ -1,14 +1,249 @@
 <html>
-    <head>
-        <title>
 
-        </title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="../css/style.css">
-    </head>
-    <body>
-        <div class="container">
-            
+<head>
+    <title>
+        PokeCard
+    </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="top-header">
+            <div class="header-logo">
+                <img class="logo" src="./img/logo.png">
+            </div>
+            <div class="search-bar">
+                <form action="">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart"></i>Cart
+            </div>
+            <div class="header-user">
+                <img src="./img/dilvan.jpg">
+                <b>Dilvan de Abreu</b>
+                <i class="fas fa-angle-down"></i>
+            </div>
         </div>
-    </body>
+        <div class="bottom-header">
+            <div class="header-categories">
+                <button class="btn"><i class="fa fa-bars"></i> Browse All Categories</button>
+            </div>
+            <div class="header-options">
+                <button class="btn"><i class="fas fa-home"></i> Home</button>
+                <button class="btn"><i class="fa fa-fire"></i> Hot Deals</button>
+                <button class="btn"><i class="fa fa-bullhorn"></i> New Products</button>
+            </div>
+        </div>
+    </div>
+    <div class="slides">
+        <div class="w3-content w3-display-container" style="max-height: 100%;">
+            <div class="mySlides">
+                <img src="./img/3cards_1.jpg">
+            </div>
+            <div class="mySlides">
+                <img src="./img/3cards_2.jpg">
+            </div>
+            <div class="mySlides">
+                <img src="./img/3cards_3.jpg">
+            </div>
+            <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
+                style="width:100%;">
+                <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
+                <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+                <span class="w3-badge demo w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+            </div>
+        </div>
+    </div>
+    <h3 class="titles">Explore Categories</h3>
+    <div class="categories">
+        <div class="category">
+            <img src="img/eevee.webp" class="category-image">
+            <h4 class="category-name">Pokémon</h4>
+            <p class="category-quantity">20 Items</p>
+        </div>
+        <div class="category">
+            <img src="img/eevee.webp" class="category-image">
+            <h4 class="category-name">Pokémon</h4>
+            <p class="category-quantity">20 Items</p>
+        </div>
+        <div class="category">
+            <img src="img/eevee.webp" class="category-image">
+            <h4 class="category-name">Pokémon</h4>
+            <p class="category-quantity">20 Items</p>
+        </div>
+        <div class="category">
+            <img src="img/eevee.webp" class="category-image">
+            <h4 class="category-name">Pokémon</h4>
+            <p class="category-quantity">20 Items</p>
+        </div>
+        <div class="category">
+            <img src="img/eevee.webp" class="category-image">
+            <h4 class="category-name">Pokémon</h4>
+            <p class="category-quantity">20 Items</p>
+        </div>
+        <div class="category">
+            <img src="img/eevee.webp" class="category-image">
+            <h4 class="category-name">Pokémon</h4>
+            <p class="category-quantity">20 Items</p>
+        </div>
+        <div class="category">
+            <img src="img/eevee.webp" class="category-image">
+            <h4 class="category-name">Pokémon</h4>
+            <p class="category-quantity">20 Items</p>
+        </div>
+    </div>
+    <h3 class="titles">Featured Products</h3>
+    <div class="featured-products">
+        <div class="card">
+            <img src="img/eevee.webp" alt="Eevee" class="card-image">
+            <div class="card-description">
+                <p class="card-type">Pokémon</p>
+                <h3 class="card-name">Eevee</h3>
+                <div class="card-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-full"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p class="card-seller">By Ash Ketchum</p>
+                <div class="card-buy">
+                    <p class="card-price">$5</p>
+                    <p class="card-original-price">$6</p>
+                    <button class="card-add-cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Add
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/eevee.webp" alt="Eevee" class="card-image">
+            <div class="card-description">
+                <p class="card-type">Pokémon</p>
+                <h3 class="card-name">Eevee</h3>
+                <div class="card-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa-solid fa-star-sharp-half"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p class="card-seller">By Ash Ketchum</p>
+                <div class="card-buy">
+                    <p class="card-price">$5</p>
+                    <p class="card-original-price">$6</p>
+                    <button class="card-add-cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Add
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/eevee.webp" alt="Eevee" class="card-image">
+            <div class="card-description">
+                <p class="card-type">Pokémon</p>
+                <h3 class="card-name">Eevee</h3>
+                <div class="card-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-full"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p class="card-seller">By Ash Ketchum</p>
+                <div class="card-buy">
+                    <p class="card-price">$5</p>
+                    <p class="card-original-price">$6</p>
+                    <button class="card-add-cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Add
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/eevee.webp" alt="Eevee" class="card-image">
+            <div class="card-description">
+                <p class="card-type">Pokémon</p>
+                <h3 class="card-name">Eevee</h3>
+                <div class="card-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-full"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p class="card-seller">By Ash Ketchum</p>
+                <div class="card-buy">
+                    <p class="card-price">$5</p>
+                    <p class="card-original-price">$6</p>
+                    <button class="card-add-cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Add
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <img src="img/eevee.webp" alt="Eevee" class="card-image">
+            <div class="card-description">
+                <p class="card-type">Pokémon</p>
+                <h3 class="card-name">Eevee</h3>
+                <div class="card-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-half-full"></i>
+                    <i class="fa fa-star-o"></i>
+                </div>
+                <p class="card-seller">By Ash Ketchum</p>
+                <div class="card-buy">
+                    <p class="card-price">$5</p>
+                    <p class="card-original-price">$6</p>
+                    <button class="card-add-cart">
+                        <i class="fa fa-shopping-cart"></i>
+                        Add
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
+
+<script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+        showDivs(slideIndex += n);
+    }
+
+    function currentDiv(n) {
+        showDivs(slideIndex = n);
+    }
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("demo");
+        if (n > x.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = x.length }
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" w3-white", "");
+        }
+        x[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " w3-white";
+    }
+</script>

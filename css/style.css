@@ -21,6 +21,15 @@
     src: url("../fonts/Quicksand-Bold.ttf");
 }
 
+@media screen and (max-width: 1200px)
+{
+    .card-buy
+    {
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }    
+}
+
 :root
 {
     --dark-dark-blue: #192653;
@@ -35,7 +44,8 @@
     --green: #2DBC44;
 }
 
-body{
+body
+{
     background-color: var(--light-blue);
     margin: 0;
     font-family: quicksand;
@@ -43,14 +53,14 @@ body{
 
 .container
 {
-    display: inline-flex;
+    display: block;
 }
 
 /* Header CSS */
 
 .header
 {
-    height: 13%;
+    height: 18%;
     width: 100%;
     background-color: #192653;
 }
@@ -59,14 +69,14 @@ body{
 {
     padding-top: 1%;
     padding-bottom: 1%;
-    height: 50%;
+    height: 60%;
     width: 100%;
 }
 
 .bottom-header
 {
     background-color: #375FAA;
-    height: 50%;
+    height: 40%;
     width: 100%;
 }
 
@@ -201,8 +211,8 @@ body{
 .card
 {
     background-color: var(--white);
-    width: 10%;
-    padding: 0.5% 0.5% 0.5% 0.5%;
+    width: 17%;
+    padding: 0.5%;
 }
 
 .card-image
@@ -253,15 +263,6 @@ body{
     margin-top: 0%;
 }
 
-@media screen and (max-width: 1200px)
-{
-    .card-buy
-    {
-        flex-direction: column;
-        flex-wrap: nowrap;
-    }    
-}
-
 .card-price 
 {
     font-size: 130%;
@@ -288,12 +289,13 @@ body{
     min-width: 60px;
     height: 2em;
     border-style: none;
+    cursor: pointer;
 }
 
 .category
 {
     background-color: var(--yellow);
-    width: 8%;
+    width: 12%;
     text-align: center;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -330,7 +332,7 @@ body{
 
 .mySlides
 {
-    display: none;
+    display: flex;
     height: 95%;
     text-align: center;
 }
@@ -379,7 +381,6 @@ body{
 {
     max-width: 100%;
     height: 130%;
-    margin-left: 35%;
 }
 
 .sign-in .form-sign-in
@@ -528,3 +529,138 @@ body{
     float: right;
 }
 /* End Payment CSS */
+
+/* Categories CSS */
+
+.categories
+{
+    font-family: quicksand;
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 100%;
+    height: 45%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* End Categories CSS */
+
+/* Featured Products CSS */
+
+.featured-products
+{
+    padding-left: 2%;
+    padding-right: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* End Featured Products CSS */
+
+.titles
+{
+    margin-top: 5%;
+    text-align: left;
+    margin-left: 2%;
+    margin-bottom: 0%;
+}
+
+/* Cataloge CSS */
+
+.catalogue
+{
+    display: flex;
+}
+
+.all-products
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 75%;
+    padding-left: 3%;
+    padding-right: 3%;
+    gap: 4%;
+}
+
+.all-products .card
+{
+    margin-bottom: 5%;
+    width: 22%;
+}
+
+.categories-menu
+{
+    width: 25%;
+    background-color: var(--light-light-blue);
+    border-radius: 5px;
+    height: 50%;
+    margin-left: 2%;
+}
+
+.categories-menu-item
+{
+    align-items: center;
+    text-align: center;
+}
+
+.catalogue-title
+{
+    font-family: quicksand-bold;
+    color: var(--dark-dark-blue);
+    margin-top: 5%;
+    margin-bottom: 1%;
+    text-align: left;
+    margin-left: 29.5%;
+}
+
+.btn-categories-menu-item
+{
+    background-color: var(--dark-dark-blue);
+    color: var(--white);
+    border-color: var(--blue);
+    border-radius: 5px;
+    font-size: 120%;
+    width: 90%;
+    min-width: 60px;
+    height: 2.5em;
+    border-style: solid;
+    cursor: pointer;
+    margin: 5%;
+}
+
+.catalogue-navigate
+{
+    float: right;
+    margin-right: 3%;
+    font-family: quicksand-bold;
+    font-size: 150%;
+    display: flex;
+    justify-content: space-between;
+    gap: 2%;
+}
+
+.catalogue-navigate a
+{
+    height: 65px;
+    width: 65px;
+    border-radius: 50%;
+    background-color: var(--blue);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navigate-text
+{
+    padding-left: 67.5%;
+    font-family: quicksand-bold;
+    font-size: 200%;
+}
+
+/* End Cataloge CSS */
