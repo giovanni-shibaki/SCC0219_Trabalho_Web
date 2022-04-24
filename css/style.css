@@ -355,6 +355,7 @@ body
 {
     padding-top: 2%;
     padding-bottom: 2%;
+    margin-bottom: 90%;
 }
 
 .sign-in
@@ -644,6 +645,7 @@ body
     display: flex;
     justify-content: space-between;
     gap: 2%;
+    margin-bottom: 5%;
 }
 
 .catalogue-navigate a
@@ -667,278 +669,164 @@ body
 
 /* End Cataloge CSS */
 
+
 /* Footer CSS */
 
-/*
 .footer
 {
     font-family: quicksand;
-    padding-left: 2%;
-    padding-right: 2%;
+    height: 70%;
     width: 100%;
-    height: 45%;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-}
-*/
-
-.trainer-card
-{
-    font-size: small;
+    border-radius: 2px;
     margin-top: 5%;
-    margin-bottom: 5%;
-    background-color: var(--light-light-blue);
-    float: left;
-    display: flex;
-    width: 47%;
-    height: 45%;
-    margin-left: 2%;
-    padding: 1% 2% 1% 2%
 }
 
-.trainer-card-left
+.footer-ads
 {
-    float: inline;
-    width: 100%;
-}
-
-.trainer-card-right
-{
-    float: right;
-    width: 50%;
-}
-
-.trainer-card img
-{
-    max-width: 100%;
-    height: 100%;
-}
-
-.pokedex-card
-{
-    margin-top: 5%;
-    margin-bottom: 5%;
-    background-color: var(--light-light-blue);
-    font-size: small;
-    float: left;
-    display: flex;
-    width: 47%;
-    height: 45%;
-    margin-left: 2%;
-    padding: 1% 2% 1% 2%
-}
-
-.pokedex-card-left
-{
-    float: inline;
-    width: 70%;
-}
-
-.pokedex-card-right
-{
-    float: right;
-    width: 35%;
-}
-
-.pokedex-card img
-{
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-}
-
-.offer-button
-{
-    margin-top: 5%;
-    margin-bottom: 5%;
-    background-color: var(--dark-dark-blue);
-    color: var(--white);
-    font-size: small;
-    float: left;
-    display: flex;
-    width: 25%;
-    height: 10%;
-    margin-left: 2%;
-    padding: 1% 1% 1% 1%
-}
-
-.offer-alert
-{
-    font-size: x-small;
-    font-family: quicksand-bold;
-    background-color: var(--red);
-    color: var(--white);
-    width: 20%;
-    height: 10%;
-    padding: 1% 1% 1% 1%;
-    border-radius: 10%;
-}
-
-.offer-top-text
-{
-    font-family: quicksand-bold;
-    font-size: x-large;
-    text-align: left;
-    color: var(--dark-dark-blue);
-}
-
-.offer-bottom-text
-{
-    font-family: quicksand;
-    font-size: large;
-    text-align: left;
-    color: var(--light-blue);
-}
-
-.benefits
-{
-    font-family: quicksand;
-    padding-top: 10%;
-    padding-bottom: 5%;
-    padding-left: 2%;
-    padding-right: 2%;
     width: 100%;
     height: 25%;
     align-items: center;
     text-align: center;
     display: flex;
     justify-content: space-between;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
-.benefits-block
+.fads
 {
-    width: 33%;
-    font-family: quicksand;
-    color: var(--dark-dark-blue)
-}
-
-.benefits-text-top
-{
-    font-size: x-large;
-    font-family: quicksand-bold;
-    color: var(--dark-dark-blue)
-}
-
-.benefits-text-bottom
-{
-    font-size: large;
-    color: var(--white)
-}
-
-.benefits-icon
-{
-    font-size: 300%;
-    font-family: quicksand;
-    color: var(--dark-dark-blue);
-}
-
-.middle-footer
-{
-    font-family: quicksand;
-    padding-left: 2%;
-    padding-right: 2%;
-    width: 100%;
-    height: 35%;
+    width: 30%;
+    height: 90%;
     align-items: center;
     text-align: center;
     display: flex;
     justify-content: space-between;
-    color: var(--dark-dark-blue);
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
-.middle-footer-left
+.footer-info
 {
-    font-family: quicksand;
-    width: 30%;
-    align-items: left;
-    text-align: left;
-    justify-content: space-between;
-}
-
-.information-block
-{
-    text-align: left;
-}
-
-.information-block-logo
-{
-    float: left;
-    width: 60%;
-    height: 100%;
-    margin-top: auto;
-    margin-bottom: auto;
-
-}
-
-.middle-footer-right
-{
-    width: 75%;
+    width: 100%;
+    height: 65%;
     display: flex;
     justify-content: space-between;
+    padding-left: 15%;
+    padding-right: 5%;
 }
 
-.navigation-block
+.footer-links
 {
-    width: 25%;
-    font-family: quicksand;
-    color: var(--dark-dark-blue);
-    text-align: justify;
+    width: 100%;
+    height: 10%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    padding-left: 15%;
+    padding-right: 5%;
 }
 
 .navigation-top-text
 {
     font-family: quicksand-bold;
     color: var(--dark-dark-blue);
-    font-size: x-large;
+    font-size: 200%;
 }
 
-.bottom-footer
+#fads-img
 {
-    font-family: quicksand;
-    padding-left: 2%;
-    padding-right: 2%;
-    width: 125%;
-    height: 15%;
-    align-items: center;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
+    margin-top: 15%;
+    width: 24%;
+    height: 100%;
+    font-size: 450%;
+    background: -webkit-linear-gradient(#375FAA, var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#fads-text
+{
+    width: 70%;
+    height: 100%;
+    text-align: justify;
+    color: var(--white);
+}
+
+#fads-text h3
+{
     color: var(--dark-dark-blue);
 }
 
-.bottom-footer-box
+hr
 {
-    margin-right: 20%;
     width: 100%;
+    margin: auto;
+}
+
+#finfo
+{
+    height: 80%;
+    width: 32%;
+    color: var(--dark-dark-blue);
+    text-align: justify;
+    padding-left: 1%;
+}
+
+#finfo1
+{
+    height: 80%;
+    width: 32%;
+    color: var(--dark-dark-blue);
+    text-align: justify;
+    padding-left: 4%;
+}
+
+#finfo1 a
+{
+    text-decoration: none;
+}
+
+#finfo a
+{
+    text-decoration: none;
+}
+
+#finfo-logo
+{
+    width: 45%;
+}
+
+.flinks
+{
+    padding-right: 15%;
+    width: 100%;
+}
+
+#cc /* Credit Cards */
+{
+    margin-left: 2%;
+    margin-right: 2%;
     align-items: center;
     text-align: center;
-    display: flex;
-}
-
-.credit-card-img
-{
-    margin-left: 2%;
-    margin-right: 2%;
     float: left;
-    width: 20%;
-    height: 100%;
+    height: 70%;
 }
 
-.social-media-logo
+#cc img
 {
-    font-family: quicksand;
-    margin-left: 2%;
-    margin-right: 2%;
-    height: 45px;
-    width: 45px;
-    border-radius: 50%;
-    background-color: var(--blue);
-    color: var(--white);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 20%;
+    height: 80%;
+}
+
+#sm /* Social Media */
+{
+    font-size: 150%;
+    color: var(--dark-dark-blue);
+}
+
+#sm i
+{
+    padding-right: 5%;
 }
 
 .divider
@@ -950,57 +838,82 @@ body
     margin-left: auto;
     margin-right: auto;
     width: 95%;
-/*
-.social-media-logo-text
+}
+
+/* End Footer CSS */
+
+
+/* Main Ads CSS */
+
+.main-ads
 {
-    float: right;
-    margin-right: 3%;
-    font-family: quicksand-bold;
-    font-size: 150%;
+    font-family: quicksand;
+    font-size: 110%;
+    margin-top: 5%;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    text-align: center;
     display: flex;
     justify-content: space-between;
-    gap: 2%;
-}
-*/
-/*
-.top-footer
-{
-
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
-.benefits-icon
+.mads
 {
-    
+    width: 45%;
+    background-color: var(--light-light-blue);
+    height: 90%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    color: var(--dark-dark-blue);
+    text-align: justify;
+    padding-left: 3%;
+    padding-top:  2%;
 }
 
-.footer-divider
+.mads-button
 {
-    
+    margin-top: 20%;
+    padding: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    color: var(--white);
+    background-color: var(--dark-blue);
+    cursor: pointer;
+    border: none;
 }
 
-.middle-footer
+.mads-note
 {
-    
+    background-color: var(--red);
+    padding: 1%;
+    color: var(--white);
+    padding-left: 2%;
+    padding-right: 2%;
+    border: none;
+    border-radius: 5px;
 }
 
-.information-cards
+#mads-left
 {
-    
+    width: 60%;
+    height: 100%;
 }
 
-.navigation-cards
+#mads-right
 {
-    
+    width: 40%;
+    height: 100%;
 }
 
-.bottom-footer
+#mads-right img
 {
-    
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
 }
 
-.final-cards
-{
-    
-}
-*/
-/* End Footer CSS */
+/* End Main Ads CSS */
