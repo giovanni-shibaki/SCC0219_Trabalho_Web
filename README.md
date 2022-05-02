@@ -73,7 +73,7 @@ Trabalho em grupo da disciplina de Introdução ao Desenvolvimento Web - 1º sem
 
 ## Procedimentos de build
 
-- Para o Milestone 1 foram apenas desenvolvidos Mockups das páginas principais do sistema e o desenvolvimento em HTML e CSS de 3 dessas páginas.
+- Para o Milestone 1 foram apenas desenvolvidos Mockups das páginas principais do sistema ([link figma](https://www.figma.com/file/vWXNlQr1lu3tz3Tc1HSfxf/PokemonCards-Mockup?node-id=0%3A1)) e o desenvolvimento em HTML e CSS de 3 dessas páginas.
 
 - Os mockups desenvolvidos para essa entrega estão presentes na pasta **mockups** em formato PNG.
 
