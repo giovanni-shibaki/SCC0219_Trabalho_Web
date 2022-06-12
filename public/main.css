@@ -38,6 +38,50 @@
   --green: #2dbc44;
 }
 
+/* background colors  */
+
+.background-dark-dark-blue {
+  background-color: var(--dark-dark-blue);  
+}
+
+.background-dark-blue {
+  background-color: var(--dark-blue);  
+}
+
+.background-blue {
+  background-color: var(--blue);  
+}
+
+.background-light-blue {
+  background-color: var(--light-blue);  
+}
+
+.background-light-light-blue {
+  background-color: var(--light-light-blue);  
+}
+
+.background-yellow {
+  background-color: var(--yellow);  
+}
+
+.background-white {
+  background-color: var(--white);  
+}
+
+.background-gray {
+  background-color: var(--gray);  
+}
+
+.background-red {
+  background-color: var(--red);  
+}
+
+.background-green {
+  background-color: var(--green);  
+}
+
+/* end background colors */
+
 body {
   background-color: var(--light-blue);
   margin: 0;
@@ -869,3 +913,24 @@ hr {
 }
 
 /* End Item Page CSS */
+
+/* Admin page */
+
+.admin-page {
+  font-family: quicksand-bold;
+  font-size: large;
+  background-color: var(--light-light-blue);
+  width: 46%;
+  margin-left: 3%;
+  padding: 1% 2% 1% 2%;
+}
+
+.admin-form {
+  font-family: quicksand-bold;
+  font-size: large;
+  background-color: var(--white);
+  margin-left: 3%;
+  padding: 1% 2% 1% 2%;
+
+}
+/* End Admin Page */
