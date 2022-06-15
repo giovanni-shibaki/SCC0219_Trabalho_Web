@@ -40,18 +40,15 @@
               </div>
               Card Image
               <div class="input-container">
-                <input
-                  class="input-field"
-                  type="file"
-                  name="cardImage"
-                />
+                <input class="input-field" type="file" name="cardImage" />
               </div>
-              <br>
+              <br />
               <div class="input-container">
                 <button
                   class="button is-primary"
-                  type="submit" 
-                  name="cardSubmit">
+                  type="submit"
+                  name="cardSubmit"
+                >
                   Add card
                 </button>
               </div>
@@ -72,8 +69,8 @@
         </form>
       </div>
 
-      <br>
-      
+      <br />
+
       <h2 class="collapse-header title is-3">Add new User</h2>
       <div class="background-white mx-5">
         <form>
@@ -123,7 +120,7 @@
                   <option value="admin">Admin</option>
                 </select>
               </div>
-              <br>
+              <br />
               <button type="submit" class="button is-primary">Add User</button>
             </div>
 
@@ -200,11 +197,22 @@
                 />
               </div>
             </div>
-
           </div>
         </form>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: "SCC0219TrabalhoWebAdminPageView",
 
+  data() {
+    return {};
+  },
+
+  mounted() {},
+
+  methods: {},
+};
+</script>

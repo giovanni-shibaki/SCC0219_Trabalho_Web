@@ -13,3 +13,16 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: "SCC0219TrabalhoWebCardOfTheDayView",
+
+  data() {
+    return {};
+  },
+
+  mounted() {},
+
+  methods: {},
+};
+</script>

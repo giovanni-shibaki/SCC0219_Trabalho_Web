@@ -32,7 +32,7 @@
         </button>
       </div>
       <div class="header-options">
-        <button class="btn" @click="$router.push('home')">
+        <button class="btn" @click="$router.push('/')">
           <i class="fas fa-home"></i> Home
         </button>
         <button class="btn"><i class="fa fa-fire"></i> Hot Deals</button>
@@ -45,8 +45,8 @@
       <component :is="Component"></component>
     </transition>
   </router-view>
-  <div class="footer">
-    <div class="footer-ads">
+  <div class="footer" style="background-color: var(--light-blue)">
+    <div id="footer-ads2">
       <div class="fads">
         <div id="fads-img">
           <i class="fas fa-hand-holding-usd fa-xl"></i>
@@ -125,40 +125,6 @@
     </div>
   </div>
 </template>
-
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs((slideIndex += n));
-}
-
-function currentDiv(n) {
-  showDivs((slideIndex = n));
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {
-    slideIndex = 1;
-  }
-  if (n < 1) {
-    slideIndex = x.length;
-  }
-  for (i = 0; i < x.length; i++) {
-    x[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" w3-white", "");
-  }
-  //x[slideIndex - 2].style.display = "block";
-  //dots[slideIndex - 1].className += " w3-white";
-}
-</script>
-
 <style lang="css">
 .slide-enter-active,
 .slide-leave-active {

@@ -323,3 +323,16 @@
   </div>
 </template>
 <!-- Não esquecer de adicionar as novas rotas no index.js do router! -->
+<script>
+export default {
+  name: "SCC0219TrabalhoWebCatalogueView",
+
+  data() {
+    return {};
+  },
+
+  mounted() {},
+
+  methods: {},
+};
+</script>

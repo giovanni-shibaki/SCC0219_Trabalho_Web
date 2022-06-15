@@ -110,12 +110,14 @@ body {
   padding-bottom: 1%;
   height: 60%;
   width: 100%;
+  font-size: 100%;
 }
 
 .bottom-header {
   background-color: #375faa;
   height: 40%;
   width: 100%;
+  font-size: 120%;
 }
 
 .search-bar input {
@@ -208,6 +210,7 @@ body {
   max-width: 10%;
   height: 100%;
   text-align: center;
+  font-size: 150%;
 }
 
 .cart i {
@@ -344,31 +347,18 @@ body {
 /* Slides CSS */
 
 .slides {
+  padding-top: 2%;
+  padding-left: 20%;
+  padding-right: 20%;
   width: 100%;
-  height: 50%;
   text-align: center;
-  background-image: url(../src/assets/img/pikachu_background.jpg);
+  align-content: center;
+  align-items: center;
 }
 
-.mySlides {
-  display: flex;
-  height: 95%;
-  text-align: center;
-}
-
-.mySlides img {
-  height: 100%;
-}
-
-.w3-left,
-.w3-right,
-.w3-badge {
-  cursor: pointer;
-}
-.w3-badge {
-  height: 13px;
-  width: 13px;
-  padding: 0;
+.slides img{
+  height: 60%;
+  width: auto;
 }
 
 /* End Slides CSS */
@@ -570,10 +560,14 @@ body {
 /* End Featured Products CSS */
 
 .titles {
-  margin-top: 5%;
+  font-family: quicksand-bold;
+  color: var(--dark-dark-blue);
+  margin-top: 2%;
+  margin-bottom: 1%;
   text-align: left;
   margin-left: 2%;
   margin-bottom: 0%;
+  font-size: 150%;
 }
 
 /* Cataloge CSS */
@@ -670,10 +664,9 @@ body {
   height: 70%;
   width: 100%;
   border-radius: 2px;
-  margin-top: 5%;
 }
 
-.footer-ads {
+#footer-ads2 {
   width: 100%;
   height: 25%;
   align-items: center;
@@ -702,6 +695,7 @@ body {
   justify-content: space-between;
   padding-left: 15%;
   padding-right: 5%;
+  overflow: auto;
 }
 
 .footer-links {
@@ -738,7 +732,10 @@ body {
 }
 
 #fads-text h3 {
+  font-size: 150%;
+  font-family: quicksand-bold;
   color: var(--dark-dark-blue);
+  overflow: auto;
 }
 
 hr {
@@ -760,6 +757,7 @@ hr {
   color: var(--dark-dark-blue);
   text-align: justify;
   padding-left: 4%;
+  overflow: auto;
 }
 
 #finfo1 a {
@@ -816,7 +814,7 @@ hr {
 
 /* Main Ads CSS */
 
-.main-ads {
+#main-ads {
   font-family: quicksand;
   font-size: 110%;
   margin-top: 5%;
@@ -831,6 +829,7 @@ hr {
 }
 
 .mads {
+  font-family: quicksand;
   width: 45%;
   background-color: var(--light-light-blue);
   height: 90%;
@@ -844,6 +843,7 @@ hr {
 }
 
 .mads-button {
+  font-family: quicksand;
   margin-top: 20%;
   padding: 3%;
   padding-left: 5%;
@@ -855,6 +855,7 @@ hr {
 }
 
 .mads-note {
+  font-family: quicksand;
   background-color: var(--red);
   padding: 1%;
   color: var(--white);
@@ -865,17 +866,25 @@ hr {
 }
 
 #mads-left {
+  font-family: quicksand;
   width: 60%;
   height: 100%;
+  margin-bottom: 5%;
+}
+
+#mads-left h2 {
+  font-size: 200%;
+  overflow: auto;
 }
 
 #mads-right {
+  font-family: quicksand;
   width: 40%;
   height: 100%;
 }
 
 #mads-right img {
-  height: 100%;
+  height: 20rem;
   width: 100%;
   object-fit: contain;
 }

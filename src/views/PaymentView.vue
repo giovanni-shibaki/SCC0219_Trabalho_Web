@@ -5,12 +5,7 @@
       <section class="section">
         Name printed in the card
         <div class="input-container">
-          <input
-            class="input"
-            type="text"
-            placeholder="Name"
-            name="name"
-          />
+          <input class="input" type="text" placeholder="Name" name="name" />
         </div>
         <div class="columns">
           <div class="input-container column is-three-fifths">
@@ -33,12 +28,7 @@
           </div>
           <div class="input-container column is-one-fifth">
             Security numbers
-            <input
-              class="input"
-              type="text"
-              placeholder="CVV"
-              name="cardCvv"
-            />
+            <input class="input" type="text" placeholder="CVV" name="cardCvv" />
           </div>
         </div>
       </section>
@@ -56,32 +46,17 @@
 
         Street
         <div class="input-container">
-          <input
-            class="input"
-            type="text"
-            placeholder="Street"
-            name="street"
-          />
+          <input class="input" type="text" placeholder="Street" name="street" />
         </div>
 
         Number
         <div class="input-container">
-          <input
-            class="input"
-            type="text"
-            placeholder="XX-XXx"
-            name="num"
-          />
+          <input class="input" type="text" placeholder="XX-XXx" name="num" />
         </div>
 
         City
         <div class="input-container">
-          <input
-            class="input"
-            type="text"
-            placeholder="City"
-            name="city"
-          />
+          <input class="input" type="text" placeholder="City" name="city" />
         </div>
 
         State
@@ -105,7 +80,9 @@
         </div>
       </section>
       <section class="section">
-        <div class="tile is-5 background-light-blue py-5 px-0 is-vertical has-text-centered has-text-weight-semibold has-text-black">
+        <div
+          class="tile is-5 background-light-blue py-5 px-0 is-vertical has-text-centered has-text-weight-semibold has-text-black"
+        >
           <div class="columns mx-0">
             <div class="column">
               <p class="">Total:</p>
@@ -122,8 +99,23 @@
           </div>
         </div>
         <button class="button is-warning m-3">Return to cart</button>
-        <button type="submit" class="button is-primary m-3">Finish Transaction</button>
+        <button type="submit" class="button is-primary m-3">
+          Finish Transaction
+        </button>
       </section>
     </form>
   </div>
 </template>
+<script>
+export default {
+  name: "SCC0219TrabalhoWebPaymentView",
+
+  data() {
+    return {};
+  },
+
+  mounted() {},
+
+  methods: {},
+};
+</script>

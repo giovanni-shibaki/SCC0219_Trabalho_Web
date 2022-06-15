@@ -169,3 +169,16 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: "SCC0219TrabalhoWebItemPageView",
+
+  data() {
+    return {};
+  },
+
+  mounted() {},
+
+  methods: {},
+};
+</script>

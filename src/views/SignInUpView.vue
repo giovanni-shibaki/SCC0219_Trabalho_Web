@@ -162,3 +162,16 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  name: "SCC0219TrabalhoWebSignInUpView",
+
+  data() {
+    return {};
+  },
+
+  mounted() {},
+
+  methods: {},
+};
+</script>

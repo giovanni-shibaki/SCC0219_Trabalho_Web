@@ -1,40 +1,24 @@
 <template>
   <div>
-    <div class="slides">
-      <div class="w3-content w3-display-container" style="max-height: 100%">
-        <div class="mySlides">
-          <img src="../assets/img/3cards_1.jpg" />
-        </div>
-        <div class="mySlides">
-          <img src="../assets/img/3cards_2.jpg" />
-        </div>
-        <div class="mySlides">
-          <img src="../assets/img/3cards_3.jpg" />
-        </div>
-        <div
-          class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle"
-          style="width: 100%"
-        >
-          <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">
-            &#10094;
-          </div>
-          <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">
-            &#10095;
-          </div>
-          <span
-            class="w3-badge demo w3-border w3-transparent w3-hover-white"
-            onclick="currentDiv(1)"
-          ></span>
-          <span
-            class="w3-badge demo w3-border w3-transparent w3-hover-white"
-            onclick="currentDiv(2)"
-          ></span>
-          <span
-            class="w3-badge demo w3-border w3-transparent w3-hover-white"
-            onclick="currentDiv(3)"
-          ></span>
-        </div>
-      </div>
+    <div
+      class="slides"
+      v-bind:style="{
+        backgroundImage:
+          'url(' + require('@/assets/img/pikachu_background.jpg') + ')',
+        backgroundSize: cover,
+        backgroundRepeat: no - repeat,
+      }"
+    >
+      <Carousel :autoplay="5000" :wrapAround="true">
+        <Slide v-for="image in images" :key="image.id">
+          <img :src="image.img" />
+        </Slide>
+
+        <template #addons>
+          <Navigation />
+          <Pagination />
+        </template>
+      </Carousel>
     </div>
     <h3 class="titles">Explore Categories</h3>
     <div class="categories">
@@ -196,7 +180,8 @@
         </div>
       </div>
     </div>
-    <div class="main-ads">
+    <div class="divider"></div>
+    <div id="main-ads">
       <div class="mads">
         <div id="mads-left">
           <button class="mads-note">Free delivery</button>
@@ -231,3 +216,70 @@
   </div>
 </template>
 <!-- Não esquecer de adicionar as novas rotas no index.js do router! -->
+<script>
+import "vue3-carousel/dist/carousel.css";
+import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
+import "vue3-carousel/dist/carousel.css";
+
+import img1 from "@/assets/img/3cards_1.jpg";
+import img2 from "@/assets/img/3cards_2.jpg";
+import img3 from "@/assets/img/3cards_3.jpg";
+import background from "@/assets/img/pikachu_background.jpg";
+
+export default {
+  name: "SCC0219TrabalhoWebHomeView",
+
+  components: {
+    Carousel,
+    Slide,
+    Pagination,
+    Navigation,
+  },
+
+  data() {
+    return {
+      // Variáveis aqui
+      images: [
+        { id: 1, img: img1 },
+        { id: 1, img: img2 },
+        { id: 1, img: img3 },
+      ],
+    };
+  },
+
+  mounted() {},
+
+  methods: {
+    // Métodos aqui
+  },
+};
+</script>
+<style>
+.carousel__item {
+  height: 50%;
+  width: 50%;
+  background-color: #192653;
+  color: var(--vc-clr-white);
+  font-size: 20px;
+  border-radius: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.carousel__slide {
+  padding: 0;
+  height: 5%;
+}
+
+.carousel__slide img {
+  height: 30rem;
+  width: auto;
+}
+
+.carousel__prev,
+.carousel__next {
+  box-sizing: content-box;
+}
+</style>
