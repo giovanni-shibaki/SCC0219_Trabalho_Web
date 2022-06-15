@@ -49,6 +49,10 @@ body {
   width: 100%;
 }
 
+.btn {
+  overflow: auto;
+}
+
 /* Header CSS */
 
 .header {
@@ -77,6 +81,7 @@ body {
 }
 
 .search-bar button {
+  overflow: auto;
   height: 3rem;
   max-height: 100%;
   width: 10%;
@@ -90,9 +95,11 @@ body {
   float: left;
   width: 20%;
   height: 100%;
+  overflow: auto;
 }
 
 .search-bar {
+  overflow: auto;
   float: left;
   width: 30%;
   max-width: 30%;
@@ -108,9 +115,11 @@ body {
   font-size: 140%;
   display: flex;
   align-items: center;
+  overflow: auto;
 }
 
 .header-user img {
+  overflow:auto;
   border-radius: 50%;
   height: 100%;
   width: auto;
@@ -145,19 +154,20 @@ body {
 }
 
 .cart {
-  font-family: quicksand;
-  display: flex;
+  margin-top: 0.8%;
   align-items: center;
+  font-family: quicksand;
   color: #ffcb05;
   max-height: 100%;
   float: left;
-  width: 25%;
-  max-width: 25%;
+  width: 10%;
+  max-width: 10%;
   height: 100%;
+  text-align: center;
 }
 
 .cart i {
-  padding-left: 50%;
+  margin-right: 5%;
 }
 
 .header-options {
@@ -189,6 +199,7 @@ body {
   background-color: var(--white);
   width: 17%;
   padding: 0.5%;
+  overflow: auto;
 }
 
 .card-image {
@@ -259,6 +270,7 @@ body {
   height: 2em;
   border-style: none;
   cursor: pointer;
+  overflow: auto;
 }
 
 .category {
@@ -322,32 +334,37 @@ body {
 .sign-in-out {
   padding-top: 2%;
   padding-bottom: 2%;
-  margin-bottom: 90rem;
+  height: 100rem;
 }
 
 .sign-in {
+  overflow: auto;
   font-family: quicksand-bold;
   font-size: xx-large;
   background-color: var(--light-light-blue);
   float: left;
   width: 46%;
+  height: 100%;
   margin-left: 3%;
   padding: 1% 2% 1% 2%;
 }
 
 .sign-up {
+  overflow: auto;
   font-family: quicksand-bold;
   font-size: xx-large;
   background-color: var(--light-light-blue);
   float: right;
   width: 46%;
+  height: 100%;
   margin-right: 3%;
   padding: 1% 2% 1% 2%;
 }
 
 .sign-in img {
   max-width: 100%;
-  height: 65.5rem;
+  height: 70rem;
+  overflow: auto;
 }
 
 .sign-in .form-sign-in {
@@ -825,38 +842,46 @@ hr {
 /* Item Page CSS */
 
 #item-page-container {
-  padding-top: 2%;
-  padding-bottom: 2%;
-  background-color: var(--light-blue);
-  height: 100rem;
-  width: 100rem;
+  font-family: quicksand;
+  padding: 2%;
+  margin-top: 2%;
+  background-color: var(--light-light-blue);
+  height: 100%;
+  width: 100%;
+  border-radius: 1%;
 }
 
 #item-container{
+  justify-content: center;
   align-items: center;
   text-align: center;
-  height: 40rem;
   width: 100%;
-  display: flex;
+  height: auto;
+  margin-bottom: 4%;
+  overflow: auto;
 }
 
 #item-img {
   float: left;
-  padding-left: 17%;
+  margin-left: 10%;
+  height: 100%;
+  width: 30%
 }
 
 #item-img img{
-  height: 30rem;
-  border-radius: 15px
+  height: 100%;
+  border-radius: 10px;
 }
 
 #item-info {
   background-color: white;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  height: 30rem;
-  width: 30rem;
-  margin-left: 15rem;
+  height: 100%;
+  width: 45%;
+  float: right;
+  margin-right: 10%;
+  padding-bottom: 1%;
 }
 
 #related-items {
@@ -865,7 +890,36 @@ hr {
 }
 
 #item-page-title {
-  margin-left: 10rem;
+  margin-left: 10%;
 }
 
+#itemAddCart {
+  margin-top: 10%;
+}
+
+#itemAddCart button{
+  margin-left: 5%;
+  padding: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  color: var(--white);
+  background-color: var(--green);
+  cursor: pointer;
+  border-radius: 5%;
+  border-style: none;
+}
+
+#itemAddCart input{
+  text-align: center;
+  padding: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-style: solid;
+  border-radius: 15px;
+  width: 30%
+}
+
+.item-price {
+  color: var(--green);
+}
 /* End Item Page CSS */

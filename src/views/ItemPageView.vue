@@ -1,14 +1,30 @@
 <template>
   <div>
     <div id="item-page-container">
-      <div id="item-page-title">
-        <h1>Item Page</h1>
-      </div>
+      <h1>Item Page</h1>
       <div id="item-container">
         <div id="item-img">
           <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
         </div>
-        <div id="item-info">Informações da Carta</div>
+        <div id="item-info">
+          <h1>Eevee</h1>
+          <h2 class="item-price">$2</h2>
+          <h3>Ataques</h3>
+          <p>
+            <b>Be Prepared</b> Attach a basic Energy card from your hand to this
+            Pokémon.
+          </p>
+          <p>
+            <b>Bite</b>
+          </p>
+          <div id="itemAddCart">
+            <input type="number" min="0" max="10" />
+            <button>
+              <i class="fa fa-shopping-cart"></i>
+              Add to Cart
+            </button>
+          </div>
+        </div>
       </div>
       <div id="related-items">
         <h1>Related Items</h1>
