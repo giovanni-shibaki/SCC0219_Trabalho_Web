@@ -25,37 +25,73 @@
       <div class="category">
         <img src="../assets/img/eevee.webp" class="category-image" />
         <h4 class="category-name">Pokémon</h4>
-        <p class="category-quantity">20 Items</p>
+        <p class="category-quantity">
+          {{
+            cards.data.filter((card) => card.supertype.includes("Pokémon"))
+              .length
+          }}
+          Items
+        </p>
+      </div>
+      <div class="category" style="background-color: red">
+        <img src="../assets/img/eevee.webp" class="category-image" />
+        <h4 class="category-name">Treiners</h4>
+        <p class="category-quantity">
+          {{
+            cards.data.filter((card) => card.supertype.includes("Trainer"))
+              .length
+          }}
+          Items
+        </p>
+      </div>
+      <div class="category" style="background-color: #375faa">
+        <img src="../assets/img/eevee.webp" class="category-image" />
+        <h4 class="category-name">Energy</h4>
+        <p class="category-quantity">
+          {{
+            cards.data.filter((card) => card.supertype.includes("Energy"))
+              .length
+          }}
+          Items
+        </p>
       </div>
       <div class="category">
         <img src="../assets/img/eevee.webp" class="category-image" />
-        <h4 class="category-name">Pokémon</h4>
-        <p class="category-quantity">20 Items</p>
+        <h4 class="category-name">Common</h4>
+        <p class="category-quantity">
+          {{
+            cards.data.filter((card) => card.rarity.includes("Common")).length
+          }}
+          Items
+        </p>
       </div>
       <div class="category">
         <img src="../assets/img/eevee.webp" class="category-image" />
-        <h4 class="category-name">Pokémon</h4>
-        <p class="category-quantity">20 Items</p>
+        <h4 class="category-name">Uncommon</h4>
+        <p class="category-quantity">
+          {{
+            cards.data.filter((card) => card.rarity.includes("Uncommon")).length
+          }}
+          Items
+        </p>
       </div>
       <div class="category">
         <img src="../assets/img/eevee.webp" class="category-image" />
-        <h4 class="category-name">Pokémon</h4>
-        <p class="category-quantity">20 Items</p>
+        <h4 class="category-name">Rare</h4>
+        <p class="category-quantity">
+          {{ cards.data.filter((card) => card.rarity.includes("Rare")).length }}
+          Items
+        </p>
       </div>
       <div class="category">
         <img src="../assets/img/eevee.webp" class="category-image" />
-        <h4 class="category-name">Pokémon</h4>
-        <p class="category-quantity">20 Items</p>
-      </div>
-      <div class="category">
-        <img src="../assets/img/eevee.webp" class="category-image" />
-        <h4 class="category-name">Pokémon</h4>
-        <p class="category-quantity">20 Items</p>
-      </div>
-      <div class="category">
-        <img src="../assets/img/eevee.webp" class="category-image" />
-        <h4 class="category-name">Pokémon</h4>
-        <p class="category-quantity">20 Items</p>
+        <h4 class="category-name">Promotional</h4>
+        <p class="category-quantity">
+          {{
+            cards.data.filter((card) => card.rarity.includes("Promo")).length
+          }}
+          Items
+        </p>
       </div>
     </div>
     <h3 class="titles">Featured Products</h3>
@@ -225,6 +261,7 @@ import img1 from "@/assets/img/3cards_1.jpg";
 import img2 from "@/assets/img/3cards_2.jpg";
 import img3 from "@/assets/img/3cards_3.jpg";
 import background from "@/assets/img/pikachu_background.jpg";
+import json from "../assets/json/cards.json";
 
 export default {
   name: "SCC0219TrabalhoWebHomeView",
@@ -244,6 +281,7 @@ export default {
         { id: 1, img: img2 },
         { id: 1, img: img3 },
       ],
+      cards: json,
     };
   },
 

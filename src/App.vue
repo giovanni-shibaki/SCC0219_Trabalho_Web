@@ -27,7 +27,15 @@
     </div>
     <div class="bottom-header">
       <div class="header-categories">
-        <button class="btn" @click="$router.push('catalogue')">
+        <button
+          class="btn"
+          @click="
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0' },
+            })
+          "
+        >
           <i class="fa fa-bars"></i> Browse All Categories
         </button>
       </div>

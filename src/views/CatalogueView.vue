@@ -31,11 +31,18 @@
         </div>
       </div>
       <div class="all-products">
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
+        <div
+          class="card"
+          v-for="card in cards.data.slice(
+            route.query.page * 20,
+            route.query.page * 20 + 20
+          )"
+          v-bind:key="card.id"
+        >
+          <img :src="card.images.small" :alt="card.name" class="card-image" />
           <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
+            <p class="card-type">{{ card.supertype }}</p>
+            <h3 class="card-name">{{ card.name }}</h3>
             <div class="card-stars">
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
@@ -43,263 +50,14 @@
               <i class="fa-solid fa-star-sharp-half"></i>
               <i class="fa fa-star-o"></i>
             </div>
-            <p class="card-seller">By Ash Ketchum</p>
+            <p class="card-seller">By {{ card.set.name }}</p>
             <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa-solid fa-star-sharp-half"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa-solid fa-star-sharp-half"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
-              <button class="card-add-cart">
-                <i class="fa fa-shopping-cart"></i>
-                Add
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-          <div class="card-description">
-            <p class="card-type">Pokémon</p>
-            <h3 class="card-name">Eevee</h3>
-            <div class="card-stars">
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star-half-full"></i>
-              <i class="fa fa-star-o"></i>
-            </div>
-            <p class="card-seller">By Ash Ketchum</p>
-            <div class="card-buy">
-              <p class="card-price">$5</p>
-              <p class="card-original-price">$6</p>
+              <p class="card-price">
+                ${{ /*card.tcgplayer.prices.holofoil.market ??*/ 6.5 }}
+              </p>
+              <p class="card-original-price">
+                ${{ /*card.tcgplayer.prices.holofoil.mid ??*/ 4.5 }}
+              </p>
               <button class="card-add-cart">
                 <i class="fa fa-shopping-cart"></i>
                 Add
@@ -312,23 +70,43 @@
     <h3 class="navigate-text">Navigate</h3>
     <br />
     <div class="catalogue-navigate">
-      <a href="#">&laquo;</a>
-      <a href="#">1</a>
-      <a href="#" class="active">2</a>
-      <a href="#">3</a>
+      <a
+        :href="
+          parseInt(route.query.page) > 0
+            ? '?page=' + (parseInt(route.query.page) - 1)
+            : '#'
+        "
+        >&laquo;</a
+      >
+      <a href="?page=0">0</a>
       <a href="#">...</a>
-      <a href="#">50</a>
-      <a href="#">&raquo;</a>
+      <a href="#" style="color: #ffcb05">{{ route.query.page }}</a>
+      <a href="#">...</a>
+      <a href="?page=12">12</a>
+      <a
+        :href="
+          parseInt(route.query.page) < 12
+            ? '?page=' + (parseInt(route.query.page) + 1)
+            : '#'
+        "
+        >&raquo;</a
+      >
     </div>
   </div>
 </template>
 <!-- Não esquecer de adicionar as novas rotas no index.js do router! -->
 <script>
+import json from "../assets/json/cards.json";
+import { useRoute } from "vue-router";
+
 export default {
   name: "SCC0219TrabalhoWebCatalogueView",
 
   data() {
-    return {};
+    return {
+      route: useRoute(),
+      cards: json,
+    };
   },
 
   mounted() {},

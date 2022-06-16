@@ -317,7 +317,7 @@ body {
   height: 2em;
   border-style: none;
   cursor: pointer;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .category {
@@ -583,12 +583,13 @@ body {
   width: 75%;
   padding-left: 3%;
   padding-right: 3%;
-  gap: 4%;
+  gap: 2%;
+  height: 100%;
 }
 
 .all-products .card {
-  margin-bottom: 5%;
   width: 22%;
+  margin-bottom: 3%;
 }
 
 .categories-menu {
