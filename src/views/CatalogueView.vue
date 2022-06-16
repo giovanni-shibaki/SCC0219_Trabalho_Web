@@ -39,10 +39,34 @@
           )"
           v-bind:key="card.id"
         >
-          <img :src="card.images.small" :alt="card.name" class="card-image" />
+          <img
+            :src="card.images.small"
+            :alt="card.name"
+            class="card-image"
+            @click="
+              scrollToTop(),
+                $router.push({
+                  name: 'itemPage',
+                  query: { id: card.id },
+                })
+            "
+            style="cursor: pointer"
+          />
           <div class="card-description">
             <p class="card-type">{{ card.supertype }}</p>
-            <h3 class="card-name">{{ card.name }}</h3>
+            <h3
+              class="card-name"
+              @click="
+                scrollToTop(),
+                  $router.push({
+                    name: 'itemPage',
+                    query: { id: card.id },
+                  })
+              "
+              style="cursor: pointer"
+            >
+              {{ card.name }}
+            </h3>
             <div class="card-stars">
               <i class="fa fa-star"></i>
               <i class="fa fa-star"></i>
@@ -82,10 +106,10 @@
       <a href="#">...</a>
       <a href="#" style="color: #ffcb05">{{ route.query.page }}</a>
       <a href="#">...</a>
-      <a href="?page=12">12</a>
+      <a href="?page=12">143</a>
       <a
         :href="
-          parseInt(route.query.page) < 12
+          parseInt(route.query.page) < 143
             ? '?page=' + (parseInt(route.query.page) + 1)
             : '#'
         "
@@ -111,6 +135,10 @@ export default {
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
+  },
 };
 </script>

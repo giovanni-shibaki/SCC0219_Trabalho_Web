@@ -7,7 +7,7 @@
           <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
         </div>
         <div id="item-info">
-          <h1>Eevee</h1>
+          <h1>{{ card[0].name }}</h1>
           <h2 class="item-price">$2</h2>
           <h3>Ataques</h3>
           <p>
@@ -170,11 +170,18 @@
   </div>
 </template>
 <script>
+import json from "../assets/json/cards.json";
+import { useRoute } from "vue-router";
+
 export default {
   name: "SCC0219TrabalhoWebItemPageView",
 
   data() {
-    return {};
+    return {
+      card: json.data.filter(function (obj) {
+        if (obj.id == useRoute().query.id) return obj;
+      }),
+    };
   },
 
   mounted() {},

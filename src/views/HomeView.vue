@@ -11,7 +11,17 @@
     >
       <Carousel :autoplay="5000" :wrapAround="true">
         <Slide v-for="image in images" :key="image.id">
-          <img :src="image.img" />
+          <img
+            :src="image.img"
+            @click="
+              scrollToTop(),
+                $router.push({
+                  name: 'catalogue',
+                  query: { page: '0' },
+                })
+            "
+            style="cursor: pointer"
+          />
         </Slide>
 
         <template #addons>
@@ -22,7 +32,16 @@
     </div>
     <h3 class="titles">Explore Categories</h3>
     <div class="categories">
-      <div class="category">
+      <div
+        class="category"
+        @click="
+          scrollToTop(),
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', category: 'pokemon' },
+            })
+        "
+      >
         <img src="../assets/img/eevee.webp" class="category-image" />
         <h4 class="category-name">Pokémon</h4>
         <p class="category-quantity">
@@ -33,8 +52,18 @@
           Items
         </p>
       </div>
-      <div class="category" style="background-color: red">
-        <img src="../assets/img/eevee.webp" class="category-image" />
+      <div
+        class="category"
+        style="background-color: #c5330b"
+        @click="
+          scrollToTop(),
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', category: 'trainer' },
+            })
+        "
+      >
+        <img src="../assets/img/cards/irida.webp" class="category-image" />
         <h4 class="category-name">Treiners</h4>
         <p class="category-quantity">
           {{
@@ -44,8 +73,21 @@
           Items
         </p>
       </div>
-      <div class="category" style="background-color: #375faa">
-        <img src="../assets/img/eevee.webp" class="category-image" />
+      <div
+        class="category"
+        style="background-color: #375faa"
+        @click="
+          scrollToTop(),
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', category: 'energy' },
+            })
+        "
+      >
+        <img
+          src="../assets/img/cards/triple_acceleration_energy.webp"
+          class="category-image"
+        />
         <h4 class="category-name">Energy</h4>
         <p class="category-quantity">
           {{
@@ -55,8 +97,18 @@
           Items
         </p>
       </div>
-      <div class="category">
-        <img src="../assets/img/eevee.webp" class="category-image" />
+      <div
+        class="category"
+        style="background-color: #939992"
+        @click="
+          scrollToTop(),
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', category: 'common' },
+            })
+        "
+      >
+        <img src="../assets/img/cards/rowlet.webp" class="category-image" />
         <h4 class="category-name">Common</h4>
         <p class="category-quantity">
           {{
@@ -65,8 +117,18 @@
           Items
         </p>
       </div>
-      <div class="category">
-        <img src="../assets/img/eevee.webp" class="category-image" />
+      <div
+        class="category"
+        style="background-color: #375faa"
+        @click="
+          scrollToTop(),
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', category: 'uncommon' },
+            })
+        "
+      >
+        <img src="../assets/img/cards/thievul.webp" class="category-image" />
         <h4 class="category-name">Uncommon</h4>
         <p class="category-quantity">
           {{
@@ -75,16 +137,38 @@
           Items
         </p>
       </div>
-      <div class="category">
-        <img src="../assets/img/eevee.webp" class="category-image" />
+      <div
+        class="category"
+        style="background-color: #c5330b"
+        @click="
+          scrollToTop(),
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', category: 'rare' },
+            })
+        "
+      >
+        <img src="../assets/img/cards/garchomp_v.webp" class="category-image" />
         <h4 class="category-name">Rare</h4>
         <p class="category-quantity">
           {{ cards.data.filter((card) => card.rarity.includes("Rare")).length }}
           Items
         </p>
       </div>
-      <div class="category">
-        <img src="../assets/img/eevee.webp" class="category-image" />
+      <div
+        class="category"
+        @click="
+          scrollToTop(),
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', category: 'promotional' },
+            })
+        "
+      >
+        <img
+          src="../assets/img/cards/hisuian_samurott_vstar.webp"
+          class="category-image"
+        />
         <h4 class="category-name">Promotional</h4>
         <p class="category-quantity">
           {{
@@ -96,38 +180,39 @@
     </div>
     <h3 class="titles">Featured Products</h3>
     <div class="featured-products">
-      <div class="card">
-        <router-link to="/item-page">
-          <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-        </router-link>
+      <div
+        class="card"
+        v-for="card in cards.data.slice(12, 17)"
+        v-bind:key="card.id"
+      >
+        <img
+          :src="card.images.small"
+          :alt="card.name"
+          class="card-image"
+          @click="
+            scrollToTop(),
+              $router.push({
+                name: 'itemPage',
+                query: { id: card.id },
+              })
+          "
+          style="cursor: pointer"
+        />
         <div class="card-description">
-          <p class="card-type">Pokémon</p>
-          <router-link to="/item-page">
-            <h3 class="card-name">Eevee</h3>
-          </router-link>
-          <div class="card-stars">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-full"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p class="card-seller">By Ash Ketchum</p>
-          <div class="card-buy">
-            <p class="card-price">$5</p>
-            <p class="card-original-price">$6</p>
-            <button class="card-add-cart">
-              <i class="fa fa-shopping-cart"></i>
-              Add
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-        <div class="card-description">
-          <p class="card-type">Pokémon</p>
-          <h3 class="card-name">Eevee</h3>
+          <p class="card-type">{{ card.supertype }}</p>
+          <h3
+            class="card-name"
+            @click="
+              scrollToTop(),
+                $router.push({
+                  name: 'itemPage',
+                  query: { id: card.id },
+                })
+            "
+            style="cursor: pointer"
+          >
+            {{ card.name }}
+          </h3>
           <div class="card-stars">
             <i class="fa fa-star"></i>
             <i class="fa fa-star"></i>
@@ -135,79 +220,14 @@
             <i class="fa-solid fa-star-sharp-half"></i>
             <i class="fa fa-star-o"></i>
           </div>
-          <p class="card-seller">By Ash Ketchum</p>
+          <p class="card-seller">By {{ card.set.name }}</p>
           <div class="card-buy">
-            <p class="card-price">$5</p>
-            <p class="card-original-price">$6</p>
-            <button class="card-add-cart">
-              <i class="fa fa-shopping-cart"></i>
-              Add
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-        <div class="card-description">
-          <p class="card-type">Pokémon</p>
-          <h3 class="card-name">Eevee</h3>
-          <div class="card-stars">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-full"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p class="card-seller">By Ash Ketchum</p>
-          <div class="card-buy">
-            <p class="card-price">$5</p>
-            <p class="card-original-price">$6</p>
-            <button class="card-add-cart">
-              <i class="fa fa-shopping-cart"></i>
-              Add
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-        <div class="card-description">
-          <p class="card-type">Pokémon</p>
-          <h3 class="card-name">Eevee</h3>
-          <div class="card-stars">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-full"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p class="card-seller">By Ash Ketchum</p>
-          <div class="card-buy">
-            <p class="card-price">$5</p>
-            <p class="card-original-price">$6</p>
-            <button class="card-add-cart">
-              <i class="fa fa-shopping-cart"></i>
-              Add
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <img src="../assets/img/eevee.webp" alt="Eevee" class="card-image" />
-        <div class="card-description">
-          <p class="card-type">Pokémon</p>
-          <h3 class="card-name">Eevee</h3>
-          <div class="card-stars">
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star"></i>
-            <i class="fa fa-star-half-full"></i>
-            <i class="fa fa-star-o"></i>
-          </div>
-          <p class="card-seller">By Ash Ketchum</p>
-          <div class="card-buy">
-            <p class="card-price">$5</p>
-            <p class="card-original-price">$6</p>
+            <p class="card-price">
+              ${{ /*card.tcgplayer.prices.holofoil.market ??*/ 6.5 }}
+            </p>
+            <p class="card-original-price">
+              ${{ /*card.tcgplayer.prices.holofoil.mid ??*/ 4.5 }}
+            </p>
             <button class="card-add-cart">
               <i class="fa fa-shopping-cart"></i>
               Add
@@ -224,7 +244,17 @@
           <h2>For all trainer types</h2>
           <br />
           Find all the necessary products for your pokemon journey! <br />
-          <button class="mads-button" style="margin-top: 13%">
+          <button
+            class="mads-button"
+            style="margin-top: 13%"
+            @click="
+              scrollToTop(),
+                $router.push({
+                  name: 'catalogue',
+                  query: { page: '0' },
+                })
+            "
+          >
             Shop Now
             <i class="fas fa-angle-right"></i>
           </button>
@@ -239,7 +269,16 @@
           <h2>Expand your pokedex!</h2>
           <br />
           Gotta catch'em all, right!? <br />
-          <button class="mads-button">
+          <button
+            class="mads-button"
+            @click="
+              scrollToTop(),
+                $router.push({
+                  name: 'catalogue',
+                  query: { page: '0' },
+                })
+            "
+          >
             Order Now
             <i class="fas fa-angle-right"></i>
           </button>
@@ -289,6 +328,9 @@ export default {
 
   methods: {
     // Métodos aqui
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
   },
 };
 </script>
