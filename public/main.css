@@ -271,6 +271,7 @@ body {
   font-size: 160%;
   margin-top: 5%;
   margin-bottom: 0%;
+  overflow: auto;
 }
 
 .card-stars {
@@ -318,6 +319,8 @@ body {
   border-style: none;
   cursor: pointer;
   overflow: hidden;
+  margin-bottom: 10%;
+  margin-top: 10%;
 }
 
 .category {
@@ -334,12 +337,16 @@ body {
 }
 
 .category-name {
+  font-family: quicksand-bold;
+  color: var(--dark-dark-blue);
   font-size: 120%;
   margin-top: 10%;
   margin-bottom: 0%;
 }
 
 .category-quantity {
+  font-family: quicksand-bold;
+  color: var(--dark-dark-blue);
   margin-top: 10%;
   margin-bottom: 0%;
 }
@@ -608,8 +615,9 @@ body {
 
 .catalogue-title {
   font-family: quicksand-bold;
+  font-size: 200%;
   color: var(--dark-dark-blue);
-  margin-top: 5%;
+  margin-top: 2%;
   margin-bottom: 1%;
   text-align: left;
   margin-left: 29.5%;
@@ -936,7 +944,26 @@ hr {
   width: 45%;
   float: right;
   margin-right: 10%;
-  padding-bottom: 1%;
+  padding: 5%;
+}
+
+#item-info h1{
+  font-family: quicksand-bold;
+  font-size: 200%;
+  margin: 2%;
+}
+
+#item-info h3{
+  font-family: quicksand-bold;
+  font-size: 150%;
+  margin: 2%;
+}
+
+#item-info p{
+  font-family: quicksand-bold;
+  font-size: 100%;
+  margin: 2%;
+  text-align: justify;
 }
 
 #related-items {
@@ -975,6 +1002,8 @@ hr {
 }
 
 .item-price {
+  font-family: quicksand-bold;
+  font-size: 200%;
   color: var(--green);
 }
 /* End Item Page CSS */

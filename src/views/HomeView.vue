@@ -38,7 +38,7 @@
           scrollToTop(),
             $router.push({
               name: 'catalogue',
-              query: { page: '0', category: 'pokemon' },
+              query: { page: '0', category: '0' },
             })
         "
       >
@@ -59,7 +59,7 @@
           scrollToTop(),
             $router.push({
               name: 'catalogue',
-              query: { page: '0', category: 'trainer' },
+              query: { page: '0', category: '1' },
             })
         "
       >
@@ -80,7 +80,7 @@
           scrollToTop(),
             $router.push({
               name: 'catalogue',
-              query: { page: '0', category: 'energy' },
+              query: { page: '0', category: '2' },
             })
         "
       >
@@ -104,7 +104,7 @@
           scrollToTop(),
             $router.push({
               name: 'catalogue',
-              query: { page: '0', category: 'common' },
+              query: { page: '0', category: '3' },
             })
         "
       >
@@ -124,7 +124,7 @@
           scrollToTop(),
             $router.push({
               name: 'catalogue',
-              query: { page: '0', category: 'uncommon' },
+              query: { page: '0', category: '4' },
             })
         "
       >
@@ -144,7 +144,7 @@
           scrollToTop(),
             $router.push({
               name: 'catalogue',
-              query: { page: '0', category: 'rare' },
+              query: { page: '0', category: '5' },
             })
         "
       >
@@ -161,7 +161,7 @@
           scrollToTop(),
             $router.push({
               name: 'catalogue',
-              query: { page: '0', category: 'promotional' },
+              query: { page: '0', category: '6' },
             })
         "
       >
