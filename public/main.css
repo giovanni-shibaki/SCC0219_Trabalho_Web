@@ -89,6 +89,8 @@ body {
 }
 
 .container {
+  font-family: quicksand;
+  color: var(--dark-dark-blue);
   display: block;
   width: 100%;
 }
@@ -165,10 +167,11 @@ body {
 }
 
 .header-user img {
-  overflow:auto;
+  overflow: hidden;
   border-radius: 50%;
   height: 100%;
   width: auto;
+  float: left;
 }
 
 .header-logo img {
@@ -237,6 +240,15 @@ body {
   max-height: 80%;
   margin-left: 15%;
   text-overflow: ellipsis;
+}
+
+.dropdown-item-style {
+  background-color: #192653;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ffcb05;
+  color: #ffcb05;
+  cursor: pointer;
 }
 
 /* End Header CSS */
@@ -382,7 +394,7 @@ body {
 .sign-in {
   overflow: auto;
   font-family: quicksand-bold;
-  font-size: xx-large;
+  font-size: large;
   background-color: var(--light-light-blue);
   float: left;
   width: 46%;
@@ -421,7 +433,7 @@ body {
 }
 
 .sign-in .icon {
-  padding: 2.5%;
+  padding: 3.5%;
   background: var(--dark-blue);
   color: white;
   min-width: 7%;
@@ -466,7 +478,7 @@ body {
 }
 
 .sign-up .icon {
-  padding: 2.5%;
+  padding: 3.5%;
   background: var(--green);
   color: white;
   min-width: 7%;
@@ -576,6 +588,11 @@ body {
   margin-left: 2%;
   margin-bottom: 0%;
   font-size: 150%;
+}
+
+.title {
+  font-family: quicksand-bold;
+  color: var(--dark-dark-blue);
 }
 
 /* Cataloge CSS */

@@ -143,12 +143,8 @@
             </div>
             <p class="card-seller">By {{ card.set.name }}</p>
             <div class="card-buy">
-              <p class="card-price">
-                ${{ /*card.tcgplayer.prices.holofoil.market ??*/ 6.5 }}
-              </p>
-              <p class="card-original-price">
-                ${{ /*card.tcgplayer.prices.holofoil.mid ??*/ 4.5 }}
-              </p>
+              <p class="card-price">${{ getCardLowPrice(card) }}</p>
+              <p class="card-original-price">${{ getCardHighPrice(card) }}</p>
               <button class="card-add-cart">
                 <i class="fa fa-shopping-cart"></i>
                 Add
@@ -189,7 +185,16 @@ export default {
 
   mounted() {
     this.cards = json.data.filter(function (obj) {
-      if (useRoute().query.category == null) return obj;
+      if (useRoute().query.category == null && useRoute().query.search == null)
+        return obj;
+      // Verificar se foi feito uma busca
+      if (useRoute().query.search != null) {
+        if (
+          obj.name.toLowerCase().includes(useRoute().query.search.toLowerCase())
+        ) {
+          return obj;
+        }
+      }
       switch (parseInt(useRoute().query.category)) {
         case 0:
           if (obj.supertype == "Pokémon") return obj;
@@ -254,10 +259,11 @@ export default {
       let ret = "?page=";
       if (arg == -1) ret += 0;
       else ret += parseInt(this.route.query.page) - 1;
-      // Checar se não há mais parametros como o category
+      // Checar se não há mais parametros como o category ou search
       if (this.route.query.category != null)
         ret += "&category=" + this.route.query.category;
-      //this.scrollToTop(this.route.query.category);
+      if (this.route.query.search != null)
+        ret += "&search=" + this.route.query.search;
       return ret;
     },
     getNextPageParams(arg) {
@@ -266,11 +272,30 @@ export default {
       let ret = "?page=";
       if (arg == -1) ret += this.numPages;
       else ret += parseInt(this.route.query.page) + 1;
-      // Checar se não há mais parametros como o category
+      // Checar se não há mais parametros como o category ou search
       if (this.route.query.category != null)
         ret += "&category=" + this.route.query.category;
-      //this.scrollToTop(this.route.query.category);
+      if (this.route.query.search != null)
+        ret += "&search=" + this.route.query.search;
       return ret;
+    },
+    getCardHighPrice(card) {
+      if (card.tcgplayer == null) return 6.5;
+      if (card.tcgplayer.prices == null) return 6.5;
+      if (card.tcgplayer.prices.holofoil != null)
+        return card.tcgplayer.prices.holofoil.market;
+      if (card.tcgplayer.prices.normal != null)
+        return card.tcgplayer.prices.normal.market;
+      return 6.5;
+    },
+    getCardLowPrice(card) {
+      if (card.tcgplayer == null) return 5.5;
+      if (card.tcgplayer.prices == null) return 5.5;
+      if (card.tcgplayer.prices.holofoil != null)
+        return card.tcgplayer.prices.holofoil.low;
+      if (card.tcgplayer.prices.normal != null)
+        return card.tcgplayer.prices.normal.low;
+      return 5.5;
     },
   },
 };

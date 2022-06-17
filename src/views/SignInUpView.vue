@@ -2,9 +2,9 @@
   <div>
     <div class="sign-in-out">
       <div class="sign-in">
-        Sign In
+        <p class="title">Sign In</p>
         <br /><br />
-        <form class="form-sign-in" action="">
+        <form @submit="login">
           Email
           <div class="input-container">
             <i class="fa fa-envelope icon"></i>
@@ -13,6 +13,7 @@
               type="email"
               placeholder="email@provider.com"
               name="email"
+              v-model="loginEmail"
             />
           </div>
           Password
@@ -23,15 +24,16 @@
               type="password"
               placeholder="Type your password here"
               name="psw"
+              v-model="loginPassword"
             />
           </div>
           <a href="idk">Forgot your password? Click here.</a>
-          <button type="submit" class="btn">Sign In</button>
+          <button type="submit" @click="login()" class="btn">Sign In</button>
         </form>
         <img src="../assets/img/treinador.png" />
       </div>
       <div class="sign-up">
-        Sign Up
+        <p class="title">Sign Up</p>
         <br /><br />
         <form class="form-sign-up" action="">
           Name
@@ -167,11 +169,32 @@ export default {
   name: "SCC0219TrabalhoWebSignInUpView",
 
   data() {
-    return {};
+    return {
+      loginEmail: "",
+      loginPassword: "",
+    };
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    login() {
+      if (this.loginEmail == "" || this.loginPassword == "") {
+        return;
+      }
+      if (
+        this.loginEmail == "admin@admin.com" &&
+        this.loginPassword == "admin"
+      ) {
+        localStorage.admin = true;
+        localStorage.loggedIn = true;
+        console.log("Logou admin");
+      } else {
+        console.log("Não logou admin");
+        localStorage.loggedIn = true;
+        localStorage.admin = false;
+      }
+    },
+  },
 };
 </script>

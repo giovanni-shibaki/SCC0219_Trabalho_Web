@@ -7,22 +7,117 @@
         </router-link>
       </div>
       <div class="search-bar">
-        <form action="">
-          <input type="text" placeholder="Search.." name="search" />
-          <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
+        <input
+          type="text"
+          placeholder="Search.."
+          name="search"
+          id="searchId"
+          v-model="searchId"
+        />
+        <button
+          @click="
+            $router.push({
+              name: 'catalogue',
+              query: { page: '0', search: '' + searchId },
+            })
+          "
+        >
+          <i class="fa fa-search"></i>
+        </button>
       </div>
       <div class="cart">
-        <router-link to="/cart">
+        <router-link to="/cart" style="color: #ffcb05">
           <i class="fas fa-shopping-cart"></i>Cart
         </router-link>
       </div>
       <div class="header-user">
         <img src="./assets/img/dilvan.jpg" />
-        <router-link to="/signinup">
-          <b>Sign-up / Sign-in</b>
+        <div
+          class="dropdown is-hoverable"
+          v-if="admin == 'true' && loggedIn == 'true'"
+          style="position: absolute; margin-left: 5%"
+        >
+          <div class="dropdown-trigger">
+            <button
+              class="button"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu4"
+              style="
+                background-color: unset;
+                border-style: unset;
+                color: #ffcb05;
+                font-size: 100%;
+              "
+            >
+              <span>Admin</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content" style="background-color: #192653">
+              <div
+                class="dropdown-item dropdown-item-style"
+                style="color: #ffcb05"
+              >
+                <p>Admin Page</p>
+              </div>
+              <div
+                class="dropdown-item dropdown-item-style"
+                style="color: #ffcb05"
+                @click="logoff()"
+              >
+                <p>Logoff</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="dropdown is-hoverable"
+          v-else-if="loggedIn == 'true'"
+          style="position: absolute; margin-left: 5%"
+        >
+          <div class="dropdown-trigger">
+            <button
+              class="button"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu4"
+              style="
+                background-color: unset;
+                border-style: unset;
+                color: #ffcb05;
+                font-size: 100%;
+              "
+            >
+              <span>{{ userName ?? "Usuário" }}</span>
+              <span class="icon is-small">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content" style="background-color: #192653">
+              <div
+                class="dropdown-item dropdown-item-style"
+                style="color: #ffcb05"
+              >
+                <p>Edit Profile</p>
+              </div>
+              <div
+                class="dropdown-item dropdown-item-style"
+                style="color: #ffcb05"
+                @click="logoff()"
+              >
+                <p>Logoff</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <router-link v-else to="/signinup" style="color: #ffcb05">
+          <b>Sign-up / Sign-in </b>
+          <i class="fas fa-angle-down"></i>
         </router-link>
-        <i class="fas fa-angle-down"></i>
       </div>
     </div>
     <div class="bottom-header">
@@ -48,7 +143,7 @@
       </div>
     </div>
   </div>
-  <router-view v-slot="{ Component }">
+  <router-view v-slot="{ Component }" :key="$route.fullPath">
     <transition name="slide" mode="out-in">
       <component :is="Component"></component>
     </transition>
@@ -133,6 +228,53 @@
     </div>
   </div>
 </template>
+
+<script>
+import { useRoute } from "vue-router";
+
+export default {
+  name: "SCC0219TrabalhoWebApp",
+
+  data() {
+    return {
+      searchId: "",
+      router: useRoute(),
+      admin: false,
+      loggedIn: false,
+    };
+  },
+
+  mounted() {
+    if (localStorage.admin) {
+      this.admin = localStorage.getItem("admin");
+    }
+    if (localStorage.loggedIn) {
+      this.loggedIn = localStorage.getItem("loggedIn");
+    }
+    window.addEventListener("storage", this.storageListener);
+  },
+
+  methods: {
+    storageListener() {
+      // localStorage retorna uma string, converter então para boolean
+      this.admin = localStorage.admin;
+      this.userName = localStorage.userName;
+    },
+    logoff() {
+      localStorage.admin = false;
+      localStorage.loggedIn = false;
+      localStorage.userName = "";
+      this.admin = false;
+      this.loggedIn = false;
+    },
+  },
+
+  beforeUnmount() {
+    window.removeEventListener("storage", this.storageListener);
+  },
+};
+</script>
+
 <style lang="css">
 .slide-enter-active,
 .slide-leave-active {
