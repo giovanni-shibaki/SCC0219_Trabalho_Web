@@ -232,7 +232,6 @@
 <script>
 import { useRoute } from "vue-router";
 
-
 export default {
   name: "SCC0219TrabalhoWebApp",
 
@@ -254,7 +253,7 @@ export default {
     }
     window.addEventListener("storage", this.storageListener);
 
-    localStorage.cart = []
+    localStorage.cart = [];
   },
 
   methods: {

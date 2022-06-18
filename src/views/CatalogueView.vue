@@ -298,12 +298,12 @@ export default {
       return 5.5;
     },
     addToCart(card) {
-      card = JSON.parse(JSON.stringify(card))
-      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart)
-      cart.push({"card": card, "qtd": 1})
-      localStorage.cart = JSON.stringify(cart)
-      console.log(JSON.parse(localStorage.cart))
-    }
+      card = JSON.parse(JSON.stringify(card));
+      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart);
+      cart.push({ card: card, qtd: 1 });
+      localStorage.cart = JSON.stringify(cart);
+      console.log(JSON.parse(localStorage.cart));
+    },
   },
 };
 </script>

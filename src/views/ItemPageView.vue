@@ -128,12 +128,12 @@ export default {
       });
     },
     addToCart(card, qtd) {
-      card = JSON.parse(JSON.stringify(card))
-      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart)
-      cart.push({"card": card, "qtd": qtd})
-      localStorage.cart = JSON.stringify(cart)
-      console.log(JSON.parse(localStorage.cart))
-    }
+      card = JSON.parse(JSON.stringify(card));
+      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart);
+      cart.push({ card: card, qtd: qtd });
+      localStorage.cart = JSON.stringify(cart);
+      console.log(JSON.parse(localStorage.cart));
+    },
   },
 };
 </script>

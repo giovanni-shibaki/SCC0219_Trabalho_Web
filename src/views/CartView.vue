@@ -4,11 +4,7 @@
       <h2 class="title is-3">Cart</h2>
     </section>
     <section class="section all-products">
-      <div
-        class="card"
-        v-for="item in this.cart"
-        v-bind:key="item.card.id"
-      >
+      <div class="card" v-for="item in this.cart" v-bind:key="item.card.id">
         <img
           :src="item.card.images.small"
           :alt="item.card.name"
@@ -46,8 +42,13 @@
           </div>
           <p class="card-seller">By {{ item.card.set.name }}</p>
           <div class="card-buy">
-            <p class="card-price">${{ getCardLowPrice(item.card) }} x {{item.qtd}}</p>
-            <button class="background-red card-add-cart" @click="removeItem(item)">
+            <p class="card-price">
+              ${{ getCardLowPrice(item.card) }} x {{ item.qtd }}
+            </p>
+            <button
+              class="background-red card-add-cart"
+              @click="removeItem(item)"
+            >
               <i class="fa fa-trash"></i>
               Remove
             </button>
@@ -56,18 +57,16 @@
       </div>
     </section>
     <section class="section">
-        <div
-          class="tile is-5 background-light-blue py-5 px-0 is-vertical has-text-centered has-text-weight-semibold has-text-black"
-        >
-          <div class="mx-0">
-            Total price: ${{totalPrice}}
-          </div>
-        </div>
-        <button class="button is-warning m-3">Continue Shopping</button>
-        <button type="submit" class="button is-primary m-3">
-          Proceed to Payment
-        </button>
-      </section>
+      <div
+        class="tile is-5 background-light-blue py-5 px-0 is-vertical has-text-centered has-text-weight-semibold has-text-black"
+      >
+        <div class="mx-0">Total price: ${{ totalPrice }}</div>
+      </div>
+      <button class="button is-warning m-3">Continue Shopping</button>
+      <button type="submit" class="button is-primary m-3">
+        Proceed to Payment
+      </button>
+    </section>
   </div>
 </template>
 <script>
@@ -77,16 +76,15 @@ export default {
   data() {
     return {
       cart: [],
-      totalPrice: 0
+      totalPrice: 0,
     };
   },
   beforeMount() {
-    this.cart = JSON.parse(localStorage.cart)
-    this.calculatePrice()
+    this.cart = JSON.parse(localStorage.cart);
+    this.calculatePrice();
   },
 
-  mounted() {
-  },
+  mounted() {},
 
   methods: {
     getCardLowPrice(card) {
@@ -99,21 +97,21 @@ export default {
       return 5.5;
     },
     removeItem(item) {
-      item = JSON.parse(JSON.stringify(item))
-      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart)
-      cart = cart.filter(c => c.card.id != item.card.id)
-      localStorage.cart = JSON.stringify(cart)
-      this.cart = JSON.parse(localStorage.cart)
-      this.calculatePrice()
+      item = JSON.parse(JSON.stringify(item));
+      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart);
+      cart = cart.filter((c) => c.card.id != item.card.id);
+      localStorage.cart = JSON.stringify(cart);
+      this.cart = JSON.parse(localStorage.cart);
+      this.calculatePrice();
     },
     calculatePrice() {
-      let price = 0
-      let cart = JSON.parse(JSON.stringify(this.cart))
-      cart.forEach(item => {
-        price += this.getCardLowPrice(item.card) * item.qtd
+      let price = 0;
+      let cart = JSON.parse(JSON.stringify(this.cart));
+      cart.forEach((item) => {
+        price += this.getCardLowPrice(item.card) * item.qtd;
       });
-      this.totalPrice = price
-    }
+      this.totalPrice = price;
+    },
   },
 };
 </script>
