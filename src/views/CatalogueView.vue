@@ -145,7 +145,7 @@
             <div class="card-buy">
               <p class="card-price">${{ getCardLowPrice(card) }}</p>
               <p class="card-original-price">${{ getCardHighPrice(card) }}</p>
-              <button class="card-add-cart">
+              <button class="card-add-cart" @click="addToCart(card)">
                 <i class="fa fa-shopping-cart"></i>
                 Add
               </button>
@@ -297,6 +297,13 @@ export default {
         return card.tcgplayer.prices.normal.low;
       return 5.5;
     },
+    addToCart(card) {
+      card = JSON.parse(JSON.stringify(card))
+      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart)
+      cart.push({"card": card, "qtd": 1})
+      localStorage.cart = JSON.stringify(cart)
+      console.log(JSON.parse(localStorage.cart))
+    }
   },
 };
 </script>

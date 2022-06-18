@@ -23,8 +23,8 @@
             <b>{{ atack.name }}</b> {{ atack.text }}
           </p>
           <div id="itemAddCart">
-            <input type="number" min="0" max="10" value="1" />
-            <button>
+            <input v-model="qtd" type="number" min="0" max="10" />
+            <button @click="addToCart(this.card[0], this.qtd)">
               <i class="fa fa-shopping-cart"></i>
               Add to Cart
             </button>
@@ -88,7 +88,7 @@
                 <p class="card-original-price">
                   ${{ /*card.tcgplayer.prices.holofoil.mid ??*/ 4.5 }}
                 </p>
-                <button class="card-add-cart">
+                <button class="card-add-cart" @click="addToCart(card, 1)">
                   <i class="fa fa-shopping-cart"></i>
                   Add
                 </button>
@@ -114,6 +114,7 @@ export default {
         if (obj.id == useRoute().query.id) return obj;
       }),
       cards: json,
+      qtd: 1,
     };
   },
 
@@ -126,6 +127,13 @@ export default {
         if (obj.id == id) return obj;
       });
     },
+    addToCart(card, qtd) {
+      card = JSON.parse(JSON.stringify(card))
+      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart)
+      cart.push({"card": card, "qtd": qtd})
+      localStorage.cart = JSON.stringify(cart)
+      console.log(JSON.parse(localStorage.cart))
+    }
   },
 };
 </script>

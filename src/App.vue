@@ -232,6 +232,7 @@
 <script>
 import { useRoute } from "vue-router";
 
+
 export default {
   name: "SCC0219TrabalhoWebApp",
 
@@ -252,6 +253,8 @@ export default {
       this.loggedIn = localStorage.getItem("loggedIn");
     }
     window.addEventListener("storage", this.storageListener);
+
+    localStorage.cart = []
   },
 
   methods: {
