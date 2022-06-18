@@ -14,6 +14,7 @@
               placeholder="email@provider.com"
               name="email"
               v-model="loginEmail"
+              required
             />
           </div>
           Password
@@ -25,17 +26,18 @@
               placeholder="Type your password here"
               name="psw"
               v-model="loginPassword"
+              required
             />
           </div>
           <a href="idk">Forgot your password? Click here.</a>
-          <button type="submit" @click="login()" class="btn">Sign In</button>
+          <button type="submit" class="btn">Sign In</button>
         </form>
         <img src="../assets/img/treinador.png" />
       </div>
       <div class="sign-up">
         <p class="title">Sign Up</p>
         <br /><br />
-        <form class="form-sign-up" action="">
+        <form class="form-sign-up" action="#">
           Name
           <div class="input-container">
             <i class="fa fa-user icon"></i>
@@ -44,6 +46,7 @@
               type="text"
               placeholder="Type your username here"
               name="name"
+              required
             />
           </div>
           Email
@@ -54,6 +57,7 @@
               type="text"
               placeholder="email@provider.com"
               name="email"
+              required
             />
           </div>
           Password
@@ -64,6 +68,7 @@
               type="password"
               placeholder="Type your password here"
               name="psw"
+              required
             />
           </div>
           Confirm Password
@@ -74,6 +79,7 @@
               type="password"
               placeholder="Type your password again here"
               name="cpsw"
+              required
             />
           </div>
 
@@ -88,6 +94,7 @@
               class="input-field"
               type="text"
               placeholder="XXXXX-XXX"
+              v-maska="'XXXXX-XXX'"
               name="postcode"
             />
           </div>
@@ -109,7 +116,8 @@
             <input
               class="input-field"
               type="text"
-              placeholder="XX-XXx"
+              placeholder="XX-XXX"
+              v-maska="'XX-XXX'"
               name="num"
             />
           </div>
@@ -154,6 +162,7 @@
               class="input-field"
               type="text"
               placeholder="(DDD) XXXXX-XXXX"
+              v-maska="'(XX) XXXXX-XXXX'"
               name="phone"
             />
           </div>
@@ -188,11 +197,17 @@ export default {
       ) {
         localStorage.admin = true;
         localStorage.loggedIn = true;
-        console.log("Logou admin");
+        alert("Logou como admin");
+        this.$router.push({
+          name: "home",
+        });
       } else {
-        console.log("Não logou admin");
         localStorage.loggedIn = true;
         localStorage.admin = false;
+        alert("Logou como usuário");
+        this.$router.push({
+          name: "home",
+        });
       }
     },
   },

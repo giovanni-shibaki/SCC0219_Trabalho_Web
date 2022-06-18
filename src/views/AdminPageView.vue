@@ -15,6 +15,7 @@
                   type="text"
                   placeholder="Card Name"
                   name="cardName"
+                  required
                 />
               </div>
               Price
@@ -36,6 +37,7 @@
                   min="0"
                   step="1"
                   name="cardQuantity"
+                  required
                 />
               </div>
               Card Image
@@ -84,6 +86,7 @@
                   type="text"
                   placeholder="Username"
                   name="name"
+                  required
                 />
               </div>
               Email
@@ -93,6 +96,7 @@
                   type="text"
                   placeholder="email@provider.com"
                   name="email"
+                  required
                 />
               </div>
               Password
@@ -102,6 +106,7 @@
                   type="password"
                   placeholder="Password"
                   name="psw"
+                  required
                 />
               </div>
               Confirm Password
@@ -111,6 +116,7 @@
                   type="password"
                   placeholder="Confirm password"
                   name="cpsw"
+                  required
                 />
               </div>
               User Type
@@ -133,6 +139,7 @@
                   class="input"
                   type="text"
                   placeholder="XXXXX-XXX"
+                  v-maska="'XXXXX-XXX'"
                   name="postcode"
                 />
               </div>
@@ -152,7 +159,8 @@
                 <input
                   class="input"
                   type="text"
-                  placeholder="XX-XXx"
+                  placeholder="XX-XXX"
+                  v-maska="'XX-XXX'"
                   name="num"
                 />
               </div>
@@ -193,6 +201,7 @@
                   class="input"
                   type="text"
                   placeholder="(DDD) XXXXX-XXXX"
+                  v-maska="'(XX) XXXXX-XXXX'"
                   name="phone"
                 />
               </div>

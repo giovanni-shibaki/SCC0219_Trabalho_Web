@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
+    "maska": "^1.5.0",
     "node-sass": "^7.0.1",
     "nodemon": "^2.0.16",
     "sass-loader": "^13.0.0",
