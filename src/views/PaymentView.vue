@@ -85,21 +85,23 @@
         >
           <div class="columns mx-0">
             <div class="column">
-              <p class="">Total:</p>
+              <p>Total:</p>
               <p>Shipment Fee:</p>
               <p>Discount:</p>
               <p>Final price</p>
             </div>
             <div class="column">
-              <p class="">$ 6,66</p>
-              <p>$ 2,50</p>
-              <p>$ 0,00</p>
-              <p>$ 9,16</p>
+              <p>$ {{ totalPrice }}</p>
+              <p>$ {{ shipmentFee }}</p>
+              <p>- $ {{ discount }}</p>
+              <p>$ {{ finalPrice }}</p>
             </div>
           </div>
         </div>
-        <button class="button is-warning m-3">Return to cart</button>
-        <button type="submit" class="button is-primary m-3">
+        <router-link to="/cart">
+          <button class="button is-warning m-3">Return to cart</button>
+        </router-link>
+        <button type="button" class="button is-primary m-3">
           Finish Transaction
         </button>
       </section>
@@ -111,10 +113,17 @@ export default {
   name: "SCC0219TrabalhoWebPaymentView",
 
   data() {
-    return {};
+    return {
+      totalPrice: localStorage.totalPrice,
+      shipmentFee: 0,
+      discount: 0,
+      finalPrice: 0,
+    };
   },
 
-  mounted() {},
+  mounted() {
+    this.finalPrice = this.totalPrice + this.shipmentFee - this.discount;
+  },
 
   methods: {},
 };
