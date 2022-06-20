@@ -334,9 +334,13 @@ export default {
     addToCart(card) {
       card = JSON.parse(JSON.stringify(card));
       let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart);
-      cart.push({ card: card, qtd: 1 });
+      let index = cart.findIndex((c) => c.card.id == card.id);
+      if (index != -1) {
+        cart[index].qtd++;
+      } else {
+        cart.push({ card: card, qtd: 1 });
+      }
       localStorage.cart = JSON.stringify(cart);
-      console.log(JSON.parse(localStorage.cart));
     },
   },
 };
