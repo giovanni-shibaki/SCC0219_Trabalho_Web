@@ -1,5 +1,5 @@
 <template>
-  <div class="background-light-light-blue p-6 container">
+  <div class="background-light-light-blue" id="cart-page-container">
     <section class="section">
       <h2 class="title is-3">Cart</h2>
     </section>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container background-light-light-blue my-5 p-6">
+    <div class="background-light-light-blue" id="admin-page-container">
       <h1 class="title is-2">Welcome back adminzao</h1>
 
       <h2 class="collapse-header title is-3">Add new Card</h2>
@@ -71,6 +71,7 @@
         </form>
       </div>
 
+      <br />
       <br />
 
       <h2 class="collapse-header title is-3">Add new User</h2>

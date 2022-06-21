@@ -266,13 +266,6 @@ body {
   width: 100%;
 }
 
-/*
-.card-description
-{
-
-}
-*/
-
 .card-type {
   font-size: 90%;
   color: var(--gray);
@@ -1027,6 +1020,16 @@ hr {
 
 /* Admin page */
 
+#admin-page-container {
+  font-family: quicksand;
+  padding: 4%;
+  margin-top: 2%;
+  background-color: var(--light-light-blue);
+  height: 100%;
+  width: 100%;
+  border-radius: 1%;
+}
+
 .admin-page {
   font-family: quicksand-bold;
   font-size: large;
@@ -1044,4 +1047,32 @@ hr {
   padding: 1% 2% 1% 2%;
 
 }
-/* End Admin Page */
+/* End Admin Page CSS */
+
+/* Cart Page CSS */
+
+#cart-page-container {
+  font-family: quicksand;
+  padding: 2%;
+  margin-top: 2%;
+  background-color: var(--light-light-blue);
+  height: 100%;
+  width: 100%;
+  border-radius: 1%;
+}
+
+/* End Cart Page CSS */
+
+/* Payment Page CSS */
+
+#payment-page-container {
+  font-family: quicksand;
+  padding: 2%;
+  margin-top: 2%;
+  background-color: var(--light-light-blue);
+  height: 100%;
+  width: 100%;
+  border-radius: 1%;
+}
+
+/* End Payment Page CSS */

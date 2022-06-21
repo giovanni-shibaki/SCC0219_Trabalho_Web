@@ -1,5 +1,5 @@
 <template>
-  <div class="background-light-light-blue m-5 p-6 container">
+  <div class="background-light-light-blue" id="payment-page-container">
     <h1 class="title is-3">Payment informations</h1>
     <form>
       <section class="section">
