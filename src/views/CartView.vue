@@ -62,10 +62,14 @@
       >
         <div class="mx-0">Total price: ${{ totalPrice }}</div>
       </div>
-      <button class="button is-warning m-3">Continue Shopping</button>
-      <button type="submit" class="button is-primary m-3">
-        Proceed to Payment
-      </button>
+      <router-link to="/">
+        <button class="button is-warning m-3">Continue Shopping</button>
+      </router-link>
+      <router-link to="/payment">
+        <button type="button" class="button is-primary m-3">
+          Proceed to Payment
+        </button>
+      </router-link>
     </section>
   </div>
 </template>
@@ -80,6 +84,8 @@ export default {
     };
   },
   beforeMount() {
+    // localStorage.cart armazena um JSON com as infos do carrinho !!! JSON, não o objeto !!!
+    if (localStorage.cart == "") localStorage.cart = "[]";
     this.cart = JSON.parse(localStorage.cart);
     this.calculatePrice();
   },
@@ -111,6 +117,7 @@ export default {
         price += this.getCardLowPrice(item.card) * item.qtd;
       });
       this.totalPrice = price;
+      localStorage.totalPrice = price;
     },
   },
 };

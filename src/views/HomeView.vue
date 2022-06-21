@@ -228,7 +228,7 @@
             <p class="card-original-price">
               ${{ /*card.tcgplayer.prices.holofoil.mid ??*/ 4.5 }}
             </p>
-            <button class="card-add-cart">
+            <button class="card-add-cart" @click="addToCart(card)">
               <i class="fa fa-shopping-cart"></i>
               Add
             </button>
@@ -330,6 +330,17 @@ export default {
     // Métodos aqui
     scrollToTop() {
       window.scrollTo(0, 0);
+    },
+    addToCart(card) {
+      card = JSON.parse(JSON.stringify(card));
+      let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart);
+      let index = cart.findIndex((c) => c.card.id == card.id);
+      if (index != -1) {
+        cart[index].qtd++;
+      } else {
+        cart.push({ card: card, qtd: 1 });
+      }
+      localStorage.cart = JSON.stringify(cart);
     },
   },
 };
