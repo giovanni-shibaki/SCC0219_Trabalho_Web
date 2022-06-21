@@ -39,9 +39,14 @@
                   required
                 />
               </div>
-              Card Image
+              Card Image Link
               <div class="input-container">
-                <input class="input-field" type="file" name="cardImage" />
+                <input
+                  class="input"
+                  type="text"
+                  name="cardImage"
+                  placeholder="idk"
+                />
               </div>
               <br />
               <div class="input-container">
@@ -49,6 +54,7 @@
                   class="button is-primary"
                   type="submit"
                   name="cardSubmit"
+                  @click="edit_card()"
                 >
                   Edit card
                 </button>
@@ -75,25 +81,20 @@
 
 <script>
 export default {
-  name: "SCC0219TrabalhoWebSignInUpView",
+  name: "SCC0219TrabalhoWebEditCardView",
 
   data() {
-    return {
-      loginEmail: "",
-      loginPassword: "",
-    };
+    return {};
   },
 
   mounted() {},
 
   methods: {
-    login() {
-      if (this.loginEmail == "" || this.loginPassword == "") {
-        alert("Suas informacoes foram trocadas com sucesso!");
-        this.$router.push({
-          name: "home",
-        });
-      }
+    edit_card() {
+      alert("As informacoes da carta foram trocadas com sucesso!");
+      this.$router.push({
+        name: "home",
+      });
     },
   },
 };

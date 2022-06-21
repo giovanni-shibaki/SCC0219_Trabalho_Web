@@ -7,9 +7,9 @@
         </p>
         <br /><br />
         On this page you can change any of the informations of your profile,
-        just enter the new information on the side and press the button "Save"
-        at the end of the page! If you do not wish to change any data just leave
-        the spaces blank.
+        just enter the new information on the side and press the button "Save
+        Changes" at the end of the page! If you do not wish to change any data
+        just leave the spaces blank.
 
         <img src="../assets/img/treinador.png" />
       </div>
@@ -17,7 +17,7 @@
         <p class="title">New profile information</p>
         <br /><br />
         <form class="form-sign-up" action="#">
-          New Username
+          Username
           <div class="input-container">
             <i class="fa fa-user icon"></i>
             <input
@@ -27,7 +27,7 @@
               name="name"
             />
           </div>
-          New Email
+          Email
           <div class="input-container">
             <i class="fa fa-envelope icon"></i>
             <input
@@ -59,7 +59,7 @@
           </div>
 
           <br />
-          <h1>Address</h1>
+          <h1>Change Address</h1>
           <br />
 
           Postal Code
@@ -143,7 +143,7 @@
           </div>
 
           <button type="submit" class="btn" @click="edit_information()">
-            Change Informations
+            Save Changes
           </button>
         </form>
       </div>
@@ -153,7 +153,7 @@
 </template>
 <script>
 export default {
-  name: "SCC0219TrabalhoWebSignInUpView",
+  name: "SCC0219TrabalhoWebChangeInfoView",
 
   data() {
     return {};

@@ -27,7 +27,7 @@
             <button
               @click="
                 $router.push({
-                  name: 'editItemPage',
+                  name: 'editCard',
                   query: { id: card.id },
                 })
               "

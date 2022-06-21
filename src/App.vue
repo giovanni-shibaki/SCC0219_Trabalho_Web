@@ -60,6 +60,7 @@
               <div
                 class="dropdown-item dropdown-item-style"
                 style="color: #ffcb05"
+                @click="$router.push('/admin-page')"
               >
                 <p>Admin Page</p>
               </div>
@@ -101,6 +102,7 @@
               <div
                 class="dropdown-item dropdown-item-style"
                 style="color: #ffcb05"
+                @click="$router.push('/change-info')"
               >
                 <p>Edit Profile</p>
               </div>
