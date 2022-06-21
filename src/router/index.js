@@ -75,6 +75,26 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "admin-page" */ "../views/AdminPageView.vue"),
   },
+  {
+    path: "/edit-card",
+    name: "editCard",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "admin-page" */ "../views/EditCardView.vue"),
+  },
+  {
+    path: "/change-info",
+    name: "changeInfo",
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(
+        /* webpackChunkName: "admin-page" */ "../views/ChangeInfoView.vue"
+      ),
+  },
 ];
 
 const router = createRouter({
