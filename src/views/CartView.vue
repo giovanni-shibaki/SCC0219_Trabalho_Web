@@ -10,7 +10,7 @@
           :alt="item.card.name"
           class="card-image"
           @click="
-            updateCards(-1),
+            scrollToTop(-1),
               $router.push({
                 name: 'itemPage',
                 query: { id: item.card.id },
@@ -62,11 +62,17 @@
       >
         <div class="mx-0">Total price: ${{ totalPrice }}</div>
       </div>
-      <router-link to="/">
-        <button class="button is-warning m-3">Continue Shopping</button>
+      <router-link to="/catalogue?page=0">
+        <button class="button is-warning m-3" @click="scrollToTop()">
+          Continue Shopping
+        </button>
       </router-link>
       <router-link to="/payment">
-        <button type="button" class="button is-primary m-3">
+        <button
+          type="button"
+          class="button is-primary m-3"
+          @click="scrollToTop()"
+        >
           Proceed to Payment
         </button>
       </router-link>
@@ -93,6 +99,9 @@ export default {
   mounted() {},
 
   methods: {
+    scrollToTop(id) {
+      window.scrollTo(0, 0);
+    },
     getCardLowPrice(card) {
       if (card.tcgplayer == null) return 5.5;
       if (card.tcgplayer.prices == null) return 5.5;

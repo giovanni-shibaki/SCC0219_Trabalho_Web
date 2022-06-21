@@ -222,12 +222,8 @@
           </div>
           <p class="card-seller">By {{ card.set.name }}</p>
           <div class="card-buy">
-            <p class="card-price">
-              ${{ /*card.tcgplayer.prices.holofoil.market ??*/ 6.5 }}
-            </p>
-            <p class="card-original-price">
-              ${{ /*card.tcgplayer.prices.holofoil.mid ??*/ 4.5 }}
-            </p>
+            <p class="card-price">${{ getCardLowPrice(card) }}</p>
+            <p class="card-original-price">${{ getCardHighPrice(card) }}</p>
             <button class="card-add-cart" @click="addToCart(card)">
               <i class="fa fa-shopping-cart"></i>
               Add
@@ -341,6 +337,24 @@ export default {
         cart.push({ card: card, qtd: 1 });
       }
       localStorage.cart = JSON.stringify(cart);
+    },
+    getCardHighPrice(card) {
+      if (card.tcgplayer == null) return 6.5;
+      if (card.tcgplayer.prices == null) return 6.5;
+      if (card.tcgplayer.prices.holofoil != null)
+        return card.tcgplayer.prices.holofoil.market;
+      if (card.tcgplayer.prices.normal != null)
+        return card.tcgplayer.prices.normal.market;
+      return 6.5;
+    },
+    getCardLowPrice(card) {
+      if (card.tcgplayer == null) return 5.5;
+      if (card.tcgplayer.prices == null) return 5.5;
+      if (card.tcgplayer.prices.holofoil != null)
+        return card.tcgplayer.prices.holofoil.low;
+      if (card.tcgplayer.prices.normal != null)
+        return card.tcgplayer.prices.normal.low;
+      return 5.5;
     },
   },
 };

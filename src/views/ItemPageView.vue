@@ -17,12 +17,26 @@
         </div>
         <div id="item-info">
           <h1>{{ card[0].name }}</h1>
-          <h2 class="item-price">$2</h2>
+          <h2 class="item-price">${{ getCardLowPrice(card[0]) }}</h2>
           <h3>Ataques</h3>
           <p v-for="atack in card[0].attacks" v-bind:key="atack.name">
             <b>{{ atack.name }}</b> {{ atack.text }}
           </p>
-          <div id="itemAddCart">
+          <div id="edit-item" v-if="admin == 'true'">
+            <input v-model="qtd" type="number" min="0" max="10" readonly />
+            <button
+              @click="
+                $router.push({
+                  name: 'editItemPage',
+                  query: { id: card.id },
+                })
+              "
+            >
+              <i class="fa fa-shopping-cart"></i>
+              Edit Item
+            </button>
+          </div>
+          <div id="itemAddCart" v-else>
             <input v-model="qtd" type="number" min="0" max="10" />
             <button @click="addToCart(this.card[0], this.qtd)">
               <i class="fa fa-shopping-cart"></i>
@@ -82,12 +96,8 @@
               </div>
               <p class="card-seller">By {{ card.set.name }}</p>
               <div class="card-buy">
-                <p class="card-price">
-                  ${{ /*card.tcgplayer.prices.holofoil.market ??*/ 6.5 }}
-                </p>
-                <p class="card-original-price">
-                  ${{ /*card.tcgplayer.prices.holofoil.mid ??*/ 4.5 }}
-                </p>
+                <p class="card-price">${{ getCardLowPrice(card) }}</p>
+                <p class="card-original-price">${{ getCardHighPrice(card) }}</p>
                 <button class="card-add-cart" @click="addToCart(card, 1)">
                   <i class="fa fa-shopping-cart"></i>
                   Add
@@ -115,10 +125,13 @@ export default {
       }),
       cards: json,
       qtd: 1,
+      admin: false,
     };
   },
 
-  mounted() {},
+  mounted() {
+    this.admin = localStorage.admin;
+  },
 
   methods: {
     scrollToTop(id) {
@@ -137,6 +150,24 @@ export default {
         cart.push({ card: card, qtd: qtd });
       }
       localStorage.cart = JSON.stringify(cart);
+    },
+    getCardHighPrice(card) {
+      if (card.tcgplayer == null) return 6.5;
+      if (card.tcgplayer.prices == null) return 6.5;
+      if (card.tcgplayer.prices.holofoil != null)
+        return card.tcgplayer.prices.holofoil.market;
+      if (card.tcgplayer.prices.normal != null)
+        return card.tcgplayer.prices.normal.market;
+      return 6.5;
+    },
+    getCardLowPrice(card) {
+      if (card.tcgplayer == null) return 5.5;
+      if (card.tcgplayer.prices == null) return 5.5;
+      if (card.tcgplayer.prices.holofoil != null)
+        return card.tcgplayer.prices.holofoil.low;
+      if (card.tcgplayer.prices.normal != null)
+        return card.tcgplayer.prices.normal.low;
+      return 5.5;
     },
   },
 };

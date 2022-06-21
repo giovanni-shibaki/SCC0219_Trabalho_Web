@@ -1011,6 +1011,32 @@ hr {
   width: 30%
 }
 
+#edit-item {
+  margin-top: 10%;
+}
+
+#edit-item button{
+  margin-left: 5%;
+  padding: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  color: var(--white);
+  background-color: var(--yellow);
+  cursor: pointer;
+  border-radius: 5%;
+  border-style: none;
+}
+
+#edit-item input{
+  text-align: center;
+  padding: 2%;
+  padding-left: 3%;
+  padding-right: 3%;
+  border-style: solid;
+  border-radius: 15px;
+  width: 30%
+}
+
 .item-price {
   font-family: quicksand-bold;
   font-size: 200%;
