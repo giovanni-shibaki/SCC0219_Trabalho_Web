@@ -4,7 +4,7 @@
       <div class="sign-in">
         <p class="title">Sign In</p>
         <br /><br />
-        <form @submit="login">
+        <form @submit="login" action="/">
           Email
           <div class="input-container">
             <i class="fa fa-envelope icon"></i>
@@ -198,16 +198,10 @@ export default {
         localStorage.admin = true;
         localStorage.loggedIn = true;
         alert("Logou como admin");
-        this.$router.push({
-          name: "home",
-        });
       } else {
         localStorage.loggedIn = true;
         localStorage.admin = false;
         alert("Logou como usuário");
-        this.$router.push({
-          name: "home",
-        });
       }
     },
   },
