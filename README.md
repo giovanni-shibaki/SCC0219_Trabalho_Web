@@ -39,7 +39,7 @@ Trabalho em grupo da disciplina de Introdução ao Desenvolvimento Web - 1º sem
 
 - O cliente pode realizar login e cadastro através da página de **Sign In / Up**.
 
-- Após logado, o cliente pode editar as informações cadastradas em seu perfil através da página **Edit Profile**
+- Após logado, o cliente pode editar as informações cadastradas em seu perfil através da página **Edit Profile** e sortear, diariamente, uma carta na qual receberá uma oferta de desconto especial através da página **Card Of The Day**. Ambas páginas são acessíveis por meio dos botões presentes no dropdown do canto superior direito da tela ao passar o mouse sobre o nome do usuário logado.
 
 - A todo momento é possível acessar a página de carrinho (**Cart**) através do ícone presente no cabeçalho.
 
