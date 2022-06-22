@@ -186,26 +186,37 @@ export default {
 
   methods: {
     edit_information() {
+      this.username += "\n";
+      this.email += "\n";
+      this.password += "\n";
+      this.postalcode += "\n";
+      this.street += "\n";
+      this.number += "\n";
+      this.city += "\n";
+      this.state += "\n";
+      this.country += "\n";
+      this.phone += "\n";
       alert(
-        "Voce mudou as seguintes informacoes de perfil: " +
+        "Voce mudou as seguintes informacoes de perfil:\n" +
+          "Username: " +
           this.username +
-          ", " +
+          "Email: " +
           this.email +
-          ", " +
+          "Password: " +
           this.password +
-          ", " +
+          "Postal Code: " +
           this.postalcode +
-          ", " +
+          "Street: " +
           this.street +
-          ", " +
+          "Number: " +
           this.number +
-          ", " +
+          "City: " +
           this.city +
-          ", " +
+          "State: " +
           this.state +
-          ", " +
+          "Country: " +
           this.country +
-          ", " +
+          "Phone: " +
           this.phone
       );
     },
