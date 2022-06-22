@@ -26,10 +26,11 @@
             <input v-model="qtd" type="number" min="0" max="10" readonly />
             <button
               @click="
+                scrollToTop(-1);
                 $router.push({
                   name: 'editCard',
-                  query: { id: card.id },
-                })
+                  query: { id: card[0].id },
+                });
               "
             >
               <i class="fa fa-shopping-cart"></i>
@@ -136,9 +137,11 @@ export default {
   methods: {
     scrollToTop(id) {
       window.scrollTo(0, 0);
-      this.card = json.data.filter(function (obj) {
-        if (obj.id == id) return obj;
-      });
+      if (id != -1) {
+        this.card = json.data.filter(function (obj) {
+          if (obj.id == id) return obj;
+        });
+      }
     },
     addToCart(card, qtd) {
       card = JSON.parse(JSON.stringify(card));

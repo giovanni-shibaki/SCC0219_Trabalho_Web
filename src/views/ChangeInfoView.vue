@@ -25,6 +25,7 @@
               type="text"
               placeholder="Type your new username here"
               name="name"
+              v-model="username"
             />
           </div>
           Email
@@ -35,6 +36,7 @@
               type="text"
               placeholder="email@provider.com"
               name="email"
+              v-model="email"
             />
           </div>
           Password
@@ -45,6 +47,7 @@
               type="password"
               placeholder="Type your new password here"
               name="psw"
+              v-model="password"
             />
           </div>
           Confirm Password
@@ -55,6 +58,7 @@
               type="password"
               placeholder="Type your new password again here"
               name="cpsw"
+              v-model="cpassword"
             />
           </div>
 
@@ -71,6 +75,7 @@
               placeholder="XXXXX-XXX"
               v-maska="'XXXXX-XXX'"
               name="postcode"
+              v-model="postalcode"
             />
           </div>
 
@@ -82,6 +87,7 @@
               type="text"
               placeholder="Type your new street name"
               name="street"
+              v-model="street"
             />
           </div>
 
@@ -94,6 +100,7 @@
               placeholder="XX-XXX"
               v-maska="'XX-XXX'"
               name="num"
+              v-model="number"
             />
           </div>
 
@@ -105,6 +112,7 @@
               type="text"
               placeholder="Type the name of your new city"
               name="city"
+              v-model="city"
             />
           </div>
 
@@ -116,6 +124,7 @@
               type="text"
               placeholder="Type your new country state"
               name="state"
+              v-model="state"
             />
           </div>
 
@@ -127,6 +136,7 @@
               type="text"
               placeholder="Type your new contry name"
               name="country"
+              v-model="country"
             />
           </div>
 
@@ -139,6 +149,7 @@
               placeholder="(DDD) XXXXX-XXXX"
               v-maska="'(XX) XXXXX-XXXX'"
               name="phone"
+              v-model="phone"
             />
           </div>
 
@@ -156,14 +167,47 @@ export default {
   name: "SCC0219TrabalhoWebChangeInfoView",
 
   data() {
-    return {};
+    return {
+      username: "",
+      email: "",
+      password: "",
+      cpassword: "",
+      postalcode: "",
+      street: "",
+      number: "",
+      city: "",
+      state: "",
+      country: "",
+      phone: "",
+    };
   },
 
   mounted() {},
 
   methods: {
     edit_information() {
-      alert("Voce mudou a informacao de perfil");
+      alert(
+        "Voce mudou as seguintes informacoes de perfil: " +
+          this.username +
+          ", " +
+          this.email +
+          ", " +
+          this.password +
+          ", " +
+          this.postalcode +
+          ", " +
+          this.street +
+          ", " +
+          this.number +
+          ", " +
+          this.city +
+          ", " +
+          this.state +
+          ", " +
+          this.country +
+          ", " +
+          this.phone
+      );
     },
   },
 };
