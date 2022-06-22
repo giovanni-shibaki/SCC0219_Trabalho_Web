@@ -153,6 +153,7 @@ export default {
         cart.push({ card: card, qtd: qtd });
       }
       localStorage.cart = JSON.stringify(cart);
+      alert(card.name + " adicionado ao carrinho!");
     },
     getCardHighPrice(card) {
       if (card.tcgplayer == null) return 6.5;

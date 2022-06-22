@@ -102,6 +102,13 @@
               <div
                 class="dropdown-item dropdown-item-style"
                 style="color: #ffcb05"
+                @click="$router.push('/card-of-the-day')"
+              >
+                <p>Card of The Day</p>
+              </div>
+              <div
+                class="dropdown-item dropdown-item-style"
+                style="color: #ffcb05"
                 @click="$router.push('/change-info')"
               >
                 <p>Edit Profile</p>

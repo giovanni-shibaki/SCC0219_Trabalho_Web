@@ -64,7 +64,7 @@
         "
       >
         <img src="../assets/img/cards/irida.webp" class="category-image" />
-        <h4 class="category-name">Treiners</h4>
+        <h4 class="category-name">Trainers</h4>
         <p class="category-quantity">
           {{
             cards.data.filter((card) => card.supertype.includes("Trainer"))
