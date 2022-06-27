@@ -37,7 +37,7 @@
       <div class="sign-up">
         <p class="title">Sign Up</p>
         <br /><br />
-        <form class="form-sign-up" action="#">
+        <form class="form-sign-up" action="localhost:3000/client" method="post">
           Name
           <div class="input-container">
             <i class="fa fa-user icon"></i>
@@ -46,6 +46,7 @@
               type="text"
               placeholder="Type your username here"
               name="name"
+              v-model="name"
               required
             />
           </div>
@@ -57,6 +58,7 @@
               type="text"
               placeholder="email@provider.com"
               name="email"
+              v-model="email"
               required
             />
           </div>
@@ -68,6 +70,7 @@
               type="password"
               placeholder="Type your password here"
               name="psw"
+              v-model="password"
               required
             />
           </div>
@@ -96,6 +99,7 @@
               placeholder="XXXXX-XXX"
               v-maska="'XXXXX-XXX'"
               name="postcode"
+              v-model="postalCode"
             />
           </div>
 
@@ -107,6 +111,7 @@
               type="text"
               placeholder="Type your street name"
               name="street"
+              v-model="street"
             />
           </div>
 
@@ -119,6 +124,19 @@
               placeholder="XX-XXX"
               v-maska="'XX-XXX'"
               name="num"
+              v-model="number"
+            />
+          </div>
+
+          Address Details
+          <div class="input-container">
+            <i class="fas fa-city icon"></i>
+            <input
+              class="input-field"
+              type="text"
+              placeholder="Any additional detail about the address"
+              name="addressDetails"
+              v-model="addressDetails"
             />
           </div>
 
@@ -130,6 +148,7 @@
               type="text"
               placeholder="Type the name of your city"
               name="city"
+              v-model="city"
             />
           </div>
 
@@ -141,6 +160,7 @@
               type="text"
               placeholder="Type your country state"
               name="state"
+              v-model="state"
             />
           </div>
 
@@ -152,6 +172,7 @@
               type="text"
               placeholder="Type your contry name"
               name="country"
+              v-model="country"
             />
           </div>
 
@@ -164,10 +185,11 @@
               placeholder="(DDD) XXXXX-XXXX"
               v-maska="'(XX) XXXXX-XXXX'"
               name="phone"
+              v-model="phone"
             />
           </div>
 
-          <button type="submit" class="btn">Sign Up</button>
+          <button type="button" class="btn" @click="signup">Sign Up</button>
         </form>
       </div>
     </div>
@@ -181,6 +203,17 @@ export default {
     return {
       loginEmail: "",
       loginPassword: "",
+      name: "",
+      email: "",
+      password: "",
+      postalCode: "",
+      street: "",
+      number: "",
+      addressDetails: "",
+      city: "",
+      state: "",
+      country: "",
+      phone: "",
     };
   },
 
@@ -203,6 +236,32 @@ export default {
         localStorage.admin = false;
         alert("Logou como usuário");
       }
+    },
+    signup() {
+      console.log("aaaaaaaaaa");
+      fetch("http://127.0.0.1:3000/user/signup", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.name,
+          email: this.email,
+          password: this.password,
+          postalCode: this.postalCode,
+          street: this.street,
+          number: this.number,
+          addressDetails: this.addressDetails,
+          city: this.city,
+          state: this.state,
+          country: this.country,
+          phone: this.phone,
+          isAdmin: false,
+        }),
+      })
+        .then((a) => console.log(a))
+        .catch((a) => console.log(a));
     },
   },
 };
