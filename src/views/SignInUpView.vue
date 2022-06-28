@@ -4,7 +4,7 @@
       <div class="sign-in">
         <p class="title">Sign In</p>
         <br /><br />
-        <form @submit="login" action="/">
+        <form v-on:submit.prevent="signin">
           Email
           <div class="input-container">
             <i class="fa fa-envelope icon"></i>
@@ -31,13 +31,13 @@
           </div>
           <a href="idk">Forgot your password? Click here.</a>
           <button type="submit" class="btn">Sign In</button>
+          <img src="../assets/img/treinador.png" />
         </form>
-        <img src="../assets/img/treinador.png" />
       </div>
       <div class="sign-up">
         <p class="title">Sign Up</p>
-        <br /><br />
-        <form class="form-sign-up" action="localhost:3000/client" method="post">
+        <br />
+        <form class="form-sign-up" v-on:submit.prevent="signup">
           Name
           <div class="input-container">
             <i class="fa fa-user icon"></i>
@@ -189,7 +189,7 @@
             />
           </div>
 
-          <button type="button" class="btn" @click="signup">Sign Up</button>
+          <button type="submit" class="btn">Sign Up</button>
         </form>
       </div>
     </div>
@@ -220,25 +220,63 @@ export default {
   mounted() {},
 
   methods: {
-    login() {
+    signin() {
       if (this.loginEmail == "" || this.loginPassword == "") {
         return;
       }
-      if (
-        this.loginEmail == "admin@admin.com" &&
-        this.loginPassword == "admin"
-      ) {
-        localStorage.admin = true;
-        localStorage.loggedIn = true;
-        alert("Logou como admin");
-      } else {
-        localStorage.loggedIn = true;
-        localStorage.admin = false;
-        alert("Logou como usuário");
-      }
+      fetch("http://127.0.0.1:3000/user/signin", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.loginEmail,
+          password: this.loginPassword,
+        }),
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              // Logou com sucesso!
+              this.name = response.name;
+              this.email = response.email;
+              this.password = response.password;
+              this.postalCode = response.postalCode;
+              this.street = response.street;
+              this.number = response.number;
+              this.addressDetails = response.addressDetails;
+              this.city = response.city;
+              this.state = response.state;
+              this.country = response.country;
+              this.phone = response.phone;
+              this.isAdmin = response.isAdmin;
+
+              if (this.isAdmin == true) {
+                localStorage.admin = true;
+                localStorage.loggedIn = true;
+                alert("Logou como admin");
+                window.location.href = "/";
+              } else {
+                localStorage.loggedIn = true;
+                localStorage.admin = false;
+                alert("Logou como usuário");
+                window.location.href = "/";
+              }
+            })
+            .catch((err) => {
+              // Login falhou
+              alert("email/senha inválidos!");
+            });
+        })
+        .catch((err) => {
+          err.json().then((error) => {
+            console.log("Ovo" + error);
+          });
+        });
     },
     signup() {
-      console.log("aaaaaaaaaa");
       fetch("http://127.0.0.1:3000/user/signup", {
         method: "POST",
         headers: {
@@ -260,7 +298,13 @@ export default {
           isAdmin: false,
         }),
       })
-        .then((a) => console.log(a))
+        .then((res) => {
+          res.json().then((response) => {
+            // Cadastro realizado!
+            alert("Usuário cadastrado com sucesso!");
+            window.location.href = "/";
+          });
+        })
         .catch((a) => console.log(a));
     },
   },
