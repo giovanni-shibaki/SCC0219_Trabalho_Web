@@ -317,6 +317,15 @@ export default {
       window.scrollTo(0, 0);
     },
     addToCart(card) {
+      // Checar se a quantidade de cards no estoque não é zero
+      let sCard = this.cards.filter(function (obj) {
+        if (obj.id == card.id) return obj;
+      })[0];
+      if (sCard.quantity == 0) {
+        alert("Não há cartas no estoque!");
+        return;
+      }
+
       card = JSON.parse(JSON.stringify(card));
       let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart);
       let index = cart.findIndex((c) => c.card.id == card.id);
@@ -326,6 +335,7 @@ export default {
         cart.push({ card: card, qtd: 1 });
       }
       localStorage.cart = JSON.stringify(cart);
+      alert(card.name + " adicionado ao carrinho!");
     },
     getCardHighPrice(card) {
       if (card.tcgplayer == null) return 6.5;

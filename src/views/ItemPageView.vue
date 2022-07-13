@@ -100,10 +100,6 @@
               <div class="card-buy">
                 <p class="card-price">${{ getCardLowPrice(card) }}</p>
                 <p class="card-original-price">${{ getCardHighPrice(card) }}</p>
-                <button class="card-add-cart" @click="addToCart(card, 1)">
-                  <i class="fa fa-shopping-cart"></i>
-                  Add
-                </button>
               </div>
             </div>
           </div>

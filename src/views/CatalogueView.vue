@@ -384,6 +384,7 @@ export default {
         cart.push({ card: card, qtd: 1 });
       }
       localStorage.cart = JSON.stringify(cart);
+      alert(card.name + " adicionado ao carrinho!");
     },
   },
 };
