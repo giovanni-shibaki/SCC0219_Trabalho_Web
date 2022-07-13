@@ -46,8 +46,7 @@
         <h4 class="category-name">Pokémon</h4>
         <p class="category-quantity">
           {{
-            cards.data.filter((card) => card.supertype.includes("Pokémon"))
-              .length
+            cards.filter((card) => card.supertype.includes("Pokémon")).length
           }}
           Items
         </p>
@@ -67,8 +66,7 @@
         <h4 class="category-name">Trainers</h4>
         <p class="category-quantity">
           {{
-            cards.data.filter((card) => card.supertype.includes("Trainer"))
-              .length
+            cards.filter((card) => card.supertype.includes("Trainer")).length
           }}
           Items
         </p>
@@ -90,10 +88,7 @@
         />
         <h4 class="category-name">Energy</h4>
         <p class="category-quantity">
-          {{
-            cards.data.filter((card) => card.supertype.includes("Energy"))
-              .length
-          }}
+          {{ cards.filter((card) => card.supertype.includes("Energy")).length }}
           Items
         </p>
       </div>
@@ -111,9 +106,7 @@
         <img src="../assets/img/cards/rowlet.webp" class="category-image" />
         <h4 class="category-name">Common</h4>
         <p class="category-quantity">
-          {{
-            cards.data.filter((card) => card.rarity.includes("Common")).length
-          }}
+          {{ cards.filter((card) => card.rarity.includes("Common")).length }}
           Items
         </p>
       </div>
@@ -131,9 +124,7 @@
         <img src="../assets/img/cards/thievul.webp" class="category-image" />
         <h4 class="category-name">Uncommon</h4>
         <p class="category-quantity">
-          {{
-            cards.data.filter((card) => card.rarity.includes("Uncommon")).length
-          }}
+          {{ cards.filter((card) => card.rarity.includes("Uncommon")).length }}
           Items
         </p>
       </div>
@@ -151,7 +142,7 @@
         <img src="../assets/img/cards/garchomp_v.webp" class="category-image" />
         <h4 class="category-name">Rare</h4>
         <p class="category-quantity">
-          {{ cards.data.filter((card) => card.rarity.includes("Rare")).length }}
+          {{ cards.filter((card) => card.rarity.includes("Rare")).length }}
           Items
         </p>
       </div>
@@ -171,9 +162,7 @@
         />
         <h4 class="category-name">Promotional</h4>
         <p class="category-quantity">
-          {{
-            cards.data.filter((card) => card.rarity.includes("Promo")).length
-          }}
+          {{ cards.filter((card) => card.rarity.includes("Promo")).length }}
           Items
         </p>
       </div>
@@ -182,7 +171,7 @@
     <div class="featured-products">
       <div
         class="card"
-        v-for="card in cards.data.slice(12, 17)"
+        v-for="card in cards.slice(12, 17)"
         v-bind:key="card.id"
       >
         <img

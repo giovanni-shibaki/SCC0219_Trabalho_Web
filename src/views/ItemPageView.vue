@@ -9,27 +9,32 @@
       </h1>
       <div id="item-container">
         <div id="item-img">
-          <img
-            :src="card[0].images.small"
-            :alt="card[0].name"
-            class="card-image"
-          />
+          <img :src="card.images.small" :alt="card.name" class="card-image" />
         </div>
         <div id="item-info">
-          <h1>{{ card[0].name }}</h1>
-          <h2 class="item-price">${{ getCardLowPrice(card[0]) }}</h2>
+          <h1>{{ card.name }}</h1>
+          <h2 class="item-price">${{ getCardLowPrice(card) }}</h2>
           <h3>Ataques</h3>
-          <p v-for="atack in card[0].attacks" v-bind:key="atack.name">
+          <p v-for="atack in card.attacks" v-bind:key="atack.name">
             <b>{{ atack.name }}</b> {{ atack.text }}
           </p>
           <div id="edit-item" v-if="admin == 'true'">
-            <input v-model="qtd" type="number" min="0" max="10" readonly />
+            <p style="text-align: center">
+              Quantidade em estoque: {{ this.qtdCards }}
+            </p>
+            <input
+              v-model="qtd"
+              type="number"
+              :min="0"
+              :max="this.qtdCards"
+              readonly
+            />
             <button
               @click="
                 scrollToTop(-1);
                 $router.push({
                   name: 'editCard',
-                  query: { id: card[0].id },
+                  query: { id: card.id },
                 });
               "
             >
@@ -38,8 +43,11 @@
             </button>
           </div>
           <div id="itemAddCart" v-else>
-            <input v-model="qtd" type="number" min="0" max="10" />
-            <button @click="addToCart(this.card[0], this.qtd)">
+            <p style="text-align: center">
+              Quantidade em estoque: {{ this.qtdCards }}
+            </p>
+            <input v-model="qtd" type="number" :min="0" :max="this.qtdCards" />
+            <button @click="addToCart(this.card, this.qtd)">
               <i class="fa fa-shopping-cart"></i>
               Add to Cart
             </button>
@@ -53,9 +61,9 @@
         <div class="featured-products">
           <div
             class="card"
-            v-for="card in cards.data
+            v-for="card in cards
               .filter(function (obj) {
-                if (obj.rarity === card[0].rarity) return obj;
+                if (obj.rarity === card.rarity) return obj;
               })
               .slice(0, 5)"
             v-bind:key="card.id"
@@ -121,29 +129,76 @@ export default {
   data() {
     return {
       router: useRoute(),
-      card: json.data.filter(function (obj) {
+      id: useRoute().query.id,
+      card: json.filter(function (obj) {
         if (obj.id == useRoute().query.id) return obj;
-      }),
+      })[0],
+      pos: json.findIndex((obj) => obj.id == useRoute().query.id),
       cards: json,
-      qtd: 1,
+      qtd: 0,
       admin: false,
+      qtdCards: 0,
     };
   },
 
   mounted() {
     this.admin = localStorage.admin;
+
+    // Depois de montado, pegar as cartas do banco de dados, o que pode demorar alguns segundos devido a quantidade de cartas
+    this.getCardFromDB();
+
+    this.qtdCards = this.card.quantity;
   },
 
   methods: {
+    // Função responsável por buscar no banco de dados a quantidade de cartas disponível no estoque
+    getCardFromDB() {
+      fetch("http://127.0.0.1:3000/cards/getCard", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: this.id,
+        }),
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              this.card = response;
+              this.qtdCards = this.card.quantity;
+            })
+            .catch((err) => {
+              alert("Erro ao procurar quantidade de cartas no estoque!");
+              console.log("Erro: " + err);
+            });
+        })
+        .catch((err) => {
+          console.log("Erro: " + err);
+        });
+    },
     scrollToTop(id) {
       window.scrollTo(0, 0);
       if (id != -1) {
-        this.card = json.data.filter(function (obj) {
+        this.card = json.filter(function (obj) {
           if (obj.id == id) return obj;
         });
       }
     },
     addToCart(card, qtd) {
+      if (this.qtdCards == 0) {
+        // Não há cartas no estoque, portanto a carta não pode ser adicionada no carrinho
+        alert("Não há cartas no estoque!");
+        return;
+      }
+
+      if (this.qtd == 0) {
+        alert("Selecione o número de cartas que deseja adicionar ao carrinho!");
+        return;
+      }
+
       card = JSON.parse(JSON.stringify(card));
       let cart = localStorage.cart == "" ? [] : JSON.parse(localStorage.cart);
       let index = cart.findIndex((c) => c.card.id == card.id);

@@ -178,13 +178,13 @@ export default {
   data() {
     return {
       route: useRoute(),
-      cards: json.data,
+      cards: json,
       numPages: 0,
     };
   },
 
   mounted() {
-    this.cards = json.data.filter(function (obj) {
+    this.cards = json.filter(function (obj) {
       if (useRoute().query.category == null && useRoute().query.search == null)
         return obj;
       // Verificar se foi feito uma busca
@@ -220,13 +220,38 @@ export default {
       }
     });
     this.numPages = Math.ceil(parseInt(parseInt(this.cards.length) / 20));
+
+    // Depois de montado, pegar as cartas do banco de dados, o que pode demorar alguns segundos devido a quantidade de cartas
+    this.syncDataBase();
   },
 
   methods: {
+    syncDataBase() {
+      fetch("http://127.0.0.1:3000/cards/getAllCards", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              this.cards = response;
+            })
+            .catch((err) => {
+              alert("Erro ao procurar quantidade de cartas no estoque!");
+            });
+        })
+        .catch((err) => {
+          console.log("Erro: " + err);
+        });
+    },
     updateCards(cat) {
       window.scrollTo(0, 0);
       if (cat == -1) return;
-      this.cards = json.data.filter(function (obj) {
+      this.cards = json.filter(function (obj) {
         switch (cat) {
           case 0:
             if (obj.supertype == "Pokémon") return obj;

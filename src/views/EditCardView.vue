@@ -31,13 +31,13 @@
               Stock Quantity
               <div class="input-container">
                 <input
+                  v-model="qtd"
                   class="input"
                   type="Number"
                   placeholder="10"
                   min="0"
                   step="1"
                   name="cardQuantity"
-                  value="10"
                 />
               </div>
               Card Image URL
@@ -51,6 +51,9 @@
                 />
               </div>
               <br />
+              <br />
+              <br />
+              <br />
               <div class="input-container">
                 <button
                   class="button is-primary"
@@ -63,15 +66,52 @@
               </div>
             </div>
             <div class="column px-5">
-              Card Description
+              <b>Attack 1</b>
+              <br />
+              Name
+              <div class="input-container">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Attack1 Name"
+                  name="cardAttack1Name"
+                  v-model="attack1Name"
+                />
+                Text
+              </div>
               <div class="input-container">
                 <textarea
                   rows="9"
                   class="textarea"
                   type="text"
-                  placeholder="Description"
-                  name="cardDescription"
-                  v-model="description"
+                  placeholder="Attack1 Text"
+                  name="cardAttack1Text"
+                  v-model="attack1Text"
+                ></textarea>
+              </div>
+            </div>
+            <div class="column px-5">
+              <b>Attack 2</b>
+              <br />
+              Name
+              <div class="input-container">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Attack2 Name"
+                  name="cardAttack2Name"
+                  v-model="attack2Name"
+                />
+              </div>
+              Text
+              <div class="input-container">
+                <textarea
+                  rows="9"
+                  class="textarea"
+                  type="text"
+                  placeholder="Attack2 Text"
+                  name="cardAttack2Text"
+                  v-model="attack2Text"
                 ></textarea>
               </div>
             </div>
@@ -92,66 +132,75 @@ export default {
   data() {
     return {
       router: useRoute(),
-      card: json.data.filter(function (obj) {
+      card: json.filter(function (obj) {
         if (obj.id == useRoute().query.id) return obj;
-      }),
+      })[0],
       cards: json,
       cardname: "",
       price: "",
       imagelink: "",
-      description: "",
+      attack1Name: "",
+      attack1Text: "",
+      attack2Name: "",
+      attack2Text: "",
+      qtd: 0,
     };
   },
 
   mounted() {
-    // this.price = this.card[0].tcgplayer.prices;
-    // this.cards = json.data.filter(function (obj) {
-    //   if (useRoute().query.category == null && useRoute().query.search == null)
-    //     return obj;
-    //   // Verificar se foi feito uma busca
-    //   if (useRoute().query.search != null) {
-    //     if (
-    //       obj.name.toLowerCase().includes(useRoute().query.search.toLowerCase())
-    //     ) {
-    //       return obj;
-    //     }
-    //   }
-    //   switch (parseInt(useRoute().query.category)) {
-    //     case 0:
-    //       if (obj.supertype == "Pokémon") return obj;
-    //       break;
-    //     case 1:
-    //       if (obj.supertype == "Trainer") return obj;
-    //       break;
-    //     case 2:
-    //       if (obj.supertype == "Energy") return obj;
-    //       break;
-    //     case 3:
-    //       if (obj.rarity == "Common") return obj;
-    //       break;
-    //     case 4:
-    //       if (obj.rarity == "Uncommon") return obj;
-    //       break;
-    //     case 5:
-    //       if (obj.rarity == "Rare") return obj;
-    //       break;
-    //     case 6:
-    //       if (obj.rarity == "Promo") return obj;
-    //       break;
-    //   }
-    // });
-    // this.numPages = Math.ceil(parseInt(parseInt(this.cards.length) / 20));
-
-    this.cardname = this.card[0].name;
-    this.price = this.getCardLowPrice(this.card[0]);
-    this.imagelink = this.card[0].images.small;
-    for (let attack in this.card[0].attacks) {
-      this.description += this.card[0].attacks[attack].name + ": ";
-      this.description += this.card[0].attacks[attack].text + "\n\n";
+    this.qtd = this.card.quantity;
+    this.cardname = this.card.name;
+    this.price = this.getCardLowPrice(this.card);
+    this.imagelink = this.card.images.small;
+    if (this.card.attacks != null && this.card.attacks[0] != null) {
+      this.attack1Name = this.card.attacks[0].name;
+      this.attack1Text = this.card.attacks[0].text;
+    }
+    if (this.card.attacks != null && this.card.attacks[1] != null) {
+      this.attack2Name = this.card.attacks[1].name;
+      this.attack2Text = this.card.attacks[1].text;
     }
   },
 
   methods: {
+    getCardFromDB() {
+      fetch("http://127.0.0.1:3000/cards/getCard", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: this.id,
+        }),
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              this.card = response;
+              this.qtd = this.card.quantity;
+              this.cardname = this.card.name;
+              this.price = this.getCardLowPrice(this.card);
+              this.imagelink = this.card.images.small;
+              if (this.card.attacks != null && this.card.attacks[0] != null) {
+                this.attack1Name = this.card.attacks[0].name;
+                this.attack1Text = this.card.attacks[0].text;
+              }
+              if (this.card.attacks != null && this.card.attacks[1] != null) {
+                this.attack2Name = this.card.attacks[1].name;
+                this.attack2Text = this.card.attacks[1].text;
+              }
+            })
+            .catch((err) => {
+              alert("Erro ao procurar quantidade de cartas no estoque!");
+              console.log("Erro: " + err);
+            });
+        })
+        .catch((err) => {
+          console.log("Erro: " + err);
+        });
+    },
     edit_card() {
       alert("As informacoes da carta foram trocadas com sucesso!");
       this.$router.push({
