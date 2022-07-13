@@ -16,18 +16,16 @@ Trabalho em grupo da disciplina de Introdução ao Desenvolvimento Web - 1º sem
 - O sistema possui 2 tipos de usuários: Clientes e Administradores.
     - Os administradores são responsáveis por registrar e manejar outros administradores, clientes e cartas de pokémon oferecidas. A aplicação deverá vir com uma conta de administrador com email **admin@admin.com** e senha **admin**. (**Este exato email e senha são necessários para logar como Admin e acessar as páginas destinadas aos Administradores**).
     - Os clientes são usuários que acessam o sistema para comprar cartas.
-- O registro de administrador deve incluir: id, nome, telefone, email e senha.
-- O registro de cada cliente deve incluir: id, nome, email, senha, endereço e telefone.
-- Os registros das cartas devem incluir: nome, preço, quantidade (em estoque) e descrição.
-- Venda de cartas de pokemon: Cartas e suas quantidades são selecionados e incluidas no carrinho. As cartas são compradas utilizando dados de cartão de crédito (qualquer número é aceito pelo sistema). A quantidade vendida de cartas é subtraída da quantidade em estoque e adicionada à quantidade vendida. O carrinho é esvaziado somente após o pagamento ou manualmente pelo cliente.
+- O registro de administrador deve incluir: Nome, email e senha, sendo os demais campos, referentes a endereço, opcionais.
+- O registro de cada cliente deve incluir: Nome, email, senha, endereço e telefone.
+- Os registros das cartas devem incluir: Id, nome, nome do set, preço mínimo de venda, preço médio de mercado, quantidade em estoque, URL da imagem da carta e uma lista de até 2 ataques por carta.
+- Venda de cartas de pokemon: Cartas e suas quantidades são selecionados e incluídas no carrinho. As cartas são compradas utilizando dados de cartão de crédito (qualquer número é aceito pelo sistema). A quantidade vendida de cartas é subtraída da quantidade em estoque. O carrinho é esvaziado somente após o pagamento ou retirada manual pelo cliente.
 - Manejo de cartas: Administradores devem ser capazes de criar, atualizar, ler e deletar (CRUD) novas cartas de Pokemon. Por exemplo, eles devem ser capazes de mudar a quantidade de cartas em estoque.
-- O sistema deve conter requisitos de accessibilidade e prover boa usabilidade para o cliente, sendo responsível ao aplicar zoom ou visualizar em diferentes resoluções de tela.
+- O sistema deve conter requisitos de accessibilidade e prover boa usabilidade para o cliente.
 
 ### Funcionalidade extra:
 
-- Todos os dias, ao entrar na aplicação, o cliente pode entrar em uma tela chamada **Carta do dia**, na qual uma das cartas presentes na loja será sorteada e terá um desconto especial naquele dia apenas para aquele cliente.
-
-- Para o Milestone 2, como a aplicação ainda não possui banco de dados, uma carta aleatória será sorteada para ser exibida.
+- Todos os dias, ao entrar na aplicação e realizar login, o cliente pode acessar uma tela chamada **Carta do dia**, na qual uma das cartas presentes na loja será sorteada e terá um desconto especial naquele dia apenas para aquele cliente.
 
 ## Descrição do projeto
 
@@ -47,13 +45,13 @@ Trabalho em grupo da disciplina de Introdução ao Desenvolvimento Web - 1º sem
 
 - Quando logado em uma conta de administrador, será possível acessar a página **Admin Page** atrvés de um botão que estará presente no dropdown ao passar com o mouse sobre o nome de usuário logado presente no canto superior direito da tela. Dessa forma, na página do administrador será possível acessar todas as funcionalidades voltadas aos administradores.
 
-- Além disso, na página de **Item**, quando logado como administrador, será visível um botão de editar item, que fará irá para a página **Edit Card** para edição do item selecionado.
+- Além disso, na página de **Item**, quando logado como administrador, será visível um botão de editar item, que fará irá para a página **Edit Card** para edição da carta selecionada.
 
 ### Informações armazenadas no servidor
 
-- Informações sobre os usuários clientes (id, nome, email, senha, endereço, telefone e foto de perfil);
-- Informações sobre os usuários administradores (id, nome, telefone, email e senha);
-- Informações sobre as cartas (nome, id, imagem, descrição, série (coleções de cartas de cada geração), categoria, preço, quantidade (em estoque), quantidade vendida).
+- Informações sobre os usuários clientes (id, nome, email, senha, endereço e telefone);
+- Informações sobre os usuários administradores (id, nome, email e senha);
+- Informações sobre as cartas (nome, id, imagem, ataques, série (coleções de cartas de cada geração), preço, quantidade (em estoque), raridade e supertipo).
 - Data da última carta do dia sorteada por cada usuário, a carta sorteada e o valor de desconto
 
 ## Comentários sobre o código
@@ -82,6 +80,9 @@ A seguir estão listados os testes realizados:
     - Na página do carrinho testar se o item será removido ao clicar no botão **Remove**
 6) Testar a máscara de input em alguns dos campos presentes no site
 7) Testar funcionalidade de edição de carta quando logado como Administrador
+8) Testar inclusão de cartas e usuários por parte do administrador
+9) Testar alteração de perfil por parte do usuário
+10) Testar finalização de compra após itens serem adicionados ao carrinho.
 
 ## Resultados dos testes
 
@@ -91,11 +92,14 @@ A seguir estão listados os testes realizados:
 4) O item é adicionado ao carrinho em ambos os casos, sendo que na página do item é possível adicionar a quantidade especificada no campo de quantidade a ser adicionada ao carrinho.
 5) Na página do carrinho, ao clicar no botão **Remove** a carta será removida do carrinho independentemente do número de cartas de um mesmo item conforme o esperado.
 6) A maioria dos campos numéricos possui máscaras de input.
-7) Quando logado como Administrador, ao selecionar uma carta do catálogo e clicar para editar o item, as informações a serem editadas da carta são exibidas.
+7) Quando logado como Administrador, ao selecionar uma carta do catálogo e clicar para editar o item, as informações a serem editadas da carta são exibidas e as alterações, após clicar no botão de alterar carta, são salvas no banco de dados conforme esperado.
+8) As inclusões de cartas e usuários, quando logado como administrador, funcionam conforme o esperado, permitindo que um administrador faça o cadastro de outros administradores no sistema.
+9) Quando logado como um usuário comum, é possível editar as informações de perfil que são salvas no banco de dados conforme esperado.
+10) **Em desenvolvimento**
 
 ## Procedimentos de build
 
-- Para o Milestone 2 foram apenas desenvolvidos todas as páginas do sistema ([link figma](https://www.figma.com/file/vWXNlQr1lu3tz3Tc1HSfxf/PokemonCards-Mockup?node-id=0%3A1)) utilizando o framework [Vue](https://pt.wikipedia.org/wiki/Vue.js).
+- Para a entrega final foram apenas desenvolvidos todas as páginas do sistema ([link figma](https://www.figma.com/file/vWXNlQr1lu3tz3Tc1HSfxf/PokemonCards-Mockup?node-id=0%3A1)) utilizando o framework [Vue](https://pt.wikipedia.org/wiki/Vue.js) e também todas as funcionalidades que utilizam o banco de dados MongoDB.
 
 - Todas as componentes (HTML + CSS + JAVASCRIPT) desenvolvidas estão presentes na pasta **/src/**, sendo que, para o desenvolvimento de uma SPA (Single Page Application) utilizou-se o [Vue Router](https://router.vuejs.org/), fazendo com que os componentes da página sejam dinamicamente carregados durante a nevegação do usuário.
 
@@ -116,10 +120,14 @@ A seguir estão listados os testes realizados:
 
 Abaixo, um pequeno tutorial de como rodar e visualizar as páginas do site:
 
-Observação: Como, para a Milestone 2 ainda não utilizamos banco de dados para a correta exibição, inclusão e alteração das informações de clientes, administradores e cartas, ainda não fizemos uma build do projeto. Dessa forma, o projeto deve ser executado em modo de desenvolvimento seguindo o passo a passo a seguir.
+Para executar a aplicação é preciso que o software Node.js esteja instalado em sua máquina através do tutorial abaixo:        
+https://nodejs.org/en/
 
-    Pra executar a aplicação é preciso que o software Node.js esteja instalado em sua máquina. Basta seguir o tutorial abaixo:        
-    https://nodejs.org/en/
+**IMPORTANTE!**
+
+Para o correto funcionamento da aplicação é necessária que tanto o FrontEnd (presente neste repositório) quanto o BackEnd (presente no repositório [BackEnd](https://github.com/giovanni-shibaki/SCC0219_Trabalho_Web_Server)) estejam em execução. Dessa forma, dividiu-se o tutorial de build em duas partes que devem ser executadas ao mesmo tempo:
+
+#### **FrontEnd**
 
     Faça download do projeto por meio do botão [Code] -> [Download ZIP] presente no GitHub e decompacte o arquivo .ZIP, ou clone o projeto em sua pasta de preferência.
 
@@ -134,14 +142,27 @@ Observação: Como, para a Milestone 2 ainda não utilizamos banco de dados para
 
     Pronto! Você agora estará na página principal de nosso site!
 
+#### **BackEnd**
+
+    Faça download do BackEnd do projeto ([BackEnd](https://github.com/giovanni-shibaki/SCC0219_Trabalho_Web_Server)) por meio do botão [Code] -> [Download ZIP] presente no GitHub e decompacte o arquivo .ZIP, ou clone o projeto em sua pasta de preferência.
+
+    Depois, por meio do terminal, dentro da pasta do projeto, executar o comando abaixo:
+    > npm install
+
+    Em seguida, para executar o BackEnd, basta utilizado o comando abaixo:
+    > npm run start
+
+    Pronto! O BackEnd da aplicação agora está em execução e todas as funcionalidades que necessitam de acesso ao banco de dados MongoDB estarão funcionando!
+
 ## Problemas
 
-- Sem grandes problemas até esta etapa de desenvolvimento.
+- Não foram encontrados grandes problemas durante o desenvolvimento deste projeto.
 
 ## Comentários
 
 - Foi possível revisar diversos conceitos aprendidos em aula sobre HTML, CSS e JAVASCRIPT, além de aprender novas tags e atributos de estilização para personalizar diversos aspectos do sistema e deixar parecido com o que planejamos nos mockups do sistema.
 - Além disso, pôde-se aprender o processo de desenvolvimento web utilizando o framework **Vue JS** e o desenvolvimento de um SPA (Single Page Application) de forma a criar uma interface rápida e agradável aos usuários.
+- Por fim, pôde-se aprender o funcionando básico de um banco NoSQL com a divisão do projeto em FrontEnd, que cuida de todas as páginas acessíveis pelos usuários ao sistema, e BackEnd, responsável pela comunicação com o banco de dados, atendendo a solicitações do FrontEnd.
 
 
 

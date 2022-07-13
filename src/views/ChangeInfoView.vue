@@ -39,6 +39,7 @@
               name="email"
               v-model="email"
               required
+              disabled
             />
           </div>
           Password
@@ -241,6 +242,7 @@ export default {
         .then((res) => {
           res.json().then((response) => {
             // Cadastro realizado!
+            localStorage.userName = this.username;
             alert("Informações de pefil atualizadas com sucesso!");
             window.location.href = "/";
           });
