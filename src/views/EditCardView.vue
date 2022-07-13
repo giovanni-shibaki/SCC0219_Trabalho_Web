@@ -15,9 +15,20 @@
                   placeholder="Card Name"
                   name="cardName"
                   v-model="cardname"
+                  required
                 />
               </div>
-              Price of the card
+              Card Set Name
+              <div class="input-container">
+                <input
+                  class="input"
+                  type="text"
+                  placeholder="Card Set Name"
+                  name="cardSetName"
+                  v-model="setName"
+                />
+              </div>
+              Low Price of the card
               <div class="input-container">
                 <input
                   class="input"
@@ -27,6 +38,18 @@
                   step="0.01"
                   name="cardPrice"
                   v-model="price"
+                />
+              </div>
+              Market Price of the card
+              <div class="input-container">
+                <input
+                  class="input"
+                  type="Number"
+                  placeholder="10.00"
+                  min="0"
+                  step="0.01"
+                  name="cardPrice"
+                  v-model="marketPrice"
                 />
               </div>
               Stock Quantity
@@ -132,25 +155,28 @@ export default {
   data() {
     return {
       router: useRoute(),
-      card: json.filter(function (obj) {
-        if (obj.id == useRoute().query.id) return obj;
-      })[0],
+      id: useRoute().query.id,
+      card: json[0],
       cards: json,
       cardname: "",
       price: "",
+      marketPrice: "",
       imagelink: "",
       attack1Name: "",
       attack1Text: "",
       attack2Name: "",
       attack2Text: "",
+      setName: "",
       qtd: 0,
     };
   },
 
   mounted() {
+    this.setName = this.card.set.name;
     this.qtd = this.card.quantity;
     this.cardname = this.card.name;
     this.price = this.getCardLowPrice(this.card);
+    this.marketPrice = this.getCardHighPrice(this.card);
     this.imagelink = this.card.images.small;
     if (this.card.attacks != null && this.card.attacks[0] != null) {
       this.attack1Name = this.card.attacks[0].name;
@@ -172,7 +198,7 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: this.card.id,
+          id: this.id,
         }),
       })
         .then((res) => {
@@ -180,9 +206,11 @@ export default {
             .json()
             .then((response) => {
               this.card = response;
+              this.setName = this.card.set.name;
               this.qtd = this.card.quantity;
               this.cardname = this.card.name;
               this.price = this.getCardLowPrice(this.card);
+              this.marketPrice = this.getCardHighPrice(this.card);
               this.imagelink = this.card.images.small;
               if (this.card.attacks != null && this.card.attacks[0] != null) {
                 this.attack1Name = this.card.attacks[0].name;
@@ -208,6 +236,7 @@ export default {
       this.card.quantity = this.qtd;
       this.card.name = this.cardname;
       this.card.images.small = this.imagelink;
+      this.card.set.name = this.setName;
       console.log(this.card.attacks);
       if (this.card.attacks.length == 0 && this.attack1Name.length > 0) {
         this.card.attacks.push({
@@ -233,6 +262,39 @@ export default {
           this.card.attacks[1].name = this.attack2Name;
           this.card.attacks[1].text = this.attack2Text;
         }
+      }
+
+      // Se o card não tiver preço definido no banco, incluir em seus dados
+      if (this.card.tcgplayer == null) {
+        this.card.tcgplayer = {
+          prices: {
+            holofoil: {
+              low: this.price,
+              market: this.marketPrice,
+            },
+          },
+        };
+      } else if (this.card.tcgplayer.prices == null) {
+        this.card.tcgplayer.prices = {
+          prices: {
+            holofoil: {
+              low: this.price,
+              market: this.marketPrice,
+            },
+          },
+        };
+      } else if (this.card.tcgplayer.prices.holofoil == null) {
+        console.log(this.card.tcgplayer.prices);
+        this.card.tcgplayer.prices.holofoil = {
+          low: this.price,
+          market: this.marketPrice,
+        };
+      } else if (this.card.tcgplayer.prices.holofoil != null) {
+        this.card.tcgplayer.prices.holofoil.low = this.price;
+        this.card.tcgplayer.prices.holofoil.market = this.marketPrice;
+      } else if (this.card.tcgplayer.prices.normal != null) {
+        this.card.tcgplayer.prices.normal.low = this.price;
+        this.card.tcgplayer.prices.normal.market = this.marketPrice;
       }
 
       // Remover o campo _id dos dados que serão atualizados
@@ -278,6 +340,15 @@ export default {
       if (card.tcgplayer.prices.normal != null)
         return card.tcgplayer.prices.normal.low;
       return 5.5;
+    },
+    getCardHighPrice(card) {
+      if (card.tcgplayer == null) return 6.5;
+      if (card.tcgplayer.prices == null) return 6.5;
+      if (card.tcgplayer.prices.holofoil != null)
+        return card.tcgplayer.prices.holofoil.market;
+      if (card.tcgplayer.prices.normal != null)
+        return card.tcgplayer.prices.normal.market;
+      return 6.5;
     },
   },
 };

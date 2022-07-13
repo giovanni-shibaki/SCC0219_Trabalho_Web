@@ -31,7 +31,14 @@
         </router-link>
       </div>
       <div class="header-user">
-        <img src="./assets/img/dilvan.jpg" />
+        <img
+          v-if="admin == 'true' && loggedIn == 'true'"
+          src="./assets/img/adminImg.png"
+        />
+        <img
+          v-if="admin == 'false' && loggedIn == 'true'"
+          src="./assets/img/userImg.png"
+        />
         <div
           class="dropdown is-hoverable"
           v-if="admin == 'true' && loggedIn == 'true'"
@@ -49,7 +56,7 @@
                 font-size: 100%;
               "
             >
-              <span>Admin</span>
+              <span>{{ this.userName ?? "Admin" }}</span>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>
@@ -91,7 +98,7 @@
                 font-size: 100%;
               "
             >
-              <span>{{ userName ?? "Usuário" }}</span>
+              <span>{{ this.userName ?? "Usuário" }}</span>
               <span class="icon is-small">
                 <i class="fas fa-angle-down" aria-hidden="true"></i>
               </span>
@@ -147,8 +154,12 @@
         <button class="btn" @click="$router.push('/')">
           <i class="fas fa-home"></i> Home
         </button>
-        <button class="btn"><i class="fa fa-fire"></i> Hot Deals</button>
-        <button class="btn"><i class="fa fa-bullhorn"></i> New Products</button>
+        <button class="btn" @click="$router.push('/catalogue?page=0')">
+          <i class="fa fa-fire"></i> Hot Deals
+        </button>
+        <button class="btn" @click="$router.push('/catalogue?page=0')">
+          <i class="fa fa-bullhorn"></i> New Products
+        </button>
       </div>
     </div>
   </div>
@@ -250,6 +261,7 @@ export default {
       router: useRoute(),
       admin: false,
       loggedIn: false,
+      userName: "",
     };
   },
 
@@ -260,6 +272,8 @@ export default {
     if (localStorage.loggedIn) {
       this.loggedIn = localStorage.getItem("loggedIn");
     }
+    this.userName = localStorage.userName;
+
     window.addEventListener("storage", this.storageListener);
 
     localStorage.cart = [];

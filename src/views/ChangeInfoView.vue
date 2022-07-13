@@ -3,7 +3,7 @@
     <div class="sign-in-out">
       <div class="sign-in">
         <p class="title">
-          Change your profile information here, {{ userName ?? "Usuário" }}
+          Change your profile information here, {{ this.userName ?? "Usuário" }}
         </p>
         <br /><br />
         On this page you can change any of the informations of your profile,
@@ -14,9 +14,9 @@
         <img src="../assets/img/treinador.png" />
       </div>
       <div class="sign-up">
-        <p class="title">New profile information</p>
-        <br /><br />
-        <form class="form-sign-up" action="#">
+        <p class="title">Profile</p>
+        <br />
+        <form class="form-sign-up" v-on:submit.prevent="editInformation()">
           Username
           <div class="input-container">
             <i class="fa fa-user icon"></i>
@@ -26,6 +26,7 @@
               placeholder="Type your new username here"
               name="name"
               v-model="username"
+              required
             />
           </div>
           Email
@@ -37,6 +38,7 @@
               placeholder="email@provider.com"
               name="email"
               v-model="email"
+              required
             />
           </div>
           Password
@@ -48,8 +50,10 @@
               placeholder="Type your new password here"
               name="psw"
               v-model="password"
+              required
             />
           </div>
+
           Confirm Password
           <div class="input-container">
             <i class="fa fa-key icon"></i>
@@ -59,6 +63,7 @@
               placeholder="Type your new password again here"
               name="cpsw"
               v-model="cpassword"
+              required
             />
           </div>
 
@@ -101,6 +106,18 @@
               v-maska="'XX-XXX'"
               name="num"
               v-model="number"
+            />
+          </div>
+
+          Address Details
+          <div class="input-container">
+            <i class="fas fa-city icon"></i>
+            <input
+              class="input-field"
+              type="text"
+              placeholder="Any additional detail about the address"
+              name="addressDetails"
+              v-model="addressDetails"
             />
           </div>
 
@@ -153,9 +170,7 @@
             />
           </div>
 
-          <button type="submit" class="btn" @click="edit_information()">
-            Save Changes
-          </button>
+          <button type="submit" class="btn">Save Changes</button>
         </form>
       </div>
     </div>
@@ -169,6 +184,8 @@ export default {
   data() {
     return {
       username: "",
+      userName: "",
+      userEmail: "",
       email: "",
       password: "",
       cpassword: "",
@@ -179,13 +196,18 @@ export default {
       state: "",
       country: "",
       phone: "",
+      addressDetails: "",
     };
   },
 
-  mounted() {},
+  mounted() {
+    this.userName = localStorage.userName;
+    this.userEmail = localStorage.userEmail;
+    this.getUserData();
+  },
 
   methods: {
-    edit_information() {
+    editInformation() {
       this.username += "\n";
       this.email += "\n";
       this.password += "\n";
@@ -196,6 +218,7 @@ export default {
       this.state += "\n";
       this.country += "\n";
       this.phone += "\n";
+      this.addressDetails += "\n";
       alert(
         "Voce mudou as seguintes informacoes de perfil:\n" +
           "Username: " +
@@ -210,6 +233,8 @@ export default {
           this.street +
           "Number: " +
           this.number +
+          "Adrress Details: " +
+          this.addressDetails +
           "City: " +
           this.city +
           "State: " +
@@ -219,6 +244,46 @@ export default {
           "Phone: " +
           this.phone
       );
+    },
+    getUserData() {
+      console.log(localStorage.userEmail);
+      fetch("http://127.0.0.1:3000/user/getUser", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: this.userEmail,
+        }),
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              // Recebeu as informações do usuário com sucesso!
+              this.username = response.name;
+              this.email = response.email;
+              this.postalcode = response.postalCode;
+              this.street = response.street;
+              this.number = response.number;
+              this.addressDetails = response.addressDetails;
+              this.city = response.city;
+              this.state = response.state;
+              this.country = response.country;
+              this.phone = response.phoneNumber;
+              this.isAdmin = response.isAdmin;
+            })
+            .catch((err) => {
+              // Request failed
+              console.log("Erro: " + err);
+            });
+        })
+        .catch((err) => {
+          err.json().then((error) => {
+            console.log("Erro: " + err);
+          });
+        });
     },
   },
 };

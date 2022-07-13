@@ -82,6 +82,7 @@
               type="password"
               placeholder="Type your password again here"
               name="cpsw"
+              v-model="confirmPassword"
               required
             />
           </div>
@@ -206,6 +207,7 @@ export default {
       name: "",
       email: "",
       password: "",
+      confirmPassword: "",
       postalCode: "",
       street: "",
       number: "",
@@ -250,15 +252,19 @@ export default {
               this.city = response.city;
               this.state = response.state;
               this.country = response.country;
-              this.phone = response.phone;
+              this.phone = response.phoneNumber;
               this.isAdmin = response.isAdmin;
 
               if (this.isAdmin == true) {
+                localStorage.userName = this.name;
+                localStorage.userEmail = this.email;
                 localStorage.admin = true;
                 localStorage.loggedIn = true;
                 alert("Logou como admin");
                 window.location.href = "/";
               } else {
+                localStorage.userName = this.name;
+                localStorage.userEmail = this.email;
                 localStorage.loggedIn = true;
                 localStorage.admin = false;
                 alert("Logou como usuário");
@@ -277,6 +283,14 @@ export default {
         });
     },
     signup() {
+      // Checar se as senhas fornecidas nos 2 campos de senha são iguais
+      if (this.password != this.confirmPassword) {
+        alert(
+          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!"
+        );
+        return;
+      }
+
       fetch("http://127.0.0.1:3000/user/signup", {
         method: "POST",
         headers: {
@@ -294,7 +308,7 @@ export default {
           city: this.city,
           state: this.state,
           country: this.country,
-          phone: this.phone,
+          phoneNumber: this.phone,
           isAdmin: false,
         }),
       })
