@@ -4,7 +4,7 @@
       <!-- <h1 class="title is-2">Welcome back adminzao</h1> -->
       <h2 class="collapse-header title is-3">Edit a Card</h2>
       <div class="background-white mx-5">
-        <form>
+        <form v-on:submit.prevent="edit_card(card._id)">
           <div class="columns">
             <div class="column px-5">
               Card Name
@@ -24,6 +24,7 @@
                   type="Number"
                   placeholder="10.00"
                   min="0"
+                  step="0.01"
                   name="cardPrice"
                   v-model="price"
                 />
@@ -59,7 +60,6 @@
                   class="button is-primary"
                   type="submit"
                   name="cardSubmit"
-                  @click="edit_card()"
                 >
                   Edit card
                 </button>
@@ -160,6 +160,7 @@ export default {
       this.attack2Name = this.card.attacks[1].name;
       this.attack2Text = this.card.attacks[1].text;
     }
+    this.getCardFromDB();
   },
 
   methods: {
@@ -171,7 +172,7 @@ export default {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          id: this.id,
+          id: this.card.id,
         }),
       })
         .then((res) => {
@@ -201,11 +202,69 @@ export default {
           console.log("Erro: " + err);
         });
     },
-    edit_card() {
-      alert("As informacoes da carta foram trocadas com sucesso!");
-      this.$router.push({
+    edit_card(id) {
+      console.log(this.card._id);
+      this.card.name = this.cardname;
+      this.card.qtd = this.qtd;
+      this.card.name = this.cardname;
+      this.card.images.small = this.imagelink;
+      if (this.card.attacks == null && this.attack1Name.length > 0) {
+        this.card.attacks.push({
+          name: this.attack1Name,
+          text: this.attack1Text,
+        });
+      } else if (this.card.attacks != null) {
+        this.card.attacks[0].name = this.attack1Name;
+        this.card.attacks[0].text = this.attack1Text;
+      }
+      if (this.card.attacks == null && this.attack2Name.length > 0) {
+        this.card.attacks.push({
+          name: this.attack2Name,
+          text: this.attack2Text,
+        });
+      } else if (this.card.attacks != null) {
+        if (this.card.attacks[1] == null) {
+          this.card.attacks.push({
+            name: this.attack2Name,
+            text: this.attack2Text,
+          });
+        } else {
+          this.card.attacks[1].name = this.attack2Name;
+          this.card.attacks[1].text = this.attack2Text;
+        }
+      }
+
+      // Remover o campo _id dos dados que serão atualizados
+      delete this.card._id;
+
+      // Chamar a função do backend para modificar as informações da carta
+      fetch("http://127.0.0.1:3000/cards/updateCardById", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          data: this.card,
+        }),
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              alert("Carta atualizada com sucesso!");
+            })
+            .catch((err) => {
+              alert("Erro ao atualizar carta!");
+              console.log("Erro: " + err);
+            });
+        })
+        .catch((err) => {
+          console.log("Erro: " + err);
+        });
+      /*this.$router.push({
         name: "home",
-      });
+      });*/
     },
     getCardLowPrice(card) {
       if (card.tcgplayer == null) return 5.5;

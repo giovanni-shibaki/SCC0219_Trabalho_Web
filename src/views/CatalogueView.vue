@@ -238,10 +238,53 @@ export default {
           res
             .json()
             .then((response) => {
-              this.cards = response;
+              this.cards = response.filter((obj) => {
+                if (
+                  this.route.query.category == null &&
+                  this.route.query.search == null
+                )
+                  return obj;
+                // Verificar se foi feito uma busca
+                if (this.route.query.search != null) {
+                  if (
+                    obj.name
+                      .toLowerCase()
+                      .includes(this.route.query.search.toLowerCase())
+                  ) {
+                    return obj;
+                  }
+                }
+                switch (parseInt(this.route.query.category)) {
+                  case 0:
+                    if (obj.supertype == "Pokémon") return obj;
+                    break;
+                  case 1:
+                    if (obj.supertype == "Trainer") return obj;
+                    break;
+                  case 2:
+                    if (obj.supertype == "Energy") return obj;
+                    break;
+                  case 3:
+                    if (obj.rarity == "Common") return obj;
+                    break;
+                  case 4:
+                    if (obj.rarity == "Uncommon") return obj;
+                    break;
+                  case 5:
+                    if (obj.rarity == "Rare") return obj;
+                    break;
+                  case 6:
+                    if (obj.rarity == "Promo") return obj;
+                    break;
+                }
+              });
+              this.numPages = Math.ceil(
+                parseInt(parseInt(this.cards.length) / 20)
+              );
             })
             .catch((err) => {
               alert("Erro ao procurar quantidade de cartas no estoque!");
+              console.log("Erro: " + err);
             });
         })
         .catch((err) => {

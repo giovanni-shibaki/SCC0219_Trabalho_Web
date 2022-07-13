@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       router: useRoute(),
-      card: json.data[Math.floor(Math.random() * json.data.length)],
+      card: json[Math.floor(Math.random() * json.length)],
       cards: json,
       qtd: 1,
       admin: false,
@@ -68,7 +68,7 @@ export default {
   methods: {
     scrollToTop(id) {
       window.scrollTo(0, 0);
-      this.card = json.data.filter(function (obj) {
+      this.card = json.filter(function (obj) {
         if (obj.id == id) return obj;
       });
     },

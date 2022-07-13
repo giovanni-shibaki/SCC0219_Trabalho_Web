@@ -22,13 +22,6 @@
             <p style="text-align: center">
               Quantidade em estoque: {{ this.qtdCards }}
             </p>
-            <input
-              v-model="qtd"
-              type="number"
-              :min="0"
-              :max="this.qtdCards"
-              readonly
-            />
             <button
               @click="
                 scrollToTop(-1);
@@ -130,9 +123,7 @@ export default {
     return {
       router: useRoute(),
       id: useRoute().query.id,
-      card: json.filter(function (obj) {
-        if (obj.id == useRoute().query.id) return obj;
-      })[0],
+      card: json[0],
       pos: json.findIndex((obj) => obj.id == useRoute().query.id),
       cards: json,
       qtd: 0,
