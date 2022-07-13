@@ -205,24 +205,25 @@ export default {
     edit_card(id) {
       console.log(this.card._id);
       this.card.name = this.cardname;
-      this.card.qtd = this.qtd;
+      this.card.quantity = this.qtd;
       this.card.name = this.cardname;
       this.card.images.small = this.imagelink;
-      if (this.card.attacks == null && this.attack1Name.length > 0) {
+      console.log(this.card.attacks);
+      if (this.card.attacks.length == 0 && this.attack1Name.length > 0) {
         this.card.attacks.push({
           name: this.attack1Name,
           text: this.attack1Text,
         });
-      } else if (this.card.attacks != null) {
+      } else if (this.card.attacks.length > 0) {
         this.card.attacks[0].name = this.attack1Name;
         this.card.attacks[0].text = this.attack1Text;
       }
-      if (this.card.attacks == null && this.attack2Name.length > 0) {
+      if (this.card.attacks.length == 0 && this.attack2Name.length > 0) {
         this.card.attacks.push({
           name: this.attack2Name,
           text: this.attack2Text,
         });
-      } else if (this.card.attacks != null) {
+      } else if (this.card.attacks.length > 0) {
         if (this.card.attacks[1] == null) {
           this.card.attacks.push({
             name: this.attack2Name,
@@ -236,6 +237,7 @@ export default {
 
       // Remover o campo _id dos dados que serão atualizados
       delete this.card._id;
+      console.log(this.card);
 
       // Chamar a função do backend para modificar as informações da carta
       fetch("http://127.0.0.1:3000/cards/updateCardById", {
@@ -262,9 +264,11 @@ export default {
         .catch((err) => {
           console.log("Erro: " + err);
         });
-      /*this.$router.push({
+
+      window.scrollTo(0, 0);
+      this.$router.push({
         name: "home",
-      });*/
+      });
     },
     getCardLowPrice(card) {
       if (card.tcgplayer == null) return 5.5;
