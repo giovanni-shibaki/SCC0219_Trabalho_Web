@@ -197,6 +197,7 @@ export default {
       country: "",
       phone: "",
       addressDetails: "",
+      isAdmin: false,
     };
   },
 
@@ -208,7 +209,45 @@ export default {
 
   methods: {
     editInformation() {
-      this.username += "\n";
+      // Checar se as senhas fornecidas nos 2 campos de senha são iguais
+      if (this.password != this.cpassword) {
+        alert(
+          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!"
+        );
+        return;
+      }
+
+      fetch("http://127.0.0.1:3000/user/updateUserByEmail", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: this.username,
+          email: this.email,
+          password: this.password,
+          postalCode: this.postalcode,
+          street: this.street,
+          number: this.number,
+          addressDetails: this.addressDetails,
+          city: this.city,
+          state: this.state,
+          country: this.country,
+          phoneNumber: this.phone,
+          isAdmin: this.isAdmin,
+        }),
+      })
+        .then((res) => {
+          res.json().then((response) => {
+            // Cadastro realizado!
+            alert("Informações de pefil atualizadas com sucesso!");
+            window.location.href = "/";
+          });
+        })
+        .catch((a) => console.log(a));
+
+      /*this.username += "\n";
       this.email += "\n";
       this.password += "\n";
       this.postalcode += "\n";
@@ -243,7 +282,7 @@ export default {
           this.country +
           "Phone: " +
           this.phone
-      );
+      );*/
     },
     getUserData() {
       console.log(localStorage.userEmail);
