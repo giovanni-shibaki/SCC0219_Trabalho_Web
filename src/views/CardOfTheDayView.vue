@@ -33,7 +33,10 @@
             </button>
           </div>
           <div id="itemAddCart" v-else>
-            <input v-model="qtd" type="number" min="0" max="10" />
+            <p style="text-align: center">
+              Quantidade em estoque: {{ this.qtdCards }}
+            </p>
+            <input v-model="qtd" type="number" min="0" :max="this.qtdCards" />
             <button @click="addToCart(this.card, this.qtd)">
               <i class="fa fa-shopping-cart"></i>
               Add to Cart
@@ -58,6 +61,7 @@ export default {
       cards: json,
       qtd: 1,
       admin: false,
+      qtdCards: 0,
     };
   },
 
@@ -106,6 +110,19 @@ export default {
         cart.push({ card: card, qtd: qtd });
       }
       localStorage.cart = JSON.stringify(cart);
+      this.$toast(card.name + " adicionado ao carrinho!", {
+        duration: 3000,
+        styles: {
+          color: "white",
+          borderRadius: "25px",
+          backgroundColor: "#2dbc44",
+        },
+        slotLeft: '<i class="fa fa-user"></i>',
+        slotRight: '<i class="fa fa-thumbs-up"></i>',
+        positionX: "center",
+        positionY: "top",
+        disableClick: false,
+      });
     },
     getCardHighPrice(card) {
       if (card.tcgplayer == null) return 6.5;

@@ -98,7 +98,7 @@
               class="input-field"
               type="text"
               placeholder="XXXXX-XXX"
-              v-maska="'XXXXX-XXX'"
+              v-maska="'#####-###'"
               name="postcode"
               v-model="postalCode"
             />
@@ -123,7 +123,7 @@
               class="input-field"
               type="text"
               placeholder="XX-XXX"
-              v-maska="'XX-XXX'"
+              v-maska="'##-###'"
               name="num"
               v-model="number"
             />
@@ -184,7 +184,7 @@
               class="input-field"
               type="text"
               placeholder="(DDD) XXXXX-XXXX"
-              v-maska="'(XX) XXXXX-XXXX'"
+              v-maska="'(##) #####-####'"
               name="phone"
               v-model="phone"
             />

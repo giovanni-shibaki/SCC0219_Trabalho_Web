@@ -1,11 +1,17 @@
 <template>
   <div class="background-light-light-blue" id="payment-page-container">
     <h1 class="title is-3">Payment informations</h1>
-    <form>
+    <form v-on:submit.prevent="finish()">
       <section class="section">
         Name printed in the card
         <div class="input-container">
-          <input class="input" type="text" placeholder="Name" name="name" />
+          <input
+            class="input"
+            type="text"
+            placeholder="Name"
+            name="name"
+            required
+          />
         </div>
         <div class="columns">
           <div class="input-container column is-three-fifths">
@@ -14,7 +20,9 @@
               class="input"
               type="text"
               placeholder="Card Number"
+              v-maska="'#### #### #### ####'"
               name="cardNumber"
+              required
             />
           </div>
           <div class="input-container column is-one-fifth">
@@ -23,12 +31,21 @@
               class="input"
               type="text"
               placeholder="MM/YY"
+              v-maska="'##/##'"
               name="cardExpireDate"
+              required
             />
           </div>
           <div class="input-container column is-one-fifth">
             Security numbers
-            <input class="input" type="text" placeholder="CVV" name="cardCvv" />
+            <input
+              class="input"
+              type="text"
+              placeholder="CVV"
+              name="cardCvv"
+              v-maska="'###'"
+              required
+            />
           </div>
         </div>
       </section>
@@ -40,6 +57,7 @@
             class="input"
             type="text"
             placeholder="XXXXX-XXX"
+            v-maska="'#####-###'"
             name="postcode"
           />
         </div>
@@ -51,7 +69,23 @@
 
         Number
         <div class="input-container">
-          <input class="input" type="text" placeholder="XX-XXx" name="num" />
+          <input
+            class="input"
+            type="text"
+            placeholder="XX-XXX"
+            v-maska="'##-###'"
+            name="num"
+          />
+        </div>
+
+        Address Details
+        <div class="input-container">
+          <input
+            class="input"
+            type="text"
+            placeholder="Additional Information"
+            name="addressDetails"
+          />
         </div>
 
         City
@@ -74,7 +108,7 @@
           <input
             class="input"
             type="text"
-            placeholder="Contry"
+            placeholder="Country"
             name="country"
           />
         </div>
@@ -101,7 +135,7 @@
         <router-link to="/cart">
           <button class="button is-warning m-3">Return to cart</button>
         </router-link>
-        <button type="button" class="button is-primary m-3" @click="finish()">
+        <button type="submit" class="button is-primary m-3">
           Finish Transaction
         </button>
       </section>
@@ -142,7 +176,12 @@ export default {
         body: JSON.stringify(cardsIds),
       });
       localStorage.cart = "[]";
-      alert("Compra efetuada com sucesso");
+      // Compra realiza com sucesso!
+      window.scrollTo(0, 0);
+      this.$router.push({
+        name: "home",
+        query: { arg: "8" },
+      });
     },
   },
 };

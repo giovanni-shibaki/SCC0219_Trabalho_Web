@@ -316,7 +316,7 @@ export default {
           res
             .json()
             .then((response) => {
-              alert("Carta atualizada com sucesso!");
+              // Carta atualizada com sucesso!
             })
             .catch((err) => {
               alert("Erro ao atualizar carta!");
@@ -330,6 +330,7 @@ export default {
       window.scrollTo(0, 0);
       this.$router.push({
         name: "home",
+        query: { arg: "7" },
       });
     },
     getCardLowPrice(card) {

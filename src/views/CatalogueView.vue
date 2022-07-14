@@ -374,11 +374,12 @@ export default {
         this.$toast("Não há cartas no estoque!", {
           duration: 3000,
           styles: {
+            color: "white",
             borderRadius: "25px",
-            backgroundColor: "#254a7f",
+            backgroundColor: "#c5330b",
           },
           slotLeft: '<i class="fa fa-user"></i>',
-          slotRight: '<i class="fa fa-thumbs-up"></i>',
+          slotRight: '<i class="fa fa-thumbs-down"></i>',
           positionX: "center",
           positionY: "top",
           disableClick: false,
@@ -398,10 +399,11 @@ export default {
       this.$toast(card.name + " adicionado ao carrinho!", {
         duration: 3000,
         styles: {
+          color: "white",
           borderRadius: "25px",
           backgroundColor: "#254a7f",
         },
-        slotLeft: '<i class="fa fa-user"></i>',
+        slotLeft: '<i class="fa fa-cart-arrow-down"></i>',
         slotRight: '<i class="fa fa-thumbs-up"></i>',
         type: "success",
         positionX: "center",

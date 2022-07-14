@@ -317,7 +317,7 @@ export default {
     if (useRoute().query.arg != null) {
       switch (parseInt(useRoute().query.arg)) {
         case 0:
-          this.$toast("Registration completed!", {
+          this.$toast("Registro realizado com sucesso!", {
             duration: 3000,
             styles: {
               borderRadius: "25px",
@@ -420,12 +420,67 @@ export default {
             disableClick: false,
           });
           break;
+        case 7:
+          this.$toast("Carta atualizada com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 8:
+          this.$toast("Compra realizada com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#2dbc44",
+            },
+            slotLeft: '<i class="fa fa-money-bill"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
       }
     }
+    // Depois de montado, pegar as cartas do banco de dados, o que pode demorar alguns segundos devido a quantidade de cartas
+    this.syncDataBase();
   },
 
   methods: {
     // Métodos aqui
+    syncDataBase() {
+      fetch("http://127.0.0.1:3000/cards/getAllCards", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              this.cards = response;
+            })
+            .catch((err) => {
+              alert("Erro ao procurar quantidade de cartas no estoque!");
+              console.log("Erro: " + err);
+            });
+        })
+        .catch((err) => {
+          console.log("Erro: " + err);
+        });
+    },
     scrollToTop() {
       window.scrollTo(0, 0);
     },
@@ -438,11 +493,12 @@ export default {
         this.$toast("Não há cartas no estoque!", {
           duration: 3000,
           styles: {
+            color: "white",
             borderRadius: "25px",
-            backgroundColor: "#254a7f",
+            backgroundColor: "#c5330b",
           },
           slotLeft: '<i class="fa fa-user"></i>',
-          slotRight: '<i class="fa fa-thumbs-up"></i>',
+          slotRight: '<i class="fa fa-thumbs-down"></i>',
           positionX: "center",
           positionY: "top",
           disableClick: false,
@@ -462,10 +518,11 @@ export default {
       this.$toast(card.name + " adicionado ao carrinho!", {
         duration: 3000,
         styles: {
+          color: "white",
           borderRadius: "25px",
           backgroundColor: "#254a7f",
         },
-        slotLeft: '<i class="fa fa-user"></i>',
+        slotLeft: '<i class="fa fa-cart-arrow-down"></i>',
         slotRight: '<i class="fa fa-thumbs-up"></i>',
         positionX: "center",
         positionY: "top",
