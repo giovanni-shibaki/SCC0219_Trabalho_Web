@@ -272,14 +272,15 @@ export default {
             })
             .catch((err) => {
               // Login falhou
-              this.$toast("email/senha inválidos!", {
+              this.$toast("Email/senha inválidos!", {
                 duration: 3000,
                 styles: {
+                  color: "white",
                   borderRadius: "25px",
-                  backgroundColor: "#254a7f",
+                  backgroundColor: "#c5330b",
                 },
                 slotLeft: '<i class="fa fa-user"></i>',
-                slotRight: '<i class="fa fa-thumbs-up"></i>',
+                slotRight: '<i class="fa fa-thumbs-down"></i>',
                 positionX: "center",
                 positionY: "top",
                 disableClick: false,
