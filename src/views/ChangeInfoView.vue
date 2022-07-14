@@ -212,8 +212,20 @@ export default {
     editInformation() {
       // Checar se as senhas fornecidas nos 2 campos de senha são iguais
       if (this.password != this.cpassword) {
-        alert(
-          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!"
+        this.$toast(
+          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!",
+          {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          }
         );
         return;
       }
@@ -243,48 +255,10 @@ export default {
           res.json().then((response) => {
             // Cadastro realizado!
             localStorage.userName = this.username;
-            alert("Informações de pefil atualizadas com sucesso!");
-            window.location.href = "/";
+            window.location.href = "/?arg=4";
           });
         })
         .catch((a) => console.log(a));
-
-      /*this.username += "\n";
-      this.email += "\n";
-      this.password += "\n";
-      this.postalcode += "\n";
-      this.street += "\n";
-      this.number += "\n";
-      this.city += "\n";
-      this.state += "\n";
-      this.country += "\n";
-      this.phone += "\n";
-      this.addressDetails += "\n";
-      alert(
-        "Voce mudou as seguintes informacoes de perfil:\n" +
-          "Username: " +
-          this.username +
-          "Email: " +
-          this.email +
-          "Password: " +
-          this.password +
-          "Postal Code: " +
-          this.postalcode +
-          "Street: " +
-          this.street +
-          "Number: " +
-          this.number +
-          "Adrress Details: " +
-          this.addressDetails +
-          "City: " +
-          this.city +
-          "State: " +
-          this.state +
-          "Country: " +
-          this.country +
-          "Phone: " +
-          this.phone
-      );*/
     },
     getUserData() {
       console.log(localStorage.userEmail);

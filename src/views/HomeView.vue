@@ -287,6 +287,8 @@ import img3 from "@/assets/img/3cards_3.jpg";
 import background from "@/assets/img/pikachu_background.jpg";
 import json from "../assets/json/cards.json";
 
+import { useRoute } from "vue-router";
+
 export default {
   name: "SCC0219TrabalhoWebHomeView",
 
@@ -300,6 +302,7 @@ export default {
   data() {
     return {
       // Variáveis aqui
+      route: useRoute(),
       images: [
         { id: 1, img: img1 },
         { id: 1, img: img2 },
@@ -309,7 +312,117 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    // Faz a checagem do parametro passado noa variavel arg para mostrar o toast adequado
+    if (useRoute().query.arg != null) {
+      switch (parseInt(useRoute().query.arg)) {
+        case 0:
+          this.$toast("Registration completed!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 1:
+          this.$toast("Logou como Admin!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 2:
+          this.$toast("Logou como Usuario!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 3:
+          this.$toast("Deslogado com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 4:
+          this.$toast("Informações de pefil atualizadas com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 5:
+          this.$toast("Carta cadastrada com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 6:
+          this.$toast("Usuário cadastrado com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+      }
+    }
+  },
 
   methods: {
     // Métodos aqui
@@ -322,7 +435,18 @@ export default {
         if (obj.id == card.id) return obj;
       })[0];
       if (sCard.quantity == 0) {
-        alert("Não há cartas no estoque!");
+        this.$toast("Não há cartas no estoque!", {
+          duration: 3000,
+          styles: {
+            borderRadius: "25px",
+            backgroundColor: "#254a7f",
+          },
+          slotLeft: '<i class="fa fa-user"></i>',
+          slotRight: '<i class="fa fa-thumbs-up"></i>',
+          positionX: "center",
+          positionY: "top",
+          disableClick: false,
+        });
         return;
       }
 
@@ -335,7 +459,18 @@ export default {
         cart.push({ card: card, qtd: 1 });
       }
       localStorage.cart = JSON.stringify(cart);
-      alert(card.name + " adicionado ao carrinho!");
+      this.$toast(card.name + " adicionado ao carrinho!", {
+        duration: 3000,
+        styles: {
+          borderRadius: "25px",
+          backgroundColor: "#254a7f",
+        },
+        slotLeft: '<i class="fa fa-user"></i>',
+        slotRight: '<i class="fa fa-thumbs-up"></i>',
+        positionX: "center",
+        positionY: "top",
+        disableClick: false,
+      });
     },
     getCardHighPrice(card) {
       if (card.tcgplayer == null) return 6.5;

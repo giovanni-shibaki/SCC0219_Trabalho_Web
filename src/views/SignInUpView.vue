@@ -202,6 +202,7 @@ export default {
 
   data() {
     return {
+      arg: 0,
       loginEmail: "",
       loginPassword: "",
       name: "",
@@ -260,20 +261,30 @@ export default {
                 localStorage.userEmail = this.email;
                 localStorage.admin = true;
                 localStorage.loggedIn = true;
-                alert("Logou como admin");
-                window.location.href = "/";
+                window.location.href = "/?arg=1";
               } else {
                 localStorage.userName = this.name;
                 localStorage.userEmail = this.email;
                 localStorage.loggedIn = true;
                 localStorage.admin = false;
-                alert("Logou como usuário");
-                window.location.href = "/";
+                window.location.href = "/?arg=2";
               }
             })
             .catch((err) => {
               // Login falhou
-              alert("email/senha inválidos!");
+              this.$toast("email/senha inválidos!", {
+                duration: 3000,
+                styles: {
+                  borderRadius: "25px",
+                  backgroundColor: "#254a7f",
+                },
+                slotLeft: '<i class="fa fa-user"></i>',
+                slotRight: '<i class="fa fa-thumbs-up"></i>',
+                positionX: "center",
+                positionY: "top",
+                disableClick: false,
+              });
+              // alert("email/senha inválidos!");
             });
         })
         .catch((err) => {
@@ -285,8 +296,20 @@ export default {
     signup() {
       // Checar se as senhas fornecidas nos 2 campos de senha são iguais
       if (this.password != this.confirmPassword) {
-        alert(
-          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!"
+        this.$toast(
+          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!",
+          {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          }
         );
         return;
       }
@@ -315,8 +338,7 @@ export default {
         .then((res) => {
           res.json().then((response) => {
             // Cadastro realizado!
-            alert("Usuário cadastrado com sucesso!");
-            window.location.href = "/";
+            window.location.href = "/?arg=0";
           });
         })
         .catch((a) => console.log(a));

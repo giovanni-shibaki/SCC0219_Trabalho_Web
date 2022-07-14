@@ -17,6 +17,7 @@
     "nodemon": "^2.0.16",
     "sass-loader": "^13.0.0",
     "vue": "^3.2.13",
+    "vue-dk-toast": "^3.2.1",
     "vue-router": "^4.0.3",
     "vue3-carousel": "^0.1.40"
   },
