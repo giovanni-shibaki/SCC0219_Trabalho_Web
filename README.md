@@ -154,6 +154,10 @@ Para o correto funcionamento da aplicação é necessária que tanto o FrontEnd 
 
     Pronto! O BackEnd da aplicação agora está em execução e todas as funcionalidades que necessitam de acesso ao banco de dados MongoDB estarão funcionando!
 
+## Exemplos de cartas para inserção
+
+No arquivo **insertionSamples.txt** estão alguns exemplos de possíveis inserções de cartas no sistema que podem ser utilizadas para testar o cadastro de novas cartas quando logado como administrador.
+
 ## Problemas
 
 - Não foram encontrados grandes problemas durante o desenvolvimento deste projeto.
