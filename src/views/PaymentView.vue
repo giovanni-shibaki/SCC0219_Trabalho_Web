@@ -101,7 +101,7 @@
         <router-link to="/cart">
           <button class="button is-warning m-3">Return to cart</button>
         </router-link>
-        <button type="button" class="button is-primary m-3">
+        <button type="button" class="button is-primary m-3" @click="finish()">
           Finish Transaction
         </button>
       </section>
@@ -125,6 +125,25 @@ export default {
     this.finalPrice = this.totalPrice + this.shipmentFee - this.discount;
   },
 
-  methods: {},
+  methods: {
+    finish() {
+      if (localStorage.cart == "") localStorage.cart = "[]";
+      let cart = JSON.parse(localStorage.cart);
+      let cardsIds = cart.map((c) => ({
+        id: c.card.id,
+        qtd: c.qtd,
+      }));
+      fetch("http://127.0.0.1:3000/cards/buyCards", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cardsIds),
+      });
+      localStorage.cart = "[]";
+      alert("Compra efetuada com sucesso");
+    },
+  },
 };
 </script>
