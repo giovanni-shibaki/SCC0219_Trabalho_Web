@@ -1,0 +1,61 @@
+Exemplos de inserção de novas cartas no sistema que podem ser utilizados para testar a funcionalidade de inserção de novas cartas:
+
+Carta 1:
+
+Card Id: pl4-2
+Card Name: Froslass
+Card Set Name: Arceus
+Low Price of the Card: 1,5
+Market Price of the Card: 5,3
+Stock Quantity: 12
+Card Image URL: https://images.pokemontcg.io/pl4/2.png
+
+- Attack1
+    Name: Ground Frost
+    Text: If there is any Stadium Card in play, this attack does nothing.
+
+- Attack2
+    Name: (não tem)
+    Text: (não tem)
+
+-------------------------------------------------------------------------------------------------
+
+Carta 2:
+
+Card Id: pl3-8
+Card Name: Rayquaza C
+Card Set Name: Supreme Victors
+Low Price of the Card: 14,78
+Market Price of the Card: 23,64
+Stock Quantity: 7
+Card Image URL: https://images.pokemontcg.io/pl3/8.png
+
+- Attack1
+    Name: Trash Burst
+    Text: You may discard up to 5 Energy cards from your hand. If you do, this attack does 10 damage plus 10 more damage for each Energy card you discarded.
+
+- Attack2
+    Name: Twister
+    Text: Flip 2 coins. If both are tails, this attack does nothing. For each heads, discard an Energy attached to the Defending Pokémon.
+
+-------------------------------------------------------------------------------------------------
+
+Carta 3:
+
+Card Id: pl3-17
+Card Name: Butterfree FB
+Card Set Name: Supreme Victors
+Low Price of the Card: 0,99
+Market Price of the Card: 1,73
+Stock Quantity: 8
+Card Image URL: https://images.pokemontcg.io/pl3/17.png
+
+- Attack1
+    Name: Select Powder
+    Text: Choose either Burned or Poisoned. The Defending Pokémon is now affected by that Special Condition.
+
+- Attack2
+    Name: (não tem)
+    Text: (não tem)
+
+-------------------------------------------------------------------------------------------------
