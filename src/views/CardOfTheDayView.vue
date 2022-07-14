@@ -54,7 +54,7 @@ export default {
   data() {
     return {
       router: useRoute(),
-      card: json[Math.floor(Math.random() * json.length)],
+      card: this.getCardOfTheDay(),
       cards: json,
       qtd: 1,
       admin: false,
@@ -66,6 +66,30 @@ export default {
   },
 
   methods: {
+    getCardOfTheDay() {
+      return fetch("http://127.0.0.1:3000/cards/getCardOfTheDay", {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => {
+          res
+            .json()
+            .then((response) => {
+              this.card = response;
+              this.qtdCards = this.card.quantity;
+            })
+            .catch((err) => {
+              alert("Erro ao procurar quantidade de cartas no estoque!");
+              console.log("Erro: " + err);
+            });
+        })
+        .catch((err) => {
+          console.log("Erro: " + err);
+        });
+    },
     scrollToTop(id) {
       window.scrollTo(0, 0);
       this.card = json.filter(function (obj) {
