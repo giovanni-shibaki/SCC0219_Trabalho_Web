@@ -317,6 +317,8 @@
   </div>
 </template>
 <script>
+import { whileStatement } from "@babel/types";
+
 export default {
   name: "SCC0219TrabalhoWebAdminPageView",
 
@@ -409,6 +411,7 @@ export default {
           {
             duration: 3000,
             styles: {
+              color: "white",
               borderRadius: "25px",
               backgroundColor: "#254a7f",
             },
@@ -452,7 +455,7 @@ export default {
       })
         .then((res) => {
           res.json().then((response) => {
-            window.location.href = "/arg=6";
+            window.location.href = "/?arg=6";
           });
         })
         .catch((a) => console.log(a));
