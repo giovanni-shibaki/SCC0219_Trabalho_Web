@@ -291,9 +291,10 @@ export default {
       localStorage.userName = "";
       this.admin = false;
       this.loggedIn = false;
-      alert("Logoff realizado com sucesso!");
+      //alert("Logoff realizado com sucesso!");
       this.$router.push({
         name: "home",
+        query: { arg: "3" },
       });
     },
   },

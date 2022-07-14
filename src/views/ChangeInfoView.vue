@@ -243,8 +243,12 @@ export default {
           res.json().then((response) => {
             // Cadastro realizado!
             localStorage.userName = this.username;
-            alert("Informações de pefil atualizadas com sucesso!");
-            window.location.href = "/";
+            // alert("Informações de pefil atualizadas com sucesso!");
+            // window.location.href = "/";
+            this.$router.push({
+              name: "home",
+              query: { arg: "4" },
+            });
           });
         })
         .catch((a) => console.log(a));

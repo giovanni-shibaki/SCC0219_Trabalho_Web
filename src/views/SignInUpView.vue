@@ -202,6 +202,7 @@ export default {
 
   data() {
     return {
+      arg: 0,
       loginEmail: "",
       loginPassword: "",
       name: "",
@@ -260,15 +261,24 @@ export default {
                 localStorage.userEmail = this.email;
                 localStorage.admin = true;
                 localStorage.loggedIn = true;
-                alert("Logou como admin");
-                window.location.href = "/";
+                window.scrollTo(0, 0);
+                //window.location.href = "/";
+                this.$router.push({
+                  name: "home",
+                  query: { arg: "1" },
+                });
               } else {
                 localStorage.userName = this.name;
                 localStorage.userEmail = this.email;
                 localStorage.loggedIn = true;
                 localStorage.admin = false;
-                alert("Logou como usuário");
-                window.location.href = "/";
+                // alert("Logou como usuário");
+                // window.location.href = "/";
+                window.scrollTo(0, 0);
+                this.$router.push({
+                  name: "home",
+                  query: { arg: "2" },
+                });
               }
             })
             .catch((err) => {
@@ -315,8 +325,27 @@ export default {
         .then((res) => {
           res.json().then((response) => {
             // Cadastro realizado!
-            alert("Usuário cadastrado com sucesso!");
-            window.location.href = "/";
+            //alert("Usuário cadastrado com sucesso!");
+            window.scrollTo(0, 0);
+            this.$router.push({
+              name: "home",
+              query: { arg: "0" },
+            });
+            //window.location.href = "/";
+
+            // this.$toast("Simple!", {
+            //   duration: 3000,
+            //   styles: {
+            //     borderRadius: "25px",
+            //   },
+            //   // Any valid HTML, intended for icons
+            //   slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            //   slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            //   type: "success", // Default classes: 'success', 'error' and 'passive'
+            //   positionX: "center",
+            //   positionY: "top",
+            //   disableClick: true,
+            // });
           });
         })
         .catch((a) => console.log(a));

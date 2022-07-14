@@ -287,6 +287,8 @@ import img3 from "@/assets/img/3cards_3.jpg";
 import background from "@/assets/img/pikachu_background.jpg";
 import json from "../assets/json/cards.json";
 
+import { useRoute } from "vue-router";
+
 export default {
   name: "SCC0219TrabalhoWebHomeView",
 
@@ -300,6 +302,7 @@ export default {
   data() {
     return {
       // Variáveis aqui
+      route: useRoute(),
       images: [
         { id: 1, img: img1 },
         { id: 1, img: img2 },
@@ -309,7 +312,118 @@ export default {
     };
   },
 
-  mounted() {},
+  mounted() {
+    console.log(useRoute().query.arg);
+    if (useRoute().query.arg != null) {
+      switch (parseInt(useRoute().query.arg)) {
+        case 0:
+          this.$toast("Registration completed!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            // Any valid HTML, intended for icons
+            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            type: "success", // Default classes: 'success', 'error' and 'passive'
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 1:
+          this.$toast("Logou como Admin!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            // Any valid HTML, intended for icons
+            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            type: "success", // Default classes: 'success', 'error' and 'passive'
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 2:
+          this.$toast("Logou como Usuario!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            // Any valid HTML, intended for icons
+            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            type: "success", // Default classes: 'success', 'error' and 'passive'
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 3:
+          this.$toast("Deslogado com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            // Any valid HTML, intended for icons
+            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            type: "success", // Default classes: 'success', 'error' and 'passive'
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 4:
+          this.$toast("Informações de pefil atualizadas com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            // Any valid HTML, intended for icons
+            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            type: "success", // Default classes: 'success', 'error' and 'passive'
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 5:
+          this.$toast("Carta cadastrada com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            // Any valid HTML, intended for icons
+            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            type: "success", // Default classes: 'success', 'error' and 'passive'
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+        case 6:
+          this.$toast("Usuário cadastrado com sucesso!", {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+            },
+            // Any valid HTML, intended for icons
+            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
+            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
+            type: "success", // Default classes: 'success', 'error' and 'passive'
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          });
+          break;
+      }
+    }
+  },
 
   methods: {
     // Métodos aqui

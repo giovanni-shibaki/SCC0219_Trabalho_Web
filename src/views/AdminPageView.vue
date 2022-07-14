@@ -397,8 +397,12 @@ export default {
         .then((res) => {
           res.json().then((response) => {
             // Cadastro realizado!
-            alert("Carta cadastrada com sucesso!");
-            window.location.href = "/";
+            this.$router.push({
+              name: "home",
+              query: { arg: "5" },
+            });
+            // alert("Carta cadastrada com sucesso!");
+            // window.location.href = "/";
           });
         })
         .catch((a) => console.log(a));
@@ -443,8 +447,12 @@ export default {
         .then((res) => {
           res.json().then((response) => {
             // Cadastro realizado!
-            alert("Usuário cadastrado com sucesso!");
-            window.location.href = "/";
+            this.$router.push({
+              name: "home",
+              query: { arg: "6" },
+            });
+            // alert("Usuário cadastrado com sucesso!");
+            // window.location.href = "/";
           });
         })
         .catch((a) => console.log(a));
