@@ -313,7 +313,7 @@ export default {
   },
 
   mounted() {
-    console.log(useRoute().query.arg);
+    // Faz a checagem do parametro passado noa variavel arg para mostrar o toast adequado
     if (useRoute().query.arg != null) {
       switch (parseInt(useRoute().query.arg)) {
         case 0:
@@ -322,10 +322,9 @@ export default {
             styles: {
               borderRadius: "25px",
             },
-            // Any valid HTML, intended for icons
-            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            type: "success", // Default classes: 'success', 'error' and 'passive'
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
             positionX: "center",
             positionY: "top",
             disableClick: false,
@@ -336,11 +335,11 @@ export default {
             duration: 3000,
             styles: {
               borderRadius: "25px",
+              backgroundColor: "#254a7f",
             },
-            // Any valid HTML, intended for icons
-            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            type: "success", // Default classes: 'success', 'error' and 'passive'
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
             positionX: "center",
             positionY: "top",
             disableClick: false,
@@ -351,11 +350,11 @@ export default {
             duration: 3000,
             styles: {
               borderRadius: "25px",
+              backgroundColor: "#254a7f",
             },
-            // Any valid HTML, intended for icons
-            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            type: "success", // Default classes: 'success', 'error' and 'passive'
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
             positionX: "center",
             positionY: "top",
             disableClick: false,
@@ -366,11 +365,11 @@ export default {
             duration: 3000,
             styles: {
               borderRadius: "25px",
+              backgroundColor: "#254a7f",
             },
-            // Any valid HTML, intended for icons
-            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            type: "success", // Default classes: 'success', 'error' and 'passive'
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
             positionX: "center",
             positionY: "top",
             disableClick: false,
@@ -381,11 +380,11 @@ export default {
             duration: 3000,
             styles: {
               borderRadius: "25px",
+              backgroundColor: "#254a7f",
             },
-            // Any valid HTML, intended for icons
-            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            type: "success", // Default classes: 'success', 'error' and 'passive'
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
             positionX: "center",
             positionY: "top",
             disableClick: false,
@@ -396,11 +395,11 @@ export default {
             duration: 3000,
             styles: {
               borderRadius: "25px",
+              backgroundColor: "#254a7f",
             },
-            // Any valid HTML, intended for icons
-            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            type: "success", // Default classes: 'success', 'error' and 'passive'
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
             positionX: "center",
             positionY: "top",
             disableClick: false,
@@ -411,11 +410,11 @@ export default {
             duration: 3000,
             styles: {
               borderRadius: "25px",
+              backgroundColor: "#254a7f",
             },
-            // Any valid HTML, intended for icons
-            slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            type: "success", // Default classes: 'success', 'error' and 'passive'
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            type: "success",
             positionX: "center",
             positionY: "top",
             disableClick: false,
@@ -436,7 +435,18 @@ export default {
         if (obj.id == card.id) return obj;
       })[0];
       if (sCard.quantity == 0) {
-        alert("Não há cartas no estoque!");
+        this.$toast("Não há cartas no estoque!", {
+          duration: 3000,
+          styles: {
+            borderRadius: "25px",
+            backgroundColor: "#254a7f",
+          },
+          slotLeft: '<i class="fa fa-user"></i>',
+          slotRight: '<i class="fa fa-thumbs-up"></i>',
+          positionX: "center",
+          positionY: "top",
+          disableClick: false,
+        });
         return;
       }
 
@@ -449,7 +459,18 @@ export default {
         cart.push({ card: card, qtd: 1 });
       }
       localStorage.cart = JSON.stringify(cart);
-      alert(card.name + " adicionado ao carrinho!");
+      this.$toast(card.name + " adicionado ao carrinho!", {
+        duration: 3000,
+        styles: {
+          borderRadius: "25px",
+          backgroundColor: "#254a7f",
+        },
+        slotLeft: '<i class="fa fa-user"></i>',
+        slotRight: '<i class="fa fa-thumbs-up"></i>',
+        positionX: "center",
+        positionY: "top",
+        disableClick: false,
+      });
     },
     getCardHighPrice(card) {
       if (card.tcgplayer == null) return 6.5;

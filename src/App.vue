@@ -292,10 +292,11 @@ export default {
       this.admin = false;
       this.loggedIn = false;
       //alert("Logoff realizado com sucesso!");
-      this.$router.push({
-        name: "home",
-        query: { arg: "3" },
-      });
+      // this.$router.push({
+      //   name: "home",
+      //   query: { arg: "3" },
+      // });
+      window.location.href = "/?arg=3";
     },
   },
 

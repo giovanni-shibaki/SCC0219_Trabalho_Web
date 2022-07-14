@@ -261,29 +261,30 @@ export default {
                 localStorage.userEmail = this.email;
                 localStorage.admin = true;
                 localStorage.loggedIn = true;
-                window.scrollTo(0, 0);
-                //window.location.href = "/";
-                this.$router.push({
-                  name: "home",
-                  query: { arg: "1" },
-                });
+                window.location.href = "/?arg=1";
               } else {
                 localStorage.userName = this.name;
                 localStorage.userEmail = this.email;
                 localStorage.loggedIn = true;
                 localStorage.admin = false;
-                // alert("Logou como usuário");
-                // window.location.href = "/";
-                window.scrollTo(0, 0);
-                this.$router.push({
-                  name: "home",
-                  query: { arg: "2" },
-                });
+                window.location.href = "/?arg=2";
               }
             })
             .catch((err) => {
               // Login falhou
-              alert("email/senha inválidos!");
+              this.$toast("email/senha inválidos!", {
+                duration: 3000,
+                styles: {
+                  borderRadius: "25px",
+                  backgroundColor: "#254a7f",
+                },
+                slotLeft: '<i class="fa fa-user"></i>',
+                slotRight: '<i class="fa fa-thumbs-up"></i>',
+                positionX: "center",
+                positionY: "top",
+                disableClick: false,
+              });
+              // alert("email/senha inválidos!");
             });
         })
         .catch((err) => {
@@ -295,8 +296,20 @@ export default {
     signup() {
       // Checar se as senhas fornecidas nos 2 campos de senha são iguais
       if (this.password != this.confirmPassword) {
-        alert(
-          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!"
+        this.$toast(
+          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!",
+          {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          }
         );
         return;
       }
@@ -325,27 +338,7 @@ export default {
         .then((res) => {
           res.json().then((response) => {
             // Cadastro realizado!
-            //alert("Usuário cadastrado com sucesso!");
-            window.scrollTo(0, 0);
-            this.$router.push({
-              name: "home",
-              query: { arg: "0" },
-            });
-            //window.location.href = "/";
-
-            // this.$toast("Simple!", {
-            //   duration: 3000,
-            //   styles: {
-            //     borderRadius: "25px",
-            //   },
-            //   // Any valid HTML, intended for icons
-            //   slotLeft: '<i class="fa fa-user"></i>', // Add icon to left
-            //   slotRight: '<i class="fa fa-thumbs-up"></i>', // Add icon to right
-            //   type: "success", // Default classes: 'success', 'error' and 'passive'
-            //   positionX: "center",
-            //   positionY: "top",
-            //   disableClick: true,
-            // });
+            window.location.href = "/?arg=0";
           });
         })
         .catch((a) => console.log(a));

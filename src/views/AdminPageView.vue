@@ -396,13 +396,7 @@ export default {
       })
         .then((res) => {
           res.json().then((response) => {
-            // Cadastro realizado!
-            this.$router.push({
-              name: "home",
-              query: { arg: "5" },
-            });
-            // alert("Carta cadastrada com sucesso!");
-            // window.location.href = "/";
+            window.location.href = "/?arg=5";
           });
         })
         .catch((a) => console.log(a));
@@ -410,8 +404,20 @@ export default {
     addUser() {
       // Checar se as senhas fornecidas nos 2 campos de senha são iguais
       if (this.password != this.confirmPassword) {
-        alert(
-          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!"
+        this.$toast(
+          "As senhas fornecidas nos campos de senha e confirmar senha não são iguais!",
+          {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          }
         );
         return;
       }
@@ -446,13 +452,7 @@ export default {
       })
         .then((res) => {
           res.json().then((response) => {
-            // Cadastro realizado!
-            this.$router.push({
-              name: "home",
-              query: { arg: "6" },
-            });
-            // alert("Usuário cadastrado com sucesso!");
-            // window.location.href = "/";
+            window.location.href = "/arg=6";
           });
         })
         .catch((a) => console.log(a));

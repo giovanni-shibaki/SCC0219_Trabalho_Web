@@ -100,9 +100,10 @@
       <div class="all-products">
         <div
           class="card"
-          v-for="card in cards
-            .filter((c) => c.quantity > 0)
-            .slice(route.query.page * 20, route.query.page * 20 + 20)"
+          v-for="card in cards.slice(
+            route.query.page * 20,
+            route.query.page * 20 + 20
+          )"
           v-bind:key="card.id"
         >
           <img
@@ -370,7 +371,18 @@ export default {
         if (obj.id == card.id) return obj;
       })[0];
       if (sCard.quantity == 0) {
-        alert("Não há cartas no estoque!");
+        this.$toast("Não há cartas no estoque!", {
+          duration: 3000,
+          styles: {
+            borderRadius: "25px",
+            backgroundColor: "#254a7f",
+          },
+          slotLeft: '<i class="fa fa-user"></i>',
+          slotRight: '<i class="fa fa-thumbs-up"></i>',
+          positionX: "center",
+          positionY: "top",
+          disableClick: false,
+        });
         return;
       }
 
@@ -383,7 +395,19 @@ export default {
         cart.push({ card: card, qtd: 1 });
       }
       localStorage.cart = JSON.stringify(cart);
-      alert(card.name + " adicionado ao carrinho!");
+      this.$toast(card.name + " adicionado ao carrinho!", {
+        duration: 3000,
+        styles: {
+          borderRadius: "25px",
+          backgroundColor: "#254a7f",
+        },
+        slotLeft: '<i class="fa fa-user"></i>',
+        slotRight: '<i class="fa fa-thumbs-up"></i>',
+        type: "success",
+        positionX: "center",
+        positionY: "top",
+        disableClick: false,
+      });
     },
   },
 };

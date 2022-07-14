@@ -158,7 +158,18 @@ export default {
               this.qtdCards = this.card.quantity;
             })
             .catch((err) => {
-              alert("Erro ao procurar quantidade de cartas no estoque!");
+              this.$toast("Erro ao procurar quantidade de cartas no estoque!", {
+                duration: 3000,
+                styles: {
+                  borderRadius: "25px",
+                  backgroundColor: "#254a7f",
+                },
+                slotLeft: '<i class="fa fa-user"></i>',
+                slotRight: '<i class="fa fa-thumbs-up"></i>',
+                positionX: "center",
+                positionY: "top",
+                disableClick: false,
+              });
               console.log("Erro: " + err);
             });
         })
@@ -177,12 +188,37 @@ export default {
     addToCart(card, qtd) {
       if (this.qtdCards == 0) {
         // Não há cartas no estoque, portanto a carta não pode ser adicionada no carrinho
-        alert("Não há cartas no estoque!");
+        this.$toast("Não há cartas no estoque!", {
+          duration: 3000,
+          styles: {
+            borderRadius: "25px",
+            backgroundColor: "#254a7f",
+          },
+          slotLeft: '<i class="fa fa-user"></i>',
+          slotRight: '<i class="fa fa-thumbs-up"></i>',
+          positionX: "center",
+          positionY: "top",
+          disableClick: false,
+        });
         return;
       }
 
       if (this.qtd == 0) {
-        alert("Selecione o número de cartas que deseja adicionar ao carrinho!");
+        this.$toast(
+          "Selecione o número de cartas que deseja adicionar ao carrinho!",
+          {
+            duration: 3000,
+            styles: {
+              borderRadius: "25px",
+              backgroundColor: "#254a7f",
+            },
+            slotLeft: '<i class="fa fa-user"></i>',
+            slotRight: '<i class="fa fa-thumbs-up"></i>',
+            positionX: "center",
+            positionY: "top",
+            disableClick: false,
+          }
+        );
         return;
       }
 
@@ -195,7 +231,18 @@ export default {
         cart.push({ card: card, qtd: qtd });
       }
       localStorage.cart = JSON.stringify(cart);
-      alert(card.name + " adicionado ao carrinho!");
+      this.$toast(card.name + " adicionado ao carrinho!", {
+        duration: 3000,
+        styles: {
+          borderRadius: "25px",
+          backgroundColor: "#254a7f",
+        },
+        slotLeft: '<i class="fa fa-user"></i>',
+        slotRight: '<i class="fa fa-thumbs-up"></i>',
+        positionX: "center",
+        positionY: "top",
+        disableClick: false,
+      });
     },
     getCardHighPrice(card) {
       if (card.tcgplayer == null) return 6.5;
