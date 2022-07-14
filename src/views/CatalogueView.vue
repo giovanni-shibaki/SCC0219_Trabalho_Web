@@ -100,10 +100,9 @@
       <div class="all-products">
         <div
           class="card"
-          v-for="card in cards.slice(
-            route.query.page * 20,
-            route.query.page * 20 + 20
-          )"
+          v-for="card in cards
+            .filter((c) => c.quantity > 0)
+            .slice(route.query.page * 20, route.query.page * 20 + 20)"
           v-bind:key="card.id"
         >
           <img
