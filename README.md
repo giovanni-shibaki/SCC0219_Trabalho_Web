@@ -25,7 +25,7 @@ Trabalho em grupo da disciplina de Introdução ao Desenvolvimento Web - 1º sem
 
 ### Funcionalidade extra:
 
-- Todos os dias, ao entrar na aplicação e realizar login, o cliente pode acessar uma tela chamada **Carta do dia**, na qual uma das cartas presentes na loja será sorteada e terá um desconto especial naquele dia apenas para aquele cliente.
+- Todos os dias, os clientes podem acessar uma tela chamada **Carta do dia**, na qual uma das cartas presentes na loja será sorteada e terá um desconto especial naquele dia.
 
 ## Descrição do projeto
 
@@ -95,7 +95,7 @@ A seguir estão listados os testes realizados:
 7) Quando logado como Administrador, ao selecionar uma carta do catálogo e clicar para editar o item, as informações a serem editadas da carta são exibidas e as alterações, após clicar no botão de alterar carta, são salvas no banco de dados conforme esperado.
 8) As inclusões de cartas e usuários, quando logado como administrador, funcionam conforme o esperado, permitindo que um administrador faça o cadastro de outros administradores no sistema.
 9) Quando logado como um usuário comum, é possível editar as informações de perfil que são salvas no banco de dados conforme esperado.
-10) **Em desenvolvimento**
+10) Após os dados referentes às informações bancárias (dados fictícios) serem preenchidos, a compra é finalizada subtraindo do estoque as cartas que estavam presentes no carrinho, e o carrinho é esvaziado, conforme o esperado.
 
 ## Procedimentos de build
 
